@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { Footer, Navbar } from '../Partials/index'
+import { Footer, Navbar } from '../../components/Partials'
 import './style/style.css'
 
 const Dashboard = () => {

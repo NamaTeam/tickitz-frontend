@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { FetchUser, UpdateUser } from "../../Redux/Actions/user"
 import { Link } from "react-router-dom";
 import './styles/style.css'
-import { Footer, Navbar } from '../Partials';
+import { Footer, Navbar } from '../../components';
 
 
 export const Profile = () => {

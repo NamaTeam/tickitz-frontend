@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import {UserForgotPasswordVerify } from '../../../Redux/Actions/auth'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import '../styles/style.css';
 
 const VerifyForgotPassword = () =>{
@@ -16,7 +16,7 @@ const VerifyForgotPassword = () =>{
         dispatch(UserForgotPasswordVerify(formData, setVerifyLoading, history))
     }
     return (
-        <div className='bg-light'>
+      	<div className='bg-light'>
             <section className="container-fluid">
                 <div className="row">
                     <div className="d-none d-sm-none d-md-block col-xl-7 p-0">
