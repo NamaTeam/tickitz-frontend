@@ -8,6 +8,7 @@ import {Login,Register, VerifyRegister, UserForgotPassword,  UserVerifyForgotPas
 import Dashboard from './pages/Dashboard'
 import {Profile} from './pages/Profile'
 import {MovieDetail} from './pages/MovieDetail'
+import {MovieList} from './pages/MovieList'
 import NotFound from './pages/NotFound'
 import { PrivateRoute, PublicRoute} from "./components";
 import { Provider } from 'react-redux'
@@ -30,6 +31,7 @@ function AppRouter() {
         
         {/* Private Route */}
         <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />
+        <PrivateRoute path="/movie" exact={true} component={()=><MovieList />} />
         <PrivateRoute path="/movie-detail" exact={true} component={()=><MovieDetail />} />
         <Route path="*" component={NotFound} />
       </Switch>

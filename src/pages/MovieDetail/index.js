@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux"
+import { FetchUser } from "../../Redux/Actions/user"
 import { Link } from "react-router-dom";
 import './styles/style.css';
+
 export const MovieDetail = () => {
+    const dispatch = useDispatch()
+
+    const { data: userData } = useSelector((state) => state.UserLogin)
+    const { data } = useSelector((state) => state.FetchUser)
+
+    useEffect(() => {
+        dispatch(FetchUser(userData.data))
+    }, [dispatch, userData])
 
     return (
         <div class="container-fluid bg-grey">
@@ -12,7 +23,7 @@ export const MovieDetail = () => {
                     </Link>
                     <ul className="nav">
                         <li className="item">
-                            <Link to='#' className="link">Movies</Link>
+                            <Link to={`/movie`} className="link">Movies</Link>
                         </li>
                         <li className="item">
                             <Link to='#' className="link">Cinemas</Link>
@@ -28,7 +39,10 @@ export const MovieDetail = () => {
                         <img src={process.env.PUBLIC_URL + '/svg/search.svg'} alt="icon search" />
                     </Link>
                     <Link to='#' className="navbar-photo-profile right">
-                        <img src={process.env.PUBLIC_URL + '/svg/avatar-a.svg'} alt="profile" />
+                        {data.photo === "undefined" || data.photo === null ?
+                            <img src={process.env.PUBLIC_URL + '/logo/no-photo.png'} alt="profile" /> :
+                            <img src={`http://localhost:5000${data.photo}`} alt="profile" />
+                        }
                     </Link>
                 </div>
             </nav>
@@ -73,15 +87,15 @@ export const MovieDetail = () => {
                 </div>
             </section>
 
-            {/* <section className="middle-details">
-                <h5>Showtimes And Tickets</h5>
+            <section className="middle-details">
+                <h5>Showtimes and Tickets</h5>
                 <form>
-                    <input id="today" type="date" />
+                    <input id="the-date" type="date" />
                     <select name="location" id="location">
                         <option value="Purwokerto">Purwokerto</option>
                     </select>
                 </form>
-            </section> */}
+            </section>
 
             <section className="row bottom-details">
                 <div className="col-md-4 col-sm-12 cart">
@@ -352,5 +366,3 @@ export const MovieDetail = () => {
         </div>
     )
 }
-
-
