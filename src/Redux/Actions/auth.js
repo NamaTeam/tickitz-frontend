@@ -4,7 +4,7 @@ import { Redirect } from 'react-router'
 const UserLoginRequest = () => {return {type : 'USER_LOGIN_REQUEST'}}
 const UserLoginSuccess = (data) => {return {type : 'USER_LOGIN_SUCCESS', payload : data}}
 const UserLoginError = (err) => {return {type : 'USER_LOGIN_ERROR',payload : err}}
-const UserLogout = () =>{return{type : 'USER_LOGOUT'}}
+export const UserLogout = () =>{return{type : 'USER_LOGOUT'}}
 
 export const UserLogin = (formData, cb)=>{
     return (dispatch)=>{

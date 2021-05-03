@@ -73,9 +73,41 @@ const Dashboard = () => {
             <section className='banner'>
                 <div className='row mt-5'>
                         <div class="d-flex flex-row bd-highlight mb-3">
-                        <div class="p-2 bd-highlight">Flex item 1</div>
-                        <div class="p-2 bd-highlight">Flex item 2</div>
-                        <div class="p-2 bd-highlight">Flex item 3</div>
+                        <div className='photo-layout ms-3'>
+                        <div class="card bg-transparent p-3">
+                            <img src={process.env.PUBLIC_URL + '/Rectangle 119.png'} className='m-auto'/>
+                        </div>   
+                    </div>
+                    <div className='photo-layout ms-3'>
+                        <div class="card bg-transparent p-3">
+                            <img src={process.env.PUBLIC_URL + '/Rectangle 119.png'} className='m-auto'/>
+                        </div>   
+                    </div>
+                    <div className='photo-layout ms-3'>
+                        <div class="card bg-transparent p-3">
+                            <img src={process.env.PUBLIC_URL + '/Rectangle 119.png'} className='m-auto'/>
+                        </div>   
+                    </div>
+                    <div className='photo-layout ms-3'>
+                        <div class="card bg-transparent p-3">
+                            <img src={process.env.PUBLIC_URL + '/Rectangle 119.png'} className='m-auto'/>
+                        </div>   
+                    </div>
+                    <div className='photo-layout ms-3'>
+                        <div class="card bg-transparent p-3">
+                            <img src={process.env.PUBLIC_URL + '/Rectangle 119.png'} className='m-auto'/>
+                        </div>   
+                    </div>
+                    <div className='photo-layout ms-3'>
+                        <div class="card bg-transparent p-3">
+                            <img src={process.env.PUBLIC_URL + '/Rectangle 119.png'} className='m-auto'/>
+                        </div>   
+                    </div>
+                    <div className='photo-layout ms-3'>
+                        <div class="card bg-transparent p-3">
+                            <img src={process.env.PUBLIC_URL + '/Rectangle 119.png'} className='m-auto'/>
+                        </div>   
+                    </div>
                     </div>
                 </div>
             </section>
