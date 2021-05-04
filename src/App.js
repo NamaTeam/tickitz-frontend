@@ -9,6 +9,8 @@ import Dashboard from './pages/Dashboard'
 import {Profile} from './pages/Profile'
 import {MovieDetail} from './pages/MovieDetail'
 import {MovieList} from './pages/MovieList'
+import {Payment} from './pages/Payment'
+import {TicketResult} from './pages/TicketResult'
 import NotFound from './pages/NotFound'
 import { PrivateRoute, PublicRoute} from "./components";
 import { Provider } from 'react-redux'
@@ -33,6 +35,8 @@ function AppRouter() {
         <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />
         <PrivateRoute path="/movie" exact={true} component={()=><MovieList />} />
         <PrivateRoute path="/movie-detail" exact={true} component={()=><MovieDetail />} />
+        <PrivateRoute path="/payment" exact={true} component={()=><Payment />} />
+        <PrivateRoute path="/ticket-result" exact={true} component={()=><TicketResult />} />
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>
