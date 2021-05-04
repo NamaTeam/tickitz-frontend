@@ -41,6 +41,7 @@ function AppRouter() {
           {/* Private Route User */}
           <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />
           <PrivateRoute path="/movie" exact={true} component={()=><MovieList />} />
+          <PrivateRoute path="/payment" exact={true} component={()=><Payment />} />
           <PrivateRoute path='/order' exact={true} component={() => <Order />} />
 
           <Route path="*" component={NotFound} />

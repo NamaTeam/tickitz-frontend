@@ -6,8 +6,9 @@ import { Link } from "react-router-dom";
 export const Payment = () => {
 
     return (
+        <>
+        <Navbar />
         <div className="container-fluid bg-grey">
-            <Navbar />
             <div class="container-fluid payment">
                 <div className="row main title">
                     <div className="col-md-8 payment-title">
@@ -114,5 +115,6 @@ export const Payment = () => {
             </div>
             <Footer />
         </div>
+        </>
     )
 }
