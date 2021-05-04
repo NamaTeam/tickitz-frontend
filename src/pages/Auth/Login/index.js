@@ -40,10 +40,10 @@ const Login = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="form-auth d-block col-xl-5 bg-white justify-content-center">
-                        <div className="mx-5">
+                    <div className="form-auth d-flex col-xl-5 bg-white justify-content-center">
+                        <div className="mx-3">
                             <div className="card-body">
-                                <div className="mt-4 mb-2 caption">
+                                <div className="mt-4 mb-2 text-break">
                                     <h1 className="fw-bold">Sign In</h1>
                                     <small>Sign in with your data that you entered during your registration</small>
                                 </div>
