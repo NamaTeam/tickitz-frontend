@@ -1,0 +1,76 @@
+.card-rounded {
+  border: none !important;
+  border-radius: 26px !important;
+  box-shadow: 0px 8px 24px rgba(17, 17, 17, 0.08);
+}
+
+.name-text {
+  font-size: 20px;
+}
+
+.tab {
+  cursor: pointer;
+}
+
+.nav-tab {
+  height: max-content;
+}
+
+.tab.active {
+  border-bottom: solid 2px #5f2eea;
+}
+
+.form-input {
+  border-radius: 26px !important;
+}
+
+.form-input-group {
+  border-left: none !important;
+  border-top-right-radius: 26px !important;
+  border-bottom-right-radius: 26px !important;
+}
+
+.group-text {
+  background-color: #fff !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-left-radius: 26px !important;
+  border-bottom-left-radius: 26px !important;
+}
+
+.btn-rounded {
+  background-color: #5f2eea !important;
+  color: #fff !important;
+}
+
+.status-active {
+  background-color: #00ba88;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.status-used {
+  background-color: #6e7191;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.accor-toggle {
+  cursor: pointer;
+}
+
+.text-muted.accor-toggle.collapse {
+  background-color: aqua !important;
+}
+
+@media only screen and (max-width: 436px) {
+  .logo-cinema {
+    width: 150px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .logo-cinema {
+    width: 100px;
+  }
+}
