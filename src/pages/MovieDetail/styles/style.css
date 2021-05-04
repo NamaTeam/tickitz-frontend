@@ -4,11 +4,10 @@ body{
     padding: 0 !important;
     font-family: 'Mulish', sans-serif !important;
     overflow-x: hidden !important;
+}
+.bg-grey{
     background:#E5E5E5 !important;
 }
-/* .bg-grey{
-    background:#E5E5E5 !important;
-} */
 .navbar-top{
     display: flex !important;
     justify-content: space-between !important;

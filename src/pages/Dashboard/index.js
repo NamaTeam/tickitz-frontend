@@ -32,7 +32,7 @@ const Dashboard = () => {
                 </div>
             </section>
             <main className='row bg-grey horizontal-list my-5 pb-5'>
-                <div class="d-flex flex-row bd-highlight m-3 pt-5">
+                <div class="d-flex justify-content-center flex-row bd-highlight m-3 pt-5">
                     <div className='photo-layout ms-3'>
                         <div class="card bg-transparent p-3">
                             <img src={process.env.PUBLIC_URL + '/Rectangle 119.png'} className='m-auto'/>
@@ -71,8 +71,22 @@ const Dashboard = () => {
                 </div>
             </main>
             <section className='banner'>
-                <div className='row mt-5'>
-                        <div class="d-flex flex-row bd-highlight mb-3">
+                <div class="d-flex justify-content-between horizontal-list py-5 px-3">
+                    <button className='mx-3 btn btn-purple'>January</button>
+                    <button className='mx-3 btn btn-outline-primary'>Februariy</button>
+                    <button className='mx-3 btn btn-outline-primary'>March</button>
+                    <button className='mx-3 btn btn-outline-primary'>April</button>
+                    <button className='mx-3 btn btn-outline-primary'>May</button>
+                    <button className='mx-3 btn btn-outline-primary'>June</button>
+                    <button className='mx-3 btn btn-outline-primary'>July</button>
+                    <button className='mx-3 btn btn-outline-primary'>August</button>
+                    <button className='mx-3 btn btn-outline-primary'>September</button>
+                    <button className='mx-3 btn btn-outline-primary'>October</button>
+                    <button className='mx-3 btn btn-outline-primary'>November</button>
+                    <button className='mx-3 btn btn-outline-primary'>December</button>
+                </div>
+                <div class="d-flex justify-content-center horizontal-list py-5 px-3">
+                    <div class="d-flex flex-row bd-highlight mb-3">
                         <div className='photo-layout ms-3'>
                         <div class="card bg-transparent p-3">
                             <img src={process.env.PUBLIC_URL + '/Rectangle 119.png'} className='m-auto'/>
@@ -108,6 +122,14 @@ const Dashboard = () => {
                             <img src={process.env.PUBLIC_URL + '/Rectangle 119.png'} className='m-auto'/>
                         </div>   
                     </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div className='card'>
+                    <div className='card-body'>
+                        <h5>Be the vanguard of the</h5>
+                        <h1 className='fw-bold text-purple'>Moviegoers</h1>
                     </div>
                 </div>
             </section>
