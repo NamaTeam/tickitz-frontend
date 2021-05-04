@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import { Login, Register, VerifyRegister, UserForgotPassword, UserVerifyForgotPassword, UserUpdatePassword } from './pages/Auth'
+import { DashboardAdmin} from './pages/Admin'
 import Dashboard from './pages/Dashboard'
 import { Profile } from './pages/Profile'
 import { MovieDetail } from './pages/MovieDetail'
@@ -15,30 +16,76 @@ import { Provider } from 'react-redux'
 import configureStore from './Redux/store'
 import { PersistGate } from "redux-persist/integration/react";
 import Order from './pages/Order';
+import { useSelector } from 'react-redux'
 
 const { store, persistor } = configureStore()
 function AppRouter() {
-  return (
-    <Router>
-      <Switch>
-        {/* Public Route */}
-        <Route path="/" exact={true} component={()=><Dashboard />} />
-        <Route path="/movie-detail" exact={true} component={()=><MovieDetail />} />
-        <PublicRoute path="/login" restricted ={true} exact={true} component={()=><Login />} />
-        <PublicRoute path="/register" restricted ={true} exact={true} component={()=><Register />} />
-        <PublicRoute path="/register/verify" restricted = {true} exact={true} component={()=><VerifyRegister/>} />
-        <PublicRoute path="/forgot-password" restricted ={true} exact={true} component={()=><UserForgotPassword />} />
-        <PublicRoute path="/forgot-password/verify" restricted = {true} exact={true} component={()=><UserVerifyForgotPassword/>} />
-        <PublicRoute path="/update-password/:id" restricted = {true} exact={true} component={()=><UserUpdatePassword/>} />
-        
-        {/* Private Route */}
-        <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />
-        <PrivateRoute path="/movie" exact={true} component={()=><MovieList />} />
-        <PrivateRoute path='/order' exact={true} component={() => <Order />} />
-        <Route path="*" component={NotFound} />
-      </Switch>
-    </Router>
-  );
+  const {data} = useSelector((state)=>state.UserLogin)
+  const roles = data.data?.role ?? "";
+  if(roles == 'user'){
+    return (
+      <Router>
+        <Switch>
+          {/* Public Route */}
+          <Route path="/" exact={true} component={()=><Dashboard />} />
+          <Route path="/movie-detail" exact={true} component={()=><MovieDetail />} />
+          <PublicRoute path="/login" restricted ={true} exact={true} component={()=><Login />} />
+          <PublicRoute path="/register" restricted ={true} exact={true} component={()=><Register />} />
+          <PublicRoute path="/register/verify" restricted = {true} exact={true} component={()=><VerifyRegister/>} />
+          <PublicRoute path="/forgot-password" restricted ={true} exact={true} component={()=><UserForgotPassword />} />
+          <PublicRoute path="/forgot-password/verify" restricted = {true} exact={true} component={()=><UserVerifyForgotPassword/>} />
+          <PublicRoute path="/update-password/:id" restricted = {true} exact={true} component={()=><UserUpdatePassword/>} />
+          
+          {/* Private Route User */}
+          <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />
+          <PrivateRoute path="/movie" exact={true} component={()=><MovieList />} />
+          <PrivateRoute path='/order' exact={true} component={() => <Order />} />
+
+          <Route path="*" component={NotFound} />
+        </Switch>
+      </Router>
+    );
+  }else if(roles == 'admin'){
+    return (
+      <Router>
+        <Switch>
+          {/* Public Route */}
+          <Route path="/" exact={true} component={()=><Dashboard />} />
+          <Route path="/movie-detail" exact={true} component={()=><MovieDetail />} />
+          <PublicRoute path="/login" restricted ={true} exact={true} component={()=><Login />} />
+          <PublicRoute path="/register" restricted ={true} exact={true} component={()=><Register />} />
+          <PublicRoute path="/register/verify" restricted = {true} exact={true} component={()=><VerifyRegister/>} />
+          <PublicRoute path="/forgot-password" restricted ={true} exact={true} component={()=><UserForgotPassword />} />
+          <PublicRoute path="/forgot-password/verify" restricted = {true} exact={true} component={()=><UserVerifyForgotPassword/>} />
+          <PublicRoute path="/update-password/:id" restricted = {true} exact={true} component={()=><UserUpdatePassword/>} />
+          
+          {/* Private Route User */}
+          <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />
+          <PrivateRoute path="/movie" exact={true} component={()=><MovieList />} />          
+          {/* Private Route Admin */}
+          <PrivateRoute path="/Admin" exact={false} component={()=><DashboardAdmin />} />
+          <Route path="*" component={NotFound} />
+        </Switch>
+      </Router>
+    );
+  }else{
+    return (
+      <Router>
+        <Switch>
+          {/* Public Route */}
+          <Route path="/" exact={true} component={()=><Dashboard />} />
+          <Route path="/movie-detail" exact={true} component={()=><MovieDetail />} />
+          <PublicRoute path="/login" restricted ={true} exact={true} component={()=><Login />} />
+          <PublicRoute path="/register" restricted ={true} exact={true} component={()=><Register />} />
+          <PublicRoute path="/register/verify" restricted = {true} exact={true} component={()=><VerifyRegister/>} />
+          <PublicRoute path="/forgot-password" restricted ={true} exact={true} component={()=><UserForgotPassword />} />
+          <PublicRoute path="/forgot-password/verify" restricted = {true} exact={true} component={()=><UserVerifyForgotPassword/>} />
+          <PublicRoute path="/update-password/:id" restricted = {true} exact={true} component={()=><UserUpdatePassword/>} />
+          <Route path="*" component={NotFound} />
+        </Switch>
+      </Router>
+    );
+  }
 }
 
 export default function App() {

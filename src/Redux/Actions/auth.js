@@ -15,6 +15,7 @@ export const UserLogin = (formData, cb)=>{
             url: `${process.env.REACT_APP_API_URL}/auth/login`,
             data: formData
         }).then((res)=>{
+            console.log(res.data.data.role)
             dispatch(UserLoginSuccess(res.data))
             cb(false)
         }).catch((err)=>{

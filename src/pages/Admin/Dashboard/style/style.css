@@ -1,0 +1,39 @@
+body{
+    overflow-x: hidden !important;
+}
+.bannner{
+    max-height: 30% !important;
+    overflow-y: hidden;
+    width: 100vw !important;
+}
+.photo-potrait{
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    border-radius: 10px !important;
+}
+.photo-potrait img{
+    max-height: 30em !important;
+}
+
+.horizontal-list{
+    width: 100vw !important;
+    max-height: 60% !important;
+    overflow-x: auto;
+    overflow-y : hidden;
+}
+.photo-layout{
+    width: 10em;
+    max-height: 25em;
+    align-items: center;
+}
+.photo-layout img{
+   width: 8em;
+   height: 10em;
+   z-index: 1;
+}
+
+.horizontal-list::-webkit-scrollbar {
+    display: none;
+  }
+
+
