@@ -4,33 +4,35 @@ import {
   Switch, // cabang antar halaman
   Route,
 } from "react-router-dom";
-import {Login,Register, VerifyRegister, UserForgotPassword,  UserVerifyForgotPassword, UserUpdatePassword} from './pages/Auth'
+import { Login, Register, VerifyRegister, UserForgotPassword, UserVerifyForgotPassword, UserUpdatePassword } from './pages/Auth'
 import Dashboard from './pages/Dashboard'
-import {Profile} from './pages/Profile'
-import {MovieDetail} from './pages/MovieDetail'
+import { Profile } from './pages/Profile'
+import { MovieDetail } from './pages/MovieDetail'
 import NotFound from './pages/NotFound'
-import { PrivateRoute, PublicRoute} from "./components";
+import { PrivateRoute, PublicRoute } from "./components";
 import { Provider } from 'react-redux'
 import configureStore from './Redux/store'
 import { PersistGate } from "redux-persist/integration/react";
+import Order from './pages/Order';
 
-const {store, persistor} = configureStore()
+const { store, persistor } = configureStore()
 function AppRouter() {
   return (
     <Router>
       <Switch>
         {/* Public Route */}
-        <Route path="/" exact={true} component={()=><Dashboard />} />
-        <PublicRoute path="/login" restricted ={true} exact={true} component={()=><Login />} />
-        <PublicRoute path="/register" restricted ={true} exact={true} component={()=><Register />} />
-        <PublicRoute path="/register/verify" restricted = {true} exact={true} component={()=><VerifyRegister/>} />
-        <PublicRoute path="/forgot-password" restricted ={true} exact={true} component={()=><UserForgotPassword />} />
-        <PublicRoute path="/forgot-password/verify" restricted = {true} exact={true} component={()=><UserVerifyForgotPassword/>} />
-        <PublicRoute path="/update-password/:id" restricted = {true} exact={true} component={()=><UserUpdatePassword/>} />
-        
+        <Route path="/" exact={true} component={() => <Dashboard />} />
+        <PublicRoute path="/login" restricted={true} exact={true} component={() => <Login />} />
+        <PublicRoute path="/register" restricted={true} exact={true} component={() => <Register />} />
+        <PublicRoute path="/register/verify" restricted={true} exact={true} component={() => <VerifyRegister />} />
+        <PublicRoute path="/forgot-password" restricted={true} exact={true} component={() => <UserForgotPassword />} />
+        <PublicRoute path="/forgot-password/verify" restricted={true} exact={true} component={() => <UserVerifyForgotPassword />} />
+        <PublicRoute path="/update-password/:id" restricted={true} exact={true} component={() => <UserUpdatePassword />} />
+
         {/* Private Route */}
-        <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />
-        <PrivateRoute path="/movie-detail" exact={true} component={()=><MovieDetail />} />
+        <PrivateRoute path="/profile" exact={true} component={() => <Profile />} />
+        <PrivateRoute path="/movie-detail" exact={true} component={() => <MovieDetail />} />
+        <PrivateRoute path='/order' exact={true} component={() => <Order />} />
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>
@@ -38,7 +40,7 @@ function AppRouter() {
 }
 
 export default function App() {
-  return(
+  return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <AppRouter />
