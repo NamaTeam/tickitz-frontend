@@ -71,6 +71,12 @@ body{
     text-align: center;
     margin-top: 30px;
 }
+.dropdown-menu-lg{
+    width:20rem;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
 .movie-list .movie-card img{
     width: 15vw;
     height: 300px;
@@ -280,6 +286,9 @@ footer .copyright{
     margin-top: 38px !important;
     padding-bottom: 30px !important;
     color:#6E7191 !important;
+}
+.dropdown-menu-lg .dropdown-item:hover{
+    background: none !important;
 }
 @media only screen and (max-width: 767px) {
     .navbar-top{

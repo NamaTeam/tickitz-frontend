@@ -24,7 +24,7 @@ const Register = () => {
           <div className="d-none d-sm-none d-md-block col-xl-7 p-0">
             <div className="side-form">
               <div className="content">
-                <div className="card-body">
+                <div className="card-body mx-5">
                   <div className="align-items-start m-5">
                     <div className="d-flex justify-content-start pb-5">
                       <img src={process.env.PUBLIC_URL + '/svg/tickitz.svg'} className="logo" />
