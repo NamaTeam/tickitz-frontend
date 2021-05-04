@@ -9,7 +9,7 @@ const Login = () => {
     const dispatch = useDispatch()
     const [loginLoading, setLoginLoading] = useState(false)
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { data, error } = useSelector((state) => state.UserLogin)
+    // const { data, error } = useSelector((state) => state.UserLogin)
 
     const processlogin = (data) => {
         console.log(data)
