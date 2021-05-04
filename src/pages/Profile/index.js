@@ -154,13 +154,13 @@ export const Profile = () => {
                   </div>
                 </div>
 
-                <div className='mx-5 my-3 d-flex justify-content-between'>
-                  <div className='py-2 px-5 status-active'>
+                <div className='mx-5 my-3 d-flex justify-content-between align-items-center'>
+                  <div className='py-2 px-2 px-md-5 text-center status-active'>
                     Ticket is active
                   </div>
-                  <p className='text-muted accor-toggle' data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <p className='text-muted d-flex accor-toggle' data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                     Show Details
-                    <img className='mx-3' src={process.env.PUBLIC_URL + '/svg/arrow-down.svg'} alt='arrow' />
+                    <img className='d-none d-sm-block mx-3' src={process.env.PUBLIC_URL + '/svg/arrow-down.svg'} alt='arrow' />
                   </p>
                 </div>
               </div>
