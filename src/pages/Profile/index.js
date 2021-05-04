@@ -64,13 +64,16 @@ export const Profile = () => {
             x[i].style.display = "none";
             y[i].classList.remove("active")
         }
+        // for (i = 0; i < y.length; i++) {
+        //     y[i].classList.remove("active")
+        // }
         document.getElementById(tab).style.display = "block";
         document.getElementById(tabTitle).classList.add('active');
     }
 
     return (
         <div className="container-fluid  bg-grey">
-           <Navbar/>
+            <Navbar />
             <main className="row main">
                 <div className="col-md-3 col-sm-12 profile-card">
                     <div className="card-top">
@@ -169,28 +172,26 @@ export const Profile = () => {
                             </form>
                         </div>
                         <div className="settings order" id="tabs-2">
-                            <div className="order-list">
-                                <div className="row cinema-detail">
-                                    <div className="col-md-6 schedule">
-                                        <p>Tuesday, 07 July 2020</p>
-                                        <h4>Spider-Man: Homecoming</h4>
-                                    </div>
-                                    <div className="col-md-6 logo">
-                                        <img src={process.env.PUBLIC_URL + '/svg/cineone.svg'} alt="cineone" />
-                                    </div>
-                                    <div className="col-md-6 status">
-                                        <button disabled type="submit" className="btn book-now">Book now</button>
-                                    </div>
-                                    <div className="col-md-6 show-details">
-                                        <img src={process.env.PUBLIC_URL + '/svg/cineone.svg'} alt="cineone" />
-                                    </div>
+                            <div className="row cinema-detail">
+                                <div className="col-md-6 schedule">
+                                    <p>Tuesday, 07 July 2020</p>
+                                    <h4>Spider-Man: Homecoming</h4>
+                                </div>
+                                <div className="col-md-6 logo">
+                                    <img src={process.env.PUBLIC_URL + '/svg/cineone.svg'} alt="cineone" />
+                                </div>
+                                <div className="col-md-6 status">
+                                    <button disabled type="submit" className="btn book-now">Book now</button>
+                                </div>
+                                <div className="col-md-6 show-details">
+                                    <img src={process.env.PUBLIC_URL + '/svg/cineone.svg'} alt="cineone" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
-            <Footer/>
+            <Footer />
         </div>
     )
 }
