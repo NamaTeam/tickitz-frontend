@@ -5,6 +5,7 @@ import { FetchUser, UpdateUser } from "../../Redux/Actions/user"
 import { Link } from "react-router-dom";
 import './styles/style2.css'
 import { Footer, Navbar } from '../../components';
+import { useForm } from 'react-hook-form';
 
 
 export const Profile = () => {
@@ -12,49 +13,30 @@ export const Profile = () => {
   const [activeTabs, setActiveTabs] = useState(1);
 
   const { data: userData } = useSelector((state) => state.UserLogin)
-  const { data } = useSelector((state) => state.FetchUser)
+  const { data: user } = useSelector((state) => state.FetchUser)
   const { error } = useSelector((state) => state.UpdateUser)
+
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   useEffect(() => {
     dispatch(FetchUser(userData.data))
   }, [dispatch, userData])
 
-  // const [formData, setFormData] = useState({
-  //   first_name: `${data.first_name}`,
-  //   last_name: `${data.last_name}`,
-  //   email: `${data.email}`,
-  //   phone: `${data.phone}`,
-  //   password: '',
-  //   confirm_password: '',
-  //   err: null,
-  //   message: ''
-  // })
+  // const onSubmit = data => console.log(data)
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   if (formData.password === '' || formData.confirm_password === '') {
-  //     alert("password is required")
-  //   } else if (formData.password !== formData.confirm_password) {
-  //     alert("both passwords are not matching")
-  //   } else {
-  //     let myData = {
-  //       first_name: formData.first_name === "undefined" ? data?.first_name : formData.first_name,
-  //       last_name: formData.last_name === "undefined" ? data?.last_name : formData.last_name,
-  //       email: formData.email === "undefined" ? data?.email : formData.email,
-  //       phone: formData.phone === "undefined" ? data?.phone : formData.phone,
-  //       password: formData.password === "undefined" ? '' : formData.password,
-  //     }
-
-  //     dispatch(UpdateUser(userData.data, myData))
-  //     dispatch(FetchUser(userData.data))
-  //     if (error) {
-  //       alert("Updating Failed")
-  //     } else {
-  //       alert("Updating Success")
-  //     }
-  //   }
-  // }
+  const onSubmit = (data) => {
+    if (data.password !== '') {
+      if (data.password !== data.confirm) {
+        alert('Password doesn`t match')
+        return;
+      }
+      dispatch(UpdateUser(userData.data, data))
+      dispatch(FetchUser(userData.data))
+    } else {
+      dispatch(UpdateUser(userData.data, data))
+      dispatch(FetchUser(userData.data))
+    }
+  }
 
   // const test = (e) => {
   //   console.log(e)
@@ -75,7 +57,11 @@ export const Profile = () => {
                 <img width='130px' height='130px' className='rounded-circle' src={process.env.PUBLIC_URL + '/logo/no-photo.png'} alt='profile' />
               </div>
               <div className='w-100 d-flex justify-content-center mt-2 name'>
-                <p className='name-text'>{`${data.first_name || 'No'} ${data.last_name || 'Name'}`}</p>
+                {user.first_name !== null || user.last_name !== null ? (
+                  <p className='name-text'>{`${user.first_name || ''} ${user.last_name || ''}`}</p>
+                ) : (
+                  <p className='name-text'>No Name</p>
+                )}
               </div>
               <div className='d-flex justify-content-center w-100'>
                 <p>Moviegers</p>
@@ -96,24 +82,28 @@ export const Profile = () => {
                 <div className='mt-3 mx-5 pb-2 border-bottom'>
                   <p>Details information</p>
                 </div>
-                <form className='mt-3 mx-5 mb-5 row form-user'>
+                <form className='mt-3 mx-5 mb-5 row form-user' onSubmit={handleSubmit(onSubmit)}>
                   <div className='mt-4 col-12 col-md-6'>
-                    <label htmlFor="inputLastName" className="mb-3">Last Name</label>
-                    <input type="text" value='Test User' className="form-control py-3 px-4 form-input" id="inputLastName" required />
+                    <label htmlFor="inputFirstName" className="mb-3">First Name</label>
+                    <input type="text" defaultValue={user.first_name || register.first_name} className={`form-control py-3 px-4 form-input ${errors.first_name ? 'is-invalid' : ''}`} id="inputFirstName" {...register('first_name', { required: 'First name required' })} />
+                    <small className='text-danger ms-3 mt-2'>{errors?.first_name?.message}</small>
                   </div>
                   <div className='mt-4 col-12 col-md-6'>
                     <label htmlFor="inputLastName" className="mb-3">Last Name</label>
-                    <input type="text" value='Test User' className="form-control py-3 px-4 form-input" id="inputLastName" required />
+                    <input type="text" defaultValue={user.last_name || register.last_name} className={`form-control py-3 px-4 form-input ${errors.last_name ? 'is-invalid' : ''}`} id="inputLastName" {...register('last_name', { required: 'Last name required' })} />
+                    <small className='text-danger ms-3 mt-2'>{errors?.last_name?.message}</small>
                   </div>
                   <div className='mt-4 col-12 col-md-6'>
-                    <label htmlFor="inputLastName" className="mb-3">Last Name</label>
-                    <input type="text" value='Test User' className="form-control py-3 px-4 form-input" id="inputLastName" required />
+                    <label htmlFor="inputEmail" className="mb-3">Email</label>
+                    <input type="email" defaultValue={user.email || register.email} className={`form-control py-3 px-4 form-input ${errors.email ? 'is-invalid' : ''}`} id="inputEmail" {...register('email', { required: 'Email required' })} />
+                    <small className='text-danger ms-3 mt-2'>{errors?.email?.message}</small>
                   </div>
                   <div className='mt-4 col-12 col-md-6'>
-                    <label htmlFor="inputLastName" className="mb-3">Last Name</label>
+                    <label htmlFor="inputPhone" className="mb-3">Phone</label>
                     <div className="input-group">
                       <span className="input-group-text ps-4 group-text">+62</span>
-                      <input type="tel" value='Test User' className="form-control py-3 px-2 form-input-group" id="inputPhone" required />
+                      <input type="text" defaultValue={user.phone || register.phone} className={`form-control py-3 px-4 form-input-group ${errors.phone ? 'is-invalid' : ''}`} id="inputPhone" {...register('phone', { required: 'Phone required' })} />
+                      <small className='text-danger ms-3 mt-2'>{errors?.password?.message}</small>
                     </div>
                   </div>
                 </form>
@@ -124,19 +114,20 @@ export const Profile = () => {
                 </div>
                 <form className='mt-3 mx-5 mb-5 row form-user'>
                   <div className='mt-4 col-12 col-md-6'>
-                    <label htmlFor="inputLastName" className="mb-3">Last Name</label>
-                    <input type="password" value='' className="form-control py-3 px-4 form-input" id="inputLastName" required />
+                    <label htmlFor="inputPassword" className="mb-3">Password</label>
+                    <input type="password" defaultValue='' className="form-control py-3 px-4 form-input" id="inputPassword" {...register('password')} />
                   </div>
                   <div className='mt-4 col-12 col-md-6'>
-                    <label htmlFor="inputLastName" className="mb-3">Last Name</label>
-                    <input type="password" value='' className="form-control py-3 px-4 form-input" id="inputLastName" required />
+                    <label htmlFor="inputConfirm" className="mb-3">Confirm Password</label>
+                    <input type="password" defaultValue='' className="form-control py-3 px-4 form-input" id="inputConfirm" {...register('confirm')} />
                   </div>
                 </form>
               </div>
-              <button className='mt-3 mx-5 mb-5 px-5 py-2 btn btn-rounded btn-update'>
+              <button className='mt-3 mx-5 mb-5 px-5 py-2 btn btn-rounded btn-update' onClick={handleSubmit(onSubmit)}>
                 Update Changes
               </button>
             </div>
+
             <div className={`${activeTabs === 2 ? 'd-block' : 'd-none'}`} >
               <div className='mt-3 py-3 card card-rounded order-history'>
                 <div className='d-flex justify-content-between px-5 order-head'>
@@ -148,7 +139,7 @@ export const Profile = () => {
                 </div>
                 <hr className='mx-5 mt-4' />
 
-                <div id="collapseOne" className="mx-5 accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div id="collapseOne" className="mx-5 accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                   <div className="accordion-body">
                     Accordion active
                   </div>
