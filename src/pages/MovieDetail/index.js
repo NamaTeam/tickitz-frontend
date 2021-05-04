@@ -16,8 +16,9 @@ export const MovieDetail = () => {
     }, [dispatch, userData])
 
     return (
+        <>
+         <Navbar/>
         <div class="container-fluid bg-grey">
-           <Navbar/>
             <section className="row top-details">
                 <div className="col-md-3 col-sm-6 movie-poster">
                     <img src={process.env.PUBLIC_URL + '/logo/movie-a.png'} alt="poster" />
@@ -265,5 +266,6 @@ export const MovieDetail = () => {
             </section>
             <Footer/>
         </div>
+        </>
     )
 }

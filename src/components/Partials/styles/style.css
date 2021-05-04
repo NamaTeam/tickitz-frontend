@@ -4,10 +4,15 @@ body{
     margin: 0 !important;
     padding: 0 !important;
     font-family: 'Mulish', sans-serif !important;
-    overflow-x: hidden !important;
+}
+.no-style{
+    text-decoration: none;
 }
 .bg-grey{
     background:#E5E5E5 !important;
+}
+.text-black{
+    color: #000 !important;
 }
 .navbar-top{
     display: flex !important;
@@ -45,10 +50,9 @@ body{
     width: 18px !important;
     height: 18px !important;
 }
-.navbar-top-right .navbar-photo-profile img{
+.navbar-photo-profile img{
     width: 40px !important;
     height: 40px !important;
-    margin-right: -50px !important;
     border-radius: 50% !important;
 }
 .main{
