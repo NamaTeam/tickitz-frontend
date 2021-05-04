@@ -172,6 +172,7 @@ export const Profile = () => {
                             </form>
                         </div>
                         <div className="settings order" id="tabs-2">
+
                             <div className="row cinema-detail">
                                 <div className="col-md-6 schedule">
                                     <p>Tuesday, 07 July 2020</p>
@@ -188,6 +189,7 @@ export const Profile = () => {
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </main>
