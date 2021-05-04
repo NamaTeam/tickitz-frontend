@@ -6,7 +6,9 @@ body{
     font-family: 'Mulish', sans-serif !important;
     overflow-x: hidden !important;
 }
-
+.bg-grey{
+    background:#E5E5E5 !important;
+}
 .navbar-top{
     display: flex !important;
     justify-content: space-between !important;
@@ -48,6 +50,168 @@ body{
     height: 40px !important;
     margin-right: -50px !important;
     border-radius: 50% !important;
+}
+.main{
+    margin-left: 40px !important;
+    margin-top: 90px !important;
+}
+.movie-box{
+    background: #fff;
+    border-radius: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-left: -50px;
+}
+.movie-list .movie-card {
+    background: #fff;
+    text-align: center;
+    margin-top: 30px;
+}
+.movie-list .movie-card img{
+    width: 15vw;
+    height: 300px;
+    margin-bottom: 10px;
+}
+.movie-list .movie-card h5{
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+.movie-list .movie-card p{
+    font-size: 14px;
+}
+.movie-list .movie-card button{
+    background: #5F2EEA;
+    margin-bottom: 20px;
+    color: #fff;
+}
+.profile-card {
+    width: 20vw !important;
+    height: 693px !important;
+    background: #FFFFFF !important;
+    box-shadow: 0px 8px 32px rgba(186, 186, 186, 0.08) !important;
+    border-radius: 6px !important;
+}
+.card-top{
+    display: flex !important;
+    justify-content: space-around !important;
+    padding-top: 40px !important;
+}
+.card-top img{
+    margin-top: -5px !important;
+}
+.card-middle{
+    margin-top: 25px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    border-bottom: 1px solid #DEDEDE !important;
+}
+.card-middle img{
+    width: 136px !important;
+    height: 136px !important;
+    margin-bottom: 32px !important;
+    border-radius: 50% !important;
+}
+.card-middle h5{
+    font-weight: 600 !important;
+    font-size: 20px !important;
+    color: #14142B !important;
+    letter-spacing: 0.75px !important;
+}
+.card-middle p{
+    font-size: 14px !important;
+    letter-spacing: 0.75px !important;
+    color: #4E4B66 !important;
+    margin-bottom: 40px !important;
+}
+.profile-box{
+    position: absolute !important;
+    height: 771px !important;
+    background: #FFFFFF !important;
+    border-radius: 6px !important;
+    margin-right: 40px !important;
+}
+.box-top{
+    padding: 20px 40px 0px 40px !important;
+    border-bottom: 1px solid #DEDEDE !important;
+}
+.box-top .box{
+    font-size: 17px !important;
+    color: #AAAAAA !important;
+    text-decoration: none !important;
+    margin-right: 30px !important;
+    background: none !important;
+    border: none !important;
+}
+.profile-box .order{
+    display: none !important;
+}
+.box-top .active{
+    color: #14142B !important;
+    padding-bottom: 20px !important;
+    border-bottom: 2px solid #5F2EEA !important;
+}
+.profile-box .order{
+    width: 71.2vw !important;
+}
+.profile-box .order .cinema-detail{
+    background: #FFFFFF !important;
+    border-radius: 8px !important;
+    margin: 40px 30px 0px 30px !important;
+    font-size: 15px !important;
+    border: 0.5px solid #DEDEDE !important;
+    box-sizing: border-box !important;
+    border-radius: 8px !important;
+    /* width: 381px; */
+    height: 250px !important;
+    /* box-shadow: 0px 8px 32px rgba(186, 186, 186, 0.08) !important; */
+}
+.title-detail{
+    padding-top: 50px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    padding-bottom: 30px !important;
+}
+.title-detail p, .title-account p{
+    font-size: 16px !important;
+    padding-bottom: 16px !important;
+    border-bottom: 1px solid #DEDEDE !important;
+}
+.title-account{
+    padding: 20px 10px !important;
+}
+.user-detail, .user-account{
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+}
+.user-detail .col-md-6, .user-account .col-md-6{
+    margin-bottom: 20px !important;
+}
+.user-detail input, .user-account input{
+    border: 1px solid #DEDEDE !important;
+    border-radius: 4px !important;
+    height: 50px !important;
+    padding-left: 20px !important;
+}
+.user-detail input:focus, .user-account input:focus{
+    border: 1px solid #DEDEDE !important;
+    background: #FCFDFE !important;
+}
+.user-detail .input-group-text{
+    border: none;
+}
+.input-group .phone-code{
+    background: #FCFDFE !important;
+}
+.update-profile .btn{
+    background: #5F2EEA !important;
+    border-radius: 4px !important;
+    color: #F7F7FC !important;
+    width: 30vw !important;
+    height: 56px !important;
+}
+.main{
+    margin-bottom: 100px !important;
 }
 footer{
     background: #FFFFFF !important;
@@ -123,6 +287,12 @@ footer .copyright{
         width: 90% !important;
         margin-bottom: 30px !important;
     }
+    .movie-list .movie-card img{
+        width: 200px ;
+    }
+    .movie-box .box-top{
+        display: flex;
+    }
     .profile-box{
         margin-left: -10px !important;
         /* margin-right: -30px !important; */
@@ -134,6 +304,9 @@ footer .copyright{
     }
     .navbar-top-left .nav{
         display: none !important;
+    }
+    .main{
+        margin-bottom: 1100px !important;
     }
     footer .footer-info{
         margin-left: 20px !important;
@@ -165,6 +338,17 @@ footer .copyright{
         width: 86px !important;
         height: 30px !important;
         margin-left: -50px !important;
+    }
+    .movies{
+        margin-bottom: -1000px;
+    }
+    .movie-box .box-top button{
+        margin-left: -20px;
+    }
+    .main .profile-card{
+        margin-left: -30px !important;
+        width: 85vw !important;
+        margin-bottom: 30px !important;
     }
     .profile-box .box-top{
         display: none !important;

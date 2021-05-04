@@ -1,3 +1,3 @@
 import {PrivateRoute, PublicRoute} from './Routes'
-
-export {PrivateRoute, PublicRoute}
+import {Navbar, Footer} from './Partials'
+export {PrivateRoute, PublicRoute, Navbar, Footer}

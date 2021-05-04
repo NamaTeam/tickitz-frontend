@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { FetchUser, UpdateUser } from "../../Redux/Actions/user"
 import { Link } from "react-router-dom";
 import './styles/style.css'
-import { Footer, Navbar } from '../Partials';
+import { Footer, Navbar } from '../../components';
 
 
 export const Profile = () => {
@@ -38,15 +38,20 @@ export const Profile = () => {
             alert("both passwords are not matching")
         } else {
             let myData = {
-                first_name : formData.first_name === "undefined" ? data.first_name : formData.first_name,
-                last_name : formData.last_name === "undefined" ? data.last_name : formData.last_name,
-                email: formData.email === "undefined" ? data.email : formData.email,
-                phone: formData.phone === "undefined" ? data.phone : formData.phone,
+                first_name: formData.first_name === "undefined" ? data?.first_name : formData.first_name,
+                last_name: formData.last_name === "undefined" ? data?.last_name : formData.last_name,
+                email: formData.email === "undefined" ? data?.email : formData.email,
+                phone: formData.phone === "undefined" ? data?.phone : formData.phone,
                 password: formData.password === "undefined" ? '' : formData.password,
             }
+
             dispatch(UpdateUser(userData.data, myData))
             dispatch(FetchUser(userData.data))
-            alert(error)
+            if (error) {
+                alert("Updating Failed")
+            } else {
+                alert("Updating Success")
+            }
         }
     }
 
@@ -64,8 +69,9 @@ export const Profile = () => {
     }
 
     return (
-        <div className="container-fluid  bg-grey">
-            <Navbar/>
+        <>
+        <Navbar/>
+        <div className="container-fluid bg-grey">
             <main className="row main">
                 <div className="col-md-3 col-sm-12 profile-card">
                     <div className="card-top">
@@ -187,5 +193,6 @@ export const Profile = () => {
             </main>
             <Footer/>
         </div>
+        </>
     )
 }
