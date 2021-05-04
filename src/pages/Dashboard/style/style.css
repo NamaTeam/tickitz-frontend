@@ -1,3 +1,6 @@
+body{
+    overflow-x: hidden !important;
+}
 .bannner{
     max-height: 30% !important;
     overflow-y: hidden;
@@ -20,12 +23,13 @@
 }
 .photo-layout{
     width: 10em;
-    height: 13em;
+    max-height: 25em;
     align-items: center;
 }
 .photo-layout img{
    width: 8em;
    height: 10em;
+   z-index: 1;
 }
 
 .horizontal-list::-webkit-scrollbar {
