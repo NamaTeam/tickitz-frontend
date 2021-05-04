@@ -123,6 +123,9 @@ body{
 .profile-box .order{
     width: 71.2vw !important;
 }
+.profile-box .cinema-detail{
+    display: block !important;
+}
 .profile-box .order .cinema-detail{
     background: #FFFFFF !important;
     border-radius: 8px !important;
@@ -167,7 +170,7 @@ body{
     background: #FCFDFE !important;
 }
 .user-detail .input-group-text{
-    border: none;
+    border: none !important;
 }
 .input-group .phone-code{
     background: #FCFDFE !important;
