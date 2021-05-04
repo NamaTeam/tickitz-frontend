@@ -69,8 +69,9 @@ export const Profile = () => {
     }
 
     return (
-        <div className="container-fluid  bg-grey">
-           <Navbar/>
+        <>
+        <Navbar/>
+        <div className="container-fluid bg-grey">
             <main className="row main">
                 <div className="col-md-3 col-sm-12 profile-card">
                     <div className="card-top">
@@ -192,5 +193,6 @@ export const Profile = () => {
             </main>
             <Footer/>
         </div>
+        </>
     )
 }

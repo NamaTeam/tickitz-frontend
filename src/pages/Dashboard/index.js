@@ -6,9 +6,10 @@ import './style/style.css'
 const Dashboard = () => {
 
     return (
+        <>
+        <Navbar/>
         <div class="container-fluid">
-            <Navbar/>
-            <section className='banner pb-5 pt-5'>
+            <section className='banner pb-5'>
                 <div className='mt-5'>
                     <div className='row mt-5'>
                         <div className='col-12 col-lg-6 col-xl-6 my-5'>
@@ -239,6 +240,7 @@ const Dashboard = () => {
             </section>
             <Footer/>
         </div>
+        </>
     )
 }
 

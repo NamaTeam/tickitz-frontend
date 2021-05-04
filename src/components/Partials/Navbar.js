@@ -6,7 +6,7 @@ const Navbar = () =>{
     const dispatch = useDispatch()
     const { isLogin } = useSelector((state) => state.UserLogin)
     return(
-        <nav className="navbar-top fixed-top">
+        <nav className="navbar-top sticky-top">
         <div className="navbar-top-left">
             <Link to='#' className="brand">
                 <img src={process.env.PUBLIC_URL + '/svg/logo.svg'} alt="logo tickitz" />
