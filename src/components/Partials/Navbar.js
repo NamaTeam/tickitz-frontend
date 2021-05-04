@@ -6,7 +6,8 @@ import "./styles/style.css";
 
 const Navbar = () =>{
     const dispatch = useDispatch()
-    const { isLogin } = useSelector((state) => state.UserLogin)
+    const { isLogin,data } = useSelector((state) => state.UserLogin)
+
     return(
         <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top">
             <div className="container-fluid">
@@ -76,17 +77,14 @@ const Navbar = () =>{
                                 <li><a className="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li>
-                        <li className='mx-3 my-auto nav-item dropstart'>
+                        <li className='mx-3 my-auto nav-item'>
                             <img src={process.env.PUBLIC_URL + '/svg/search.svg'} alt="icon search" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false"/>
-                            <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown2">
+                            <ul className="dropdown-menu dropdown-menu-end dropdown-menu-lg" aria-labelledby="navbarDropdown2">
                                 <li className='dropdown-item'>
                                     <form>
-                                        <div className="d-flex flex-row bd-highlight mb-3">
-                                            <div>
+                                        <div className="row mb-3">
+                                            <div className='col-12'>
                                                 <input type="text" class="form-control" placeholder="Type your email" aria-label="First name"/>
-                                            </div>
-                                            <div>
-                                                <button className='btn btn-purple'> <img src={process.env.PUBLIC_URL + '/svg/search.svg'} alt="icon search"/> </button>
                                             </div>
                                         </div>
                                     </form>
@@ -95,17 +93,19 @@ const Navbar = () =>{
                         </li>
                         <li className='mx-3 nav-item'>
                         <li className="nav-item dropdown navbar-photo-profile right">
-                            <img src={process.env.PUBLIC_URL + '/logo/no-photo.png'} alt="profile" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false"/>
+                            {data.data.photo == undefined || data.data.photo === null ?
+                                <img src={process.env.PUBLIC_URL + '/logo/no-photo.png'} alt="profile" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false"/> :
+                                <img src={`http://localhost:5000${data.photo}`} alt="profile" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false"/>
+                            } 
+                           {/*  <img src={process.env.PUBLIC_URL + '/logo/no-photo.png'} alt="profile" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false"/> */}
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown3">
                                 <li className='dropdown-item'>
                                     <Link className='no-style fw-bold'>
                                         <span className="text-black">My Profile</span>
                                     </Link>
                                 </li>
-                                <li className='dropdown-item'>
-                                    <Link className='no-style fw-bold'>
-                                        <span className="text-danger">Logout</span>
-                                    </Link>
+                                <li className='dropdown-item' onClick={()=>{ if (window.confirm('Are you sure you wish to delete this item?')) dispatch(UserLogout()) } }>
+                                    <span className="fw-bold text-danger">Logout</span>
                                 </li>
                             </ul>
                         </li>
