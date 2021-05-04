@@ -22,6 +22,7 @@ function AppRouter() {
       <Switch>
         {/* Public Route */}
         <Route path="/" exact={true} component={()=><Dashboard />} />
+        <Route path="/movie-detail" exact={true} component={()=><MovieDetail />} />
         <PublicRoute path="/login" restricted ={true} exact={true} component={()=><Login />} />
         <PublicRoute path="/register" restricted ={true} exact={true} component={()=><Register />} />
         <PublicRoute path="/register/verify" restricted = {true} exact={true} component={()=><VerifyRegister/>} />
@@ -32,7 +33,6 @@ function AppRouter() {
         {/* Private Route */}
         <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />
         <PrivateRoute path="/movie" exact={true} component={()=><MovieList />} />
-        <PrivateRoute path="/movie-detail" exact={true} component={()=><MovieDetail />} />
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>

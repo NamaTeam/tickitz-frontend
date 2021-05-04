@@ -33,7 +33,7 @@ const Dashboard = () => {
                 </div>
             </section>
             <main className='row bg-grey horizontal-list'>
-                <div className="d-flex justify-content-around">
+                <div className="d-flex justify-content-between">
                     <p className="p-5 text-purple fw-bold">Now Showing</p>
                     <p className="p-5 text-purple">view all</p>
                 </div>
