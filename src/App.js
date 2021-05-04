@@ -4,18 +4,19 @@ import {
   Switch, // cabang antar halaman
   Route,
 } from "react-router-dom";
-import {Login,Register, VerifyRegister, UserForgotPassword,  UserVerifyForgotPassword, UserUpdatePassword} from './pages/Auth'
+import { Login, Register, VerifyRegister, UserForgotPassword, UserVerifyForgotPassword, UserUpdatePassword } from './pages/Auth'
 import Dashboard from './pages/Dashboard'
-import {Profile} from './pages/Profile'
-import {MovieDetail} from './pages/MovieDetail'
-import {MovieList} from './pages/MovieList'
+import { Profile } from './pages/Profile'
+import { MovieDetail } from './pages/MovieDetail'
+import { MovieList } from './pages/MovieList'
 import NotFound from './pages/NotFound'
-import { PrivateRoute, PublicRoute} from "./components";
+import { PrivateRoute, PublicRoute } from "./components";
 import { Provider } from 'react-redux'
 import configureStore from './Redux/store'
 import { PersistGate } from "redux-persist/integration/react";
+import Order from './pages/Order';
 
-const {store, persistor} = configureStore()
+const { store, persistor } = configureStore()
 function AppRouter() {
   return (
     <Router>
@@ -33,6 +34,7 @@ function AppRouter() {
         {/* Private Route */}
         <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />
         <PrivateRoute path="/movie" exact={true} component={()=><MovieList />} />
+        <PrivateRoute path='/order' exact={true} component={() => <Order />} />
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>
@@ -40,7 +42,7 @@ function AppRouter() {
 }
 
 export default function App() {
-  return(
+  return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <AppRouter />

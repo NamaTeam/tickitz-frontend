@@ -1,0 +1,266 @@
+.movies-selected {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: #5f2eea !important;
+}
+
+.movies-selected p {
+  font-size: 1.1rem;
+}
+
+.btn-change-movie {
+  color: #5f2eea !important;
+  transition: 0.3s;
+  border: solid 1px #5f2eea !important;
+}
+
+.btn-checkout {
+  color: #fff !important;
+  background-color: #5f2eea !important;
+}
+
+.btn-checkout:hover {
+  background-color: #fff !important;
+  color: #5f2eea !important;
+  transition: 0.3s;
+}
+
+.btn-change-movie:hover {
+  background-color: #5f2eea !important;
+  color: white !important;
+}
+
+.order-info {
+  box-shadow: 8px 8px 24px rgba(17, 17, 17, 0.08);
+  border-radius: 16px;
+}
+
+.total-payment {
+  border-top: solid 1px black;
+  font-size: 1.1rem;
+}
+
+.total-payment .price {
+  font-size: 1.3rem;
+  color: #5f2eea;
+  font-weight: bold;
+}
+
+.card-seats {
+  padding-top: 100px;
+  box-shadow: 8px 8px 24px rgba(17, 17, 17, 0.08);
+  border-radius: 16px;
+  border: none;
+}
+
+.cinema-theatre {
+  border-top: solid 2px #5f2eea;
+  padding: 20px;
+  margin: auto;
+  width: 60%;
+}
+
+.seat-spread {
+  width: 100%;
+}
+
+.row-name {
+  width: 26px;
+  height: 26px;
+  margin: 5px;
+}
+
+.seat {
+  cursor: pointer;
+  width: 26px;
+  height: 26px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #d6d8e7;
+}
+
+.seat-status {
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  background-color: #d6d8e7;
+}
+
+.selected {
+  background-color: #5f2eea;
+}
+
+.love {
+  background-color: #f589d7;
+}
+
+.sold {
+  background-color: #6e7191;
+}
+
+.card-seats-mobile {
+  box-shadow: 0px 8px 24px rgba(17, 17, 17, 0.08) !important;
+  border-radius: 16px;
+  border: none !important;
+}
+
+.seat-mobile {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  margin: 2px;
+  background-color: #d6d8e7;
+}
+
+.cinema-theatre-mobile {
+  border-top: solid 3px #5f2eea;
+  margin: auto;
+  width: 90vw;
+}
+
+.cinema-seat-mobile {
+  border-left: #f589d7 !important;
+}
+
+.seat-status-mobile {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background-color: #d6d8e7;
+}
+
+.status-mobile {
+  font-size: 0.7rem;
+}
+
+.card-seat-choosen {
+  box-shadow: 0px 8px 24px rgba(17, 17, 17, 0.08) !important;
+  border-radius: 16px;
+  border: none !important;
+}
+
+.card-seat-choosen p {
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 1400px) {
+  .cinema-theatre {
+    width: 75%;
+  }
+
+  .seat {
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+  }
+
+  .row-name {
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    font-size: 0.5rem;
+  }
+
+  .seat-status {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    background-color: #d6d8e7;
+  }
+
+  .selected {
+    background-color: #5f2eea;
+  }
+
+  .love {
+    background-color: #f589d7;
+  }
+
+  .sold {
+    background-color: #6e7191;
+  }
+
+  .seating-key {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .cinema-theatre {
+    width: 90%;
+  }
+
+  .seat {
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+  }
+
+  .row-name {
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    font-size: 0.5rem;
+  }
+
+  .seat-status {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    background-color: #d6d8e7;
+  }
+
+  .selected {
+    background-color: #5f2eea;
+  }
+
+  .love {
+    background-color: #f589d7;
+  }
+
+  .sold {
+    background-color: #6e7191;
+  }
+
+  .seating-key {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .cinema-theatre {
+    width: 90%;
+  }
+
+  .seat {
+    width: 26px;
+    height: 26px;
+    margin: 2px;
+  }
+
+  .row-name {
+    width: 26px;
+    height: 26px;
+    margin: 2px;
+    font-size: 1.1rem;
+  }
+
+  .seat-status {
+    width: 26px;
+    height: 26px;
+    border-radius: 5px;
+    background-color: #d6d8e7;
+  }
+
+  .selected {
+    background-color: #5f2eea;
+  }
+
+  .love {
+    background-color: #f589d7;
+  }
+
+  .sold {
+    background-color: #6e7191;
+  }
+}
