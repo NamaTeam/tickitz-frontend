@@ -38,15 +38,20 @@ export const Profile = () => {
             alert("both passwords are not matching")
         } else {
             let myData = {
-                first_name : formData.first_name === "undefined" ? data.first_name : formData.first_name,
-                last_name : formData.last_name === "undefined" ? data.last_name : formData.last_name,
-                email: formData.email === "undefined" ? data.email : formData.email,
-                phone: formData.phone === "undefined" ? data.phone : formData.phone,
+                first_name: formData.first_name === "undefined" ? data?.first_name : formData.first_name,
+                last_name: formData.last_name === "undefined" ? data?.last_name : formData.last_name,
+                email: formData.email === "undefined" ? data?.email : formData.email,
+                phone: formData.phone === "undefined" ? data?.phone : formData.phone,
                 password: formData.password === "undefined" ? '' : formData.password,
             }
+
             dispatch(UpdateUser(userData.data, myData))
             dispatch(FetchUser(userData.data))
-            alert(error)
+            if (error) {
+                alert("Updating Failed")
+            } else {
+                alert("Updating Success")
+            }
         }
     }
 
@@ -65,7 +70,37 @@ export const Profile = () => {
 
     return (
         <div className="container-fluid  bg-grey">
-            <Navbar/>
+            <nav className="navbar-top fixed-top">
+                <div className="navbar-top-left">
+                    <Link to='#' className="brand">
+                        <img src={process.env.PUBLIC_URL + '/svg/logo.svg'} alt="logo tickitz" />
+                    </Link>
+                    <ul className="nav">
+                        <li className="item">
+                            <Link to={`/movie`} className="link">Movies</Link>
+                        </li>
+                        <li className="item">
+                            <Link to='#' className="link">Cinemas</Link>
+                        </li>
+                        <li className="item">
+                            <Link to='#' className="link">Buy Ticket</Link>
+                        </li>
+                    </ul>
+                </div>
+                <div className="navbar-top-right">
+                    <Link to='#' className="dropdown-toggle right">Location</Link>
+                    <Link to='#' className="navbar-search right">
+                        <img src={process.env.PUBLIC_URL + '/svg/search.svg'} alt="icon search" />
+                    </Link>
+                    <Link to='#' className="navbar-photo-profile right">
+                        {data.photo === "undefined" || data.photo === null ?
+                            <img src={process.env.PUBLIC_URL + '/logo/no-photo.png'} alt="profile" /> :
+                            <img src={`http://localhost:5000${data.photo}`} alt="profile" />
+                        }
+                    </Link>
+                </div>
+            </nav>
+
             <main className="row main">
                 <div className="col-md-3 col-sm-12 profile-card">
                     <div className="card-top">
@@ -185,7 +220,77 @@ export const Profile = () => {
                     </div>
                 </div>
             </main>
-            <Footer/>
+
+            <footer>
+                <div className="row footer-info">
+                    <div className="first-div col-md-3 col-sm-12">
+                        <img src={process.env.PUBLIC_URL + '/svg/logo.svg'} alt="" />
+                        <p>Stop waiting in line. Buy tickets <br />
+                          conveniently, watch movies quietly</p>
+                    </div>
+                    <div className="second-div col-md-3 col-sm-12">
+                        <h6>Explore</h6>
+                        <ul className="footer-nav">
+                            <li className="item">
+                                <Link to='#' className="link">Cinemas</Link>
+                            </li>
+                            <li className="item">
+                                <Link to='#' className="link">Movies List</Link>
+                            </li>
+                            <li className="item">
+                                <Link to='#' className="link">My Ticket</Link>
+                            </li>
+                            <li className="item">
+                                <Link to='#' className="link">Notification</Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="third-div col-md-3 col-sm-12">
+                        <h6>Our Sponsor</h6>
+                        <ul className="footer-nav">
+                            <li className="item">
+                                <Link to='#' className="link">
+                                    <img src={process.env.PUBLIC_URL + '/svg/ebu.svg'} alt="ebu id cinema" />
+                                </Link>
+                            </li>
+                            <li className="item">
+                                <Link to='#' className="link">
+                                    <img id="cineone" src={process.env.PUBLIC_URL + '/svg/cineone.svg'} alt="cineone cinema" />
+                                </Link>
+                            </li>
+                            <li className="item">
+                                <Link to='#' className="link">
+                                    <img id="hiflix" src={process.env.PUBLIC_URL + '/svg/hiflix.svg'} alt="hiflix cinema" />
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="fourth-div col-md-3 col-sm-12">
+                        <h6>Follow us</h6>
+                        <ul className="footer-nav">
+                            <li className="item">
+                                <img src={process.env.PUBLIC_URL + '/svg/facebook.svg'} alt="facebook icon" />
+                                <Link to='#' className="link">Tickitz Cinema id</Link>
+                            </li>
+                            <li className="item">
+                                <img src={process.env.PUBLIC_URL + '/svg/instagram.svg'} alt="instagram icon" />
+                                <Link to='#' className="link">tickitz.id</Link>
+                            </li>
+                            <li className="item">
+                                <img src={process.env.PUBLIC_URL + '/svg/twitter.svg'} alt="twitter icon" />
+                                <Link to='#' className="link">tickitz.id</Link>
+                            </li>
+                            <li className="item">
+                                <img src={process.env.PUBLIC_URL + '/svg/youtube.svg'} alt="youtube icon" />
+                                <Link to='#' className="link">Tickitz Cinema id</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="copyright">
+                    © 2021 Tickitz. All Rights Reserved
+                </div>
+            </footer>
         </div>
     )
 }
