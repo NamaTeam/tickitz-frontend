@@ -214,8 +214,6 @@ body{
 }
 footer{
     background: #FFFFFF !important;
-    margin-left: -10px !important;
-    /* margin-right: -10px; */
     height: max-content !important;
     width: 100vw !important;
 }

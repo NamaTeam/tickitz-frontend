@@ -1,6 +1,3 @@
-body{
-    overflow-x: hidden !important;
-}
 .bannner{
     max-height: 30% !important;
     overflow-y: hidden;
@@ -16,7 +13,7 @@ body{
 }
 
 .horizontal-list{
-    width: 100vw !important;
+    width: 100% !important;
     max-height: 60% !important;
     overflow-x: auto;
     overflow-y : hidden;
@@ -34,6 +31,6 @@ body{
 
 .horizontal-list::-webkit-scrollbar {
     display: none;
-  }
+}
 
 

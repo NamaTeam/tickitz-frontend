@@ -1,9 +1,10 @@
 body{
+    overflow-y: auto !important;
     overflow-x: hidden !important;
+    max-width: 100% !important;
 }
 .bannner{
     max-height: 30% !important;
-    overflow-y: hidden;
     width: 100vw !important;
 }
 .photo-potrait{
@@ -32,8 +33,8 @@ body{
    z-index: 1;
 }
 
-.horizontal-list::-webkit-scrollbar {
+.horizontal-list, body::-webkit-scrollbar {
     display: none;
-  }
+}
 
 

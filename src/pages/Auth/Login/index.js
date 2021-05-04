@@ -85,10 +85,10 @@ const Login = () => {
                                 </div>
                                 <div className="row d-flex justify-content-center">
                                     <div className="col-6 col-md-6 col-lg-6 col-xl-6">
-                                        <button className="btn btn-block btn-rounded shadow-lg p-3 btn-icon text-muted"><img src={process.env.PUBLIC_URL + '/svg/rounded-google.svg'} /><span className="ms-2 d-none d-lg-inline-block">Google</span></button>
+                                        <button className="btn btn-block btn-rounded bg-white shadow-lg p-3 btn-icon text-muted"><img src={process.env.PUBLIC_URL + '/svg/rounded-google.svg'} /><span className="ms-2 d-none d-lg-inline-block">Google</span></button>
                                     </div>
                                     <div className="col-6 col-md-6 col-lg-6 col-xl-6">
-                                        <button className="btn btn-block btn-rounded shadow-lg p-3 btn-icon text-muted"><img src={process.env.PUBLIC_URL + '/svg/rounded-facebook.svg'} /><span className="ms-2 d-none d-md-inline-block">Facebook</span></button>
+                                        <button className="btn btn-block btn-rounded bg-white shadow-lg p-3 btn-icon text-muted"><img src={process.env.PUBLIC_URL + '/svg/rounded-facebook.svg'} /><span className="ms-2 d-none d-md-inline-block">Facebook</span></button>
                                     </div>
                                 </div>
                             </div>

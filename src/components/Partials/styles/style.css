@@ -225,10 +225,9 @@ body{
 }
 footer{
     background: #FFFFFF !important;
-    margin-left: -10px !important;
     /* margin-right: -10px; */
     height: max-content !important;
-    width: 100vw !important;
+    width: 100% !important;
 }
 footer .footer-info{
     padding-top: 70px !important;
@@ -286,6 +285,9 @@ footer .copyright{
     margin-top: 38px !important;
     padding-bottom: 30px !important;
     color:#6E7191 !important;
+}
+.navbar-light .navbar-toggler-custom-icon {
+    background-image: url("./i-menu-rigth.svg") !important;
 }
 .dropdown-menu-lg .dropdown-item:hover{
     background: none !important;
