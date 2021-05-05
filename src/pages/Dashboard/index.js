@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { Footer, Navbar } from '../../components/Partials'
 import './style/style.css'
+import { useDispatch, useSelector } from "react-redux"
 
 const Dashboard = () => {
 
