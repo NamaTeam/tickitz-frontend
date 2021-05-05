@@ -29,6 +29,7 @@ function AppRouter() {
       <Router>
         <Switch>
           {/* Public Route */}
+          <Route path="/movie" exact={true} component={()=><MovieList />} />  
           <Route path="/" exact={true} component={()=><Dashboard />} />
           <Route path="/movie-detail" exact={true} component={()=><MovieDetail />} />
           <PublicRoute path="/login" restricted ={true} exact={true} component={()=><Login />} />
@@ -40,7 +41,6 @@ function AppRouter() {
           
           {/* Private Route User */}
           <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />
-          <PrivateRoute path="/movie" exact={true} component={()=><MovieList />} />
           <PrivateRoute path="/payment" exact={true} component={()=><Payment />} />
           <PrivateRoute path="/payment" exact={true} component={()=><TicketResult />} />
           <PrivateRoute path='/order' exact={true} component={() => <Order />} />
@@ -55,6 +55,7 @@ function AppRouter() {
         <Switch>
           {/* Public Route */}
           <Route path="/" exact={true} component={()=><Dashboard />} />
+          <Route path="/movie" exact={true} component={()=><MovieList />} />   
           <Route path="/movie-detail" exact={true} component={()=><MovieDetail />} />
           <PublicRoute path="/login" restricted ={true} exact={true} component={()=><Login />} />
           <PublicRoute path="/register" restricted ={true} exact={true} component={()=><Register />} />
@@ -64,8 +65,7 @@ function AppRouter() {
           <PublicRoute path="/update-password/:id" restricted = {true} exact={true} component={()=><UserUpdatePassword/>} />
           
           {/* Private Route User */}
-          <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />
-          <PrivateRoute path="/movie" exact={true} component={()=><MovieList />} />          
+          <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />       
           {/* Private Route Admin */}
           <PrivateRoute path="/admin" exact={false} component={()=><DashboardAdmin />} />
           <Route path="*" component={NotFound} />
@@ -78,6 +78,7 @@ function AppRouter() {
         <Switch>
           {/* Public Route */}
           <Route path="/" exact={true} component={()=><Dashboard />} />
+          <Route path="/movie" exact={true} component={()=><MovieList />} />  
           <Route path="/movie-detail" exact={true} component={()=><MovieDetail />} />
           <PublicRoute path="/login" restricted ={true} exact={true} component={()=><Login />} />
           <PublicRoute path="/register" restricted ={true} exact={true} component={()=><Register />} />

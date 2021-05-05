@@ -237,8 +237,8 @@ const DashboardAdmin = () => {
                     </div>
                 </div>
             </section>
-            <Footer/>
         </div>
+        <Footer/>
         </>
     )
 }

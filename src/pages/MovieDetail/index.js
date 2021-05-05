@@ -1,19 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux"
-import { FetchUser } from "../../Redux/Actions/user"
 import { Link } from "react-router-dom";
 import './styles/style.css';
 import { Footer, Navbar } from '../../components';
 
 export const MovieDetail = () => {
-    const dispatch = useDispatch()
-
-    const { data: userData } = useSelector((state) => state.UserLogin)
-    const { data } = useSelector((state) => state.FetchUser)
-
-    useEffect(() => {
-        dispatch(FetchUser(userData.data))
-    }, [dispatch, userData])
 
     return (
         <>
@@ -264,8 +255,8 @@ export const MovieDetail = () => {
                 </div>
                 <h4><span>view more</span></h4>
             </section>
-            <Footer/>
         </div>
+        <Footer/>
         </>
     )
 }
