@@ -7,18 +7,17 @@ import {
 import { Login, Register, VerifyRegister, UserForgotPassword, UserVerifyForgotPassword, UserUpdatePassword } from './pages/Auth'
 import { DashboardAdmin} from './pages/Admin'
 import Dashboard from './pages/Dashboard'
-import {Profile} from './pages/Profile'
-import {MovieDetail} from './pages/MovieDetail'
-import {MovieList} from './pages/MovieList'
-import {Payment} from './pages/Payment'
-import {TicketResult} from './pages/TicketResult'
+import { Profile } from './pages/Profile'
+import { MovieDetail } from './pages/MovieDetail'
+import { MovieList } from './pages/MovieList' 
+import { Admin } from './pages/Admin'
 import NotFound from './pages/NotFound'
 import { PrivateRoute, PublicRoute } from "./components";
 import { Provider } from 'react-redux'
 import configureStore from './Redux/store'
 import { PersistGate } from "redux-persist/integration/react";
-import Order from './pages/Order';
-import { useSelector } from 'react-redux'
+// import Order from './pages/Order';
+
 
 const { store, persistor } = configureStore()
 function AppRouter() {
