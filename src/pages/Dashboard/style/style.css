@@ -7,6 +7,11 @@ body{
     max-height: 30% !important;
     width: 100vw !important;
 }
+.btn-month{
+    max-width : 10em !important;
+    min-width: 10em !important;
+    height: 3em !important;
+}
 .photo-potrait{
     overflow-x: hidden !important;
     overflow-y: hidden !important;

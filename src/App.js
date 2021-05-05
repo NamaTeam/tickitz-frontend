@@ -42,6 +42,7 @@ function AppRouter() {
           <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />
           <PrivateRoute path="/movie" exact={true} component={()=><MovieList />} />
           <PrivateRoute path="/payment" exact={true} component={()=><Payment />} />
+          <PrivateRoute path="/payment" exact={true} component={()=><TicketResult />} />
           <PrivateRoute path='/order' exact={true} component={() => <Order />} />
 
           <Route path="*" component={NotFound} />
@@ -66,7 +67,7 @@ function AppRouter() {
           <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />
           <PrivateRoute path="/movie" exact={true} component={()=><MovieList />} />          
           {/* Private Route Admin */}
-          <PrivateRoute path="/Admin" exact={false} component={()=><DashboardAdmin />} />
+          <PrivateRoute path="/admin" exact={false} component={()=><DashboardAdmin />} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Router>
