@@ -5,7 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import { Login, Register, VerifyRegister, UserForgotPassword, UserVerifyForgotPassword, UserUpdatePassword } from './pages/Auth'
-import { DashboardAdmin, MoviesAdmin } from './pages/Admin'
+import { DashboardAdmin } from './pages/Admin'
 import Dashboard from './pages/Dashboard'
 import { Profile } from './pages/Profile'
 import { MovieDetail } from './pages/MovieDetail'
@@ -31,7 +31,7 @@ function AppRouter() {
           {/* Public Route */}
           <Route path="/movie" exact={true} component={() => <MovieList />} />
           <Route path="/" exact={true} component={() => <Dashboard />} />
-          <Route path="/movie-detail" exact={true} component={() => <MovieDetail />} />
+          <Route path="/movie-detail/:title/:id" exact={true} component={() => <MovieDetail />} />
           <PublicRoute path="/login" restricted={true} exact={true} component={() => <Login />} />
           <PublicRoute path="/register" restricted={true} exact={true} component={() => <Register />} />
           <PublicRoute path="/register/verify" restricted={true} exact={true} component={() => <VerifyRegister />} />
@@ -56,7 +56,7 @@ function AppRouter() {
           {/* Public Route */}
           <Route path="/" exact={true} component={() => <Dashboard />} />
           <Route path="/movie" exact={true} component={() => <MovieList />} />
-          <Route path="/movie-detail" exact={true} component={() => <MovieDetail />} />
+          <Route path="/movie-detail/:title/:id" exact={true} component={() => <MovieDetail />} />
           <PublicRoute path="/login" restricted={true} exact={true} component={() => <Login />} />
           <PublicRoute path="/register" restricted={true} exact={true} component={() => <Register />} />
           <PublicRoute path="/register/verify" restricted={true} exact={true} component={() => <VerifyRegister />} />
@@ -68,7 +68,7 @@ function AppRouter() {
           <PrivateRoute path="/profile" exact={true} component={() => <Profile />} />
           {/* Private Route Admin */}
           <PrivateRoute path="/admin" exact={false} component={() => <DashboardAdmin />} />
-          <PrivateRoute path="/movies-admin" exact={false} component={() => <MoviesAdmin />} />
+          {/* <PrivateRoute path="/movies-admin" exact={false} component={() => <MoviesAdmin />} /> */}
           <Route path="*" component={NotFound} />
         </Switch>
       </Router>

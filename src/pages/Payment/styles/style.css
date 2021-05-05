@@ -1,5 +1,6 @@
 .container-fluid.payment{
     width: 92vw !important;
+    margin-top: -29px;
 }
 .payment-title h5{
     margin-left: -35px !important;
