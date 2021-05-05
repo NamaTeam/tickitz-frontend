@@ -1,16 +1,7 @@
-body{
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    max-width: 100% !important;
-}
 .bannner{
     max-height: 30% !important;
+    overflow-y: hidden;
     width: 100vw !important;
-}
-.btn-month{
-    max-width : 10em !important;
-    min-width: 10em !important;
-    height: 3em !important;
 }
 .photo-potrait{
     overflow-x: hidden !important;
@@ -22,7 +13,7 @@ body{
 }
 
 .horizontal-list{
-    width: 100vw !important;
+    width: 100% !important;
     max-height: 60% !important;
     overflow-x: auto;
     overflow-y : hidden;
@@ -38,7 +29,7 @@ body{
    z-index: 1;
 }
 
-.horizontal-list, body::-webkit-scrollbar {
+.horizontal-list::-webkit-scrollbar {
     display: none;
 }
 

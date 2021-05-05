@@ -4,10 +4,15 @@ body{
     margin: 0 !important;
     padding: 0 !important;
     font-family: 'Mulish', sans-serif !important;
-    overflow-x: hidden !important;
+}
+.no-style{
+    text-decoration: none;
 }
 .bg-grey{
     background:#E5E5E5 !important;
+}
+.text-black{
+    color: #000 !important;
 }
 .navbar-top{
     display: flex !important;
@@ -45,10 +50,9 @@ body{
     width: 18px !important;
     height: 18px !important;
 }
-.navbar-top-right .navbar-photo-profile img{
+.navbar-photo-profile img{
     width: 40px !important;
     height: 40px !important;
-    margin-right: -50px !important;
     border-radius: 50% !important;
 }
 .main{
@@ -66,6 +70,12 @@ body{
     background: #fff;
     text-align: center;
     margin-top: 30px;
+}
+.dropdown-menu-lg{
+    width:20rem;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 .movie-list .movie-card img{
     width: 15vw;
@@ -215,10 +225,9 @@ body{
 }
 footer{
     background: #FFFFFF !important;
-    margin-left: -10px !important;
     /* margin-right: -10px; */
     height: max-content !important;
-    width: 100vw !important;
+    width: 100% !important;
 }
 footer .footer-info{
     padding-top: 70px !important;
@@ -276,6 +285,12 @@ footer .copyright{
     margin-top: 38px !important;
     padding-bottom: 30px !important;
     color:#6E7191 !important;
+}
+.navbar-light .navbar-toggler-custom-icon {
+    background-image: url("./i-menu-rigth.svg") !important;
+}
+.dropdown-menu-lg .dropdown-item:hover{
+    background: none !important;
 }
 @media only screen and (max-width: 767px) {
     .navbar-top{

@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import { Login, Register, VerifyRegister, UserForgotPassword, UserVerifyForgotPassword, UserUpdatePassword } from './pages/Auth'
+import { DashboardAdmin} from './pages/Admin'
 import Dashboard from './pages/Dashboard'
 import { Profile } from './pages/Profile'
 import { MovieDetail } from './pages/MovieDetail'

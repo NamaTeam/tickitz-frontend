@@ -3,7 +3,7 @@ body{
     margin: 0 !important;
     padding: 0 !important;
     font-family: 'Mulish', sans-serif !important;
-    overflow-x: hidden !important;
+
 }
 .bg-grey{
     background:#E5E5E5 !important;
@@ -218,8 +218,6 @@ input[type="date"]{
    }
 footer{
     background: #FFFFFF !important;
-    margin-left: -10px !important;
-    /* margin-right: -10px; */
     height: max-content !important;
     width: 100vw !important;
 }

@@ -1,0 +1,240 @@
+.container-fluid.payment{
+    width: 92vw !important;
+}
+.payment-title h5{
+    margin-left: -35px !important;
+    padding-bottom: -90px !important;
+    font-weight: 600 !important;
+}
+.personal-title h5{
+    margin-left: -20px !important;
+    padding-bottom: -90px !important;
+    font-weight: 600 !important;
+}
+.col-md-8.payment-info{
+    background: #fff !important;
+    border-radius: 6px !important;
+    margin-left: -25px !important;
+    margin-right: 15px !important;
+    margin-top: -90px !important;
+    padding: 0px 30px 0px 30px !important;
+    height: min-content !important;
+}
+.col-md-4.personal-info{
+    background: #fff !important;
+    border-radius: 6px !important;
+    margin-top: -90px !important;
+    padding: 30px 25px 20px 25px !important;
+}
+.method-title h5{
+    margin-left: -35px !important;
+    margin-bottom: 20px !important;
+    padding-bottom: -90px !important;
+    font-weight: 600 !important;
+}
+.payment-info .info{
+    display: flex !important;
+    list-style-type: none !important;
+    justify-content: space-between !important;
+    padding: 20px 0px 10px 0px !important;
+    border-bottom: 1px solid #E6E6E6 !important;
+    margin-bottom: 0px !important;
+}
+.payment-info .info .title-info{
+    color: #6B6B6B !important;
+}
+.payment-info .info .info-content{
+    font-weight: 600 !important;
+}
+.payment-info .info.last{
+    border-bottom: none !important;
+    margin-bottom: 20px !important;
+}
+.personal-info .group{
+    margin-bottom: 20px !important;
+}
+.personal-info .group label{
+    color: #6B6B6B !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+.personal-info .group input{
+    color: #6B6B6B !important;
+    padding: 10px 10px 10px 20px !important;
+}
+.personal-info .group .input-group .code{
+    padding: 10px 15px 10px 20px !important;
+    border: 1px solid #DEDEDE !important;
+}
+.row.main.method .method-title{
+    margin-top: -190px !important;
+}
+.row.main.method .payment-method{
+    margin-top: -150px !important;
+}
+.warning-for-required{
+    background: rgba(244, 183, 64, 0.3) !important;
+    border-radius: 4px !important;
+    color: #6B6B6B !important;
+    font-weight: 600 !important;
+    padding: 15px 10px 15px 30px !important;
+    margin-top: 30px !important;
+}
+.warning-for-required img{
+    margin-right: 20px !important;
+} 
+.payment-method{
+    background: #fff;
+    border-radius: 6px;
+    margin-left: -25px;
+    margin-right: 15px;
+    padding-top: 30px ;
+    width: min-content;
+    text-align: center;
+    margin-bottom: -60px;
+}
+.payment-method .row{
+    margin-left: 40px;
+}
+.payment-method .method-list{
+    border: 2px solid #DEDEDE;
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: 160px;
+    margin-right: 20px ;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 10px;
+}
+/* .payment-method .method-list img{
+    width: 50px;
+    height: 50px;
+} */
+.payment-method  h4 {
+    text-align: center !important;
+    color: #6B6B6B !important;
+    margin-top: -5px !important;
+    margin-left: -25px !important;
+    margin-right: 25px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+}
+.payment-method  h4::before {
+    content: "" !important;
+    height: 1px !important;
+    width: 24vw !important;
+    background-color: #DEDEDE !important;
+    position: absolute !important;
+    margin-top: 8px !important;
+    margin-left: 0px !important;
+    left: 130px !important;
+    z-index: 3 !important;
+}
+.payment-method  h4::after {
+    content: "" !important;
+    height: 1px !important;
+    width: 24vw !important;
+    background-color: #DEDEDE !important;
+    position: absolute !important;
+    margin-top: 8px !important;
+    margin-right: 0px !important;
+    right: 530px !important;
+    z-index: 2 !important;
+}
+.payment-method  h4 span {
+    background: transparent !important;
+    padding: 0 20px !important;
+}
+.payment-method .via-cash{
+    margin-bottom: 25px !important;
+    margin-top: 20px !important;
+    margin-left: -30px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #6E7191 !important;
+}
+.payment-method .via-cash .link{
+    text-decoration: none !important;
+    color: #5F2EEA !important;
+}
+.prev-pay{
+    margin-left: -25px !important;
+    margin-top: -10px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+}
+.prev-pay .prev{
+    background: none !important;
+    border: 2px solid #5F2EEA !important;
+    box-sizing: border-box !important;
+    border-radius: 4px !important;
+    color: #5F2EEA !important;
+    padding: 10px 14px !important;
+    margin-left: -10px !important;
+    width: 25vw !important;
+}
+.prev-pay .pay{
+    background: none !important;
+    border: 2px solid #5F2EEA !important;
+    box-sizing: border-box !important;
+    border-radius: 4px !important;
+    color: #F7F7FC !important;
+    padding: 10px 14px !important;
+    margin-right: -10px !important;
+    background: #5F2EEA !important;
+    width: 25vw !important;
+}
+@media only screen and (max-width: 767px) {
+    .payment{
+        height: 250vh !important;
+    }
+    .payment .row.main.title .payment-title{
+        display: none !important;
+    }
+    .payment .row.main.title .personal-title{
+        margin-top: 600px !important;
+    }
+    .payment .row.main.box .payment-info{
+        display: none !important;
+    }
+    .payment .row.main.box .personal-info{
+        margin-left: -25px !important;
+        margin-top: -1090px !important;
+        height: fit-content !important;
+    }
+    .payment .row.main.method {
+        margin-top: -2660px !important;
+        margin-bottom: 100px !important;
+    }
+    .payment .row.main.button .previous-btn{
+        display: none !important;
+    }
+    .prev-pay .pay{
+        width: 300px !important;
+        margin-top: 600px !important;
+    }
+    .payment .payment-info .info{
+        display: none !important;
+    }
+    .payment .payment-info .info.last{
+        display: block !important;
+        margin-right: 200px !important;
+    }
+}
+@media only screen and (max-width: 425px) {
+    .payment .row.main.box .personal-info{
+        margin-left: -25px !important;
+        margin-top: -1090px !important;
+    }
+    .payment-method .method-list{
+        width: 100px !important;
+        margin-left: -10px !important;
+    }
+    .payment-method .method-list img{
+        width: 60px !important;
+        height: min-content !important;
+    }
+    .prev-pay .pay{
+        width: 260px !important;
+    }
+}

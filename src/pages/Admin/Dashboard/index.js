@@ -1,17 +1,16 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import { Footer, Navbar } from '../../components/Partials'
+import { Footer, Navbar } from '../../../components/Partials'
 import './style/style.css'
 
-const Dashboard = () => {
+const DashboardAdmin = () => {
 
     return (
         <>
         <Navbar/>
-        <div className="container-fluid">
-            <section className='banner pb-5 mx-auto'>
+        <div class="container-fluid">
+            <section className='banner pb-5'>
                 <div className='mt-5'>
-                    <div className='row'>
+                    <div className='row mt-5'>
                         <div className='col-12 col-lg-6 col-xl-6 my-5'>
                             <div className='card-body m-5 justify-content-center'>
                                 <h5 className='text-muted'>Nearest Cinema, Newest Movie,</h5>
@@ -37,7 +36,7 @@ const Dashboard = () => {
                     <p className="p-5 text-purple fw-bold">Now Showing</p>
                     <p className="p-5 text-purple">view all</p>
                 </div>
-                <div className="d-flex justify-content-start flex-row bd-highlight mt-3 mb-5">
+                <div className="d-flex justify-content-center flex-row bd-highlight mt-3 mb-5">
                     <div className='photo-layout ms-3'>
                         <div className="accordion" id="accordionFlushExample1">
                             <div className="accordion-item bg-transparent">
@@ -125,21 +124,21 @@ const Dashboard = () => {
                 </div>
             </main>
             <section className='banner'>
-                <div class="d-flex justify-content-start horizontal-list py-5 px-3">
-                    <button className='mx-3 btn btn-month btn-purple'>January</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>Februariy</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>March</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>April</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>May</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>June</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>July</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>August</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>September</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>October</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>November</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>December</button>
+                <div class="d-flex justify-content-between horizontal-list py-5 px-3">
+                    <button className='mx-3 btn btn-purple'>January</button>
+                    <button className='mx-3 btn btn-outline-primary'>Februariy</button>
+                    <button className='mx-3 btn btn-outline-primary'>March</button>
+                    <button className='mx-3 btn btn-outline-primary'>April</button>
+                    <button className='mx-3 btn btn-outline-primary'>May</button>
+                    <button className='mx-3 btn btn-outline-primary'>June</button>
+                    <button className='mx-3 btn btn-outline-primary'>July</button>
+                    <button className='mx-3 btn btn-outline-primary'>August</button>
+                    <button className='mx-3 btn btn-outline-primary'>September</button>
+                    <button className='mx-3 btn btn-outline-primary'>October</button>
+                    <button className='mx-3 btn btn-outline-primary'>November</button>
+                    <button className='mx-3 btn btn-outline-primary'>December</button>
                 </div>
-                <div class="d-flex justify-content-start horizontal-list py-5 px-3 mb-5">
+                <div class="d-flex justify-content-center horizontal-list py-5 px-3 mb-5">
                     <div class="d-flex flex-row mb-3">
                         <div className='photo-layout ms-3'>
                             <div class="card bg-white p-3">
@@ -244,5 +243,5 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+export default DashboardAdmin
 
