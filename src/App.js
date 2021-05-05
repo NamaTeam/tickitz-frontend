@@ -40,8 +40,8 @@ function AppRouter() {
           <PublicRoute path="/update-password/:id" restricted={true} exact={true} component={() => <UserUpdatePassword />} />
 
           {/* Private Route User */}
+          <PrivateRoute path="/payment/:id" exact={true} component={() => <Payment />} />
           <PrivateRoute path="/profile" exact={true} component={() => <Profile />} />
-          <PrivateRoute path="/payment" exact={true} component={() => <Payment />} />
           <PrivateRoute path="/ticket-result" exact={true} component={() => <TicketResult />} />
           <PrivateRoute path='/order' exact={true} component={() => <Order />} />
 

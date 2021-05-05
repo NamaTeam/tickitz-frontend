@@ -143,6 +143,10 @@
   font-size: 1rem;
 }
 
+.reset-seat {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 1400px) {
   .cinema-theatre {
     width: 75%;
