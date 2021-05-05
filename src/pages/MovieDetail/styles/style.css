@@ -119,6 +119,7 @@ input[type="date"]{
     border: none;
     padding: 8px 80px 8px 35px;
     outline: none;
+    color: #414141;
 }
 .cart{
     background: #FFFFFF !important;
