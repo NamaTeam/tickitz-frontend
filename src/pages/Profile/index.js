@@ -10,8 +10,9 @@ import { useForm } from 'react-hook-form';
 
 export const Profile = () => {
   const dispatch = useDispatch()
+  const formData = new FormData()
   const [activeTabs, setActiveTabs] = useState(1);
-
+  const [photo, SetPhoto] = useState([])
   const { data: userData } = useSelector((state) => state.UserLogin)
   const { data: user } = useSelector((state) => state.FetchUser)
   const { error } = useSelector((state) => state.UpdateUser)
@@ -20,9 +21,15 @@ export const Profile = () => {
 
   useEffect(() => {
     dispatch(FetchUser(userData.data))
-  }, [dispatch, userData])
+  }, [dispatch, userData, photo])
 
   // const onSubmit = data => console.log(data)
+  useEffect(()=>{
+    formData.append('photo', photo[0])
+    dispatch(UpdateUser(userData.data, formData))
+    console.log(formData)
+    
+  }, [photo])
 
   const onSubmit = (data) => {
     if (data.password !== '') {
@@ -51,10 +58,13 @@ export const Profile = () => {
             <div className='card mt-5 card-rounded'>
               <div className='d-flex justify-content-between mx-5 mt-3'>
                 <p className='pt-3'>INFO</p>
-                <img src={process.env.PUBLIC_URL + '/svg/menu-bar.svg'} />
+                <img src={process.env.PUBLIC_URL + '/svg/menu-bar.svg'} alt='icon-menu' />
               </div>
               <div className='w-100 d-flex justify-content-center mt-3 photo-profile'>
-                <img width='130px' height='130px' className='rounded-circle' src={process.env.PUBLIC_URL + '/logo/no-photo.png'} alt='profile' />
+                <label>
+                    <input type="file" name="photo" accept="image" multiple onChange={(e) => SetPhoto(e.target.files)}/>
+                    <img width='130px' height='130px' className='rounded-circle' src={`${process.env.REACT_APP_API_IMG_URL}${user.photo}` ?? process.env.PUBLIC_URL + '/logo/no-photo.png'} alt='profile' />
+                </label>
               </div>
               <div className='w-100 d-flex justify-content-center mt-2 name'>
                 {user.first_name !== null || user.last_name !== null ? (

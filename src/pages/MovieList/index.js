@@ -26,10 +26,11 @@ export const MovieList = () => {
 
 
     return (
+        <>
+         <Navbar/>
         <div className="container-fluid bg-grey">
-            <Navbar />
             <div class="container movies">
-                <div className="row main">
+                <div className="row">
                     <div className="col-md-12">
                         <div className="movie-box">
                             <div className="box-top">
@@ -81,7 +82,8 @@ export const MovieList = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
+        <Footer/>
+        </>
     )
 }

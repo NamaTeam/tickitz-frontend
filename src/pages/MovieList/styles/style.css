@@ -59,7 +59,7 @@ body{
     border-radius: 10px;
     padding-left: 25px;
     padding-right: 25px;
-    margin-left: -50px;
+    margin-left: 0px;
 }
 .movie-list .movie-card {
     background: #fff;
