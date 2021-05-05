@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { Footer, Navbar } from '../../components/Partials'
 import './style/style.css'
+import { useDispatch, useSelector } from "react-redux"
 
 const Dashboard = () => {
 
@@ -126,18 +127,18 @@ const Dashboard = () => {
             </main>
             <section className='banner'>
                 <div class="d-flex justify-content-start horizontal-list py-5 px-3">
-                    <button className='mx-3 btn btn-purple'>January</button>
-                    <button className='mx-3 btn btn-outline-primary'>Februariy</button>
-                    <button className='mx-3 btn btn-outline-primary'>March</button>
-                    <button className='mx-3 btn btn-outline-primary'>April</button>
-                    <button className='mx-3 btn btn-outline-primary'>May</button>
-                    <button className='mx-3 btn btn-outline-primary'>June</button>
-                    <button className='mx-3 btn btn-outline-primary'>July</button>
-                    <button className='mx-3 btn btn-outline-primary'>August</button>
-                    <button className='mx-3 btn btn-outline-primary'>September</button>
-                    <button className='mx-3 btn btn-outline-primary'>October</button>
-                    <button className='mx-3 btn btn-outline-primary'>November</button>
-                    <button className='mx-3 btn btn-outline-primary'>December</button>
+                    <button className='mx-3 btn btn-month btn-purple'>January</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary'>Februariy</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary'>March</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary'>April</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary'>May</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary'>June</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary'>July</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary'>August</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary'>September</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary'>October</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary'>November</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary'>December</button>
                 </div>
                 <div class="d-flex justify-content-start horizontal-list py-5 px-3 mb-5">
                     <div class="d-flex flex-row mb-3">
@@ -238,8 +239,8 @@ const Dashboard = () => {
                     </div>
                 </div>
             </section>
-            <Footer/>
         </div>
+        <Footer/>
         </>
     )
 }

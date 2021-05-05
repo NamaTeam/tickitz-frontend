@@ -96,7 +96,7 @@ const Navbar = () => {
                                             </li>
                                         </Link>
                                         <li><hr className="dropdown-divider" /></li>
-                                        <li className='dropdown-item' onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) dispatch(UserLogout()); history.replace('/') }}>
+                                        <li className='dropdown-item' onClick={() => { if (window.confirm('Are you sure? ')) dispatch(UserLogout()); history.replace('/') }}>
                                             <span className="fw-bold text-danger">Logout</span>
                                         </li>
                                     </ul>

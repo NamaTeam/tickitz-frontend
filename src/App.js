@@ -5,7 +5,11 @@ import {
   Route,
 } from "react-router-dom";
 import { Login, Register, VerifyRegister, UserForgotPassword, UserVerifyForgotPassword, UserUpdatePassword } from './pages/Auth'
+<<<<<<< HEAD
 import { DashboardAdmin } from './pages/Admin'
+=======
+import { DashboardAdmin, MoviesAdmin} from './pages/Admin'
+>>>>>>> 6fd8b97171fc3802a40d015147eb5f65aa41e431
 import Dashboard from './pages/Dashboard'
 import { Profile } from './pages/Profile'
 import { MovieDetail } from './pages/MovieDetail'
@@ -29,6 +33,7 @@ function AppRouter() {
       <Router>
         <Switch>
           {/* Public Route */}
+<<<<<<< HEAD
           <Route path="/" exact={true} component={() => <Dashboard />} />
           <Route path="/movie-detail" exact={true} component={() => <MovieDetail />} />
           <PublicRoute path="/login" restricted={true} exact={true} component={() => <Login />} />
@@ -42,6 +47,22 @@ function AppRouter() {
           <PrivateRoute path="/profile" exact={true} component={() => <Profile />} />
           <PrivateRoute path="/movie" exact={true} component={() => <MovieList />} />
           <PrivateRoute path="/payment" exact={true} component={() => <Payment />} />
+=======
+          <Route path="/movie" exact={true} component={()=><MovieList />} />  
+          <Route path="/" exact={true} component={()=><Dashboard />} />
+          <Route path="/movie-detail" exact={true} component={()=><MovieDetail />} />
+          <PublicRoute path="/login" restricted ={true} exact={true} component={()=><Login />} />
+          <PublicRoute path="/register" restricted ={true} exact={true} component={()=><Register />} />
+          <PublicRoute path="/register/verify" restricted = {true} exact={true} component={()=><VerifyRegister/>} />
+          <PublicRoute path="/forgot-password" restricted ={true} exact={true} component={()=><UserForgotPassword />} />
+          <PublicRoute path="/forgot-password/verify" restricted = {true} exact={true} component={()=><UserVerifyForgotPassword/>} />
+          <PublicRoute path="/update-password/:id" restricted = {true} exact={true} component={()=><UserUpdatePassword/>} />
+          
+          {/* Private Route User */}
+          <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />
+          <PrivateRoute path="/payment" exact={true} component={()=><Payment />} />
+          <PrivateRoute path="/payment" exact={true} component={()=><TicketResult />} />
+>>>>>>> 6fd8b97171fc3802a40d015147eb5f65aa41e431
           <PrivateRoute path='/order' exact={true} component={() => <Order />} />
 
           <Route path="*" component={NotFound} />
@@ -53,6 +74,7 @@ function AppRouter() {
       <Router>
         <Switch>
           {/* Public Route */}
+<<<<<<< HEAD
           <Route path="/" exact={true} component={() => <Dashboard />} />
           <Route path="/movie-detail" exact={true} component={() => <MovieDetail />} />
           <PublicRoute path="/login" restricted={true} exact={true} component={() => <Login />} />
@@ -67,6 +89,23 @@ function AppRouter() {
           <PrivateRoute path="/movie" exact={true} component={() => <MovieList />} />
           {/* Private Route Admin */}
           <PrivateRoute path="/admin" exact={false} component={() => <DashboardAdmin />} />
+=======
+          <Route path="/" exact={true} component={()=><Dashboard />} />
+          <Route path="/movie" exact={true} component={()=><MovieList />} />   
+          <Route path="/movie-detail" exact={true} component={()=><MovieDetail />} />
+          <PublicRoute path="/login" restricted ={true} exact={true} component={()=><Login />} />
+          <PublicRoute path="/register" restricted ={true} exact={true} component={()=><Register />} />
+          <PublicRoute path="/register/verify" restricted = {true} exact={true} component={()=><VerifyRegister/>} />
+          <PublicRoute path="/forgot-password" restricted ={true} exact={true} component={()=><UserForgotPassword />} />
+          <PublicRoute path="/forgot-password/verify" restricted = {true} exact={true} component={()=><UserVerifyForgotPassword/>} />
+          <PublicRoute path="/update-password/:id" restricted = {true} exact={true} component={()=><UserUpdatePassword/>} />
+          
+          {/* Private Route User */}
+          <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />       
+          {/* Private Route Admin */}
+          <PrivateRoute path="/admin" exact={false} component={()=><DashboardAdmin />} />
+          <PrivateRoute path="/movies-admin" exact={false} component={()=><MoviesAdmin />} />
+>>>>>>> 6fd8b97171fc3802a40d015147eb5f65aa41e431
           <Route path="*" component={NotFound} />
         </Switch>
       </Router>
@@ -76,6 +115,7 @@ function AppRouter() {
       <Router>
         <Switch>
           {/* Public Route */}
+<<<<<<< HEAD
           <Route path="/" exact={true} component={() => <Dashboard />} />
           <Route path="/movie-detail" exact={true} component={() => <MovieDetail />} />
           <PublicRoute path="/login" restricted={true} exact={true} component={() => <Login />} />
@@ -84,6 +124,17 @@ function AppRouter() {
           <PublicRoute path="/forgot-password" restricted={true} exact={true} component={() => <UserForgotPassword />} />
           <PublicRoute path="/forgot-password/verify" restricted={true} exact={true} component={() => <UserVerifyForgotPassword />} />
           <PublicRoute path="/update-password/:id" restricted={true} exact={true} component={() => <UserUpdatePassword />} />
+=======
+          <Route path="/" exact={true} component={()=><Dashboard />} />
+          <Route path="/movie" exact={true} component={()=><MovieList />} />  
+          <Route path="/movie-detail" exact={true} component={()=><MovieDetail />} />
+          <PublicRoute path="/login" restricted ={true} exact={true} component={()=><Login />} />
+          <PublicRoute path="/register" restricted ={true} exact={true} component={()=><Register />} />
+          <PublicRoute path="/register/verify" restricted = {true} exact={true} component={()=><VerifyRegister/>} />
+          <PublicRoute path="/forgot-password" restricted ={true} exact={true} component={()=><UserForgotPassword />} />
+          <PublicRoute path="/forgot-password/verify" restricted = {true} exact={true} component={()=><UserVerifyForgotPassword/>} />
+          <PublicRoute path="/update-password/:id" restricted = {true} exact={true} component={()=><UserUpdatePassword/>} />
+>>>>>>> 6fd8b97171fc3802a40d015147eb5f65aa41e431
           <Route path="*" component={NotFound} />
         </Switch>
       </Router>
