@@ -51,7 +51,7 @@ export const Profile = () => {
             <div className='card mt-5 card-rounded'>
               <div className='d-flex justify-content-between mx-5 mt-3'>
                 <p className='pt-3'>INFO</p>
-                <img src={process.env.PUBLIC_URL + '/svg/menu-bar.svg'} />
+                <img src={process.env.PUBLIC_URL + '/svg/menu-bar.svg'} alt='icon-menu' />
               </div>
               <div className='w-100 d-flex justify-content-center mt-3 photo-profile'>
                 <img width='130px' height='130px' className='rounded-circle' src={process.env.PUBLIC_URL + '/logo/no-photo.png'} alt='profile' />
