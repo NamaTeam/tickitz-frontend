@@ -1,108 +1,87 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
 // import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux"
-import { FetchUser } from "../../Redux/Actions/user"
-import { FetchMovie } from "../../Redux/Actions/movie"
+import { FetchMovie, FetchMovieNow, FetchUpcomingMovie } from "../../Redux/Actions/movie"
 import { Link } from "react-router-dom";
 import './styles/style.css'
 import { Footer, Navbar } from '../../components';
 
 
 export const MovieList = () => {
+    let history = useHistory();
     const dispatch = useDispatch()
+    const [activeTabs, setActiveTabs] = useState(1);
 
-    const { data: userData } = useSelector((state) => state.UserLogin)
-    const { data } = useSelector((state) => state.FetchUser)
-    const { data: movieData } = useSelector((state) => state.FetchMovie)
-
-    useEffect(() => {
-        dispatch(FetchUser(userData.data))
-        dispatch(FetchMovie())
-    }, [dispatch, userData])
-
-    const load = () => {
-        document.getElementById('tabs-2').style.display = "none";
-    }
+    const { data: movieDataNow } = useSelector((state) => state.FetchMovieNow)
+    const { data: movieDataUpcoming } = useSelector((state) => state.FetchUpcomingMovie)
 
     let today = new Date().toISOString().slice(0, 10)
 
-    const openBox = (tab, tabTitle) => {
-        var i;
-        var x = document.getElementsByClassName("movie-list");
-        var y = document.getElementsByClassName("box");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        for (i = 0; i < y.length; i++) {
-            y[i].classList.remove("active")
-        }
-        document.getElementById(tab).style.display = "block";
-        document.getElementById(tabTitle).classList.add('active');
-        
-    }
+    useEffect(() => {
+        dispatch(FetchMovieNow(today))
+        dispatch(FetchUpcomingMovie())
+        dispatch(FetchMovie())
+    }, [dispatch, today])
+
 
     return (
         <div className="container-fluid bg-grey">
-           <Navbar/>
+            <Navbar />
             <div class="container movies">
                 <div className="row main">
                     <div className="col-md-12">
                         <div className="movie-box">
                             <div className="box-top">
-                                <button className="box active" id="tab1" onClick={() => openBox('tabs-1', 'tab1')}>Now Showing</button>
-                                <button className="box" id="tab2" onClick={() => openBox('tabs-2', 'tab2')}>Upcoming Movies</button>
+                                <button className={`box mx-3 py-3 tab ${activeTabs === 1 ? 'active' : ''}`} id="tab1" onClick={() => setActiveTabs(1)}>Now Showing</button>
+                                <button className={`box mx-3 py-3 tab ${activeTabs === 2 ? 'active' : ''}`} id="tab2" onClick={() => setActiveTabs(2)}>Upcoming Movies</button>
                             </div>
 
-                            {movieData && movieData.map((item) => {
-                                if (item.release_date.slice(0, 10) > today) {
+                            <div className="d-flex">
+                                {movieDataUpcoming && movieDataUpcoming.map((item) => {
                                     return (
-                                        <div className="movie-list upcoming" id="tabs-2" onLoad={() => load()}>
+                                        <div className={`movie-list upcoming ${activeTabs === 2 ? 'd-block' : 'd-none'}`} id="tabs-2" >
                                             <div className="row">
-                                                <p>{item.release_date.slice(0, 10)}</p><br />
+                                                {/* <p>{item.start_date.slice(0, 10)}</p><br /> */}
                                                 <div className="col-md-3 col-sm-12 movie-card">
                                                     <div className="movie-img">
                                                         <img src={`http://localhost:5000${item.poster}`} alt="poster" />
                                                     </div>
                                                     <h5>{item.title}</h5>
                                                     <p>{item.category}</p>
-                                                    <button className="btn details">Details</button>
+                                                    <button className="btn details" onClick={() => history.push(`/movie-detail/${(item.title.split(' ').join('-')).toLowerCase()}/${item.id}`)}>Details</button>
                                                 </div>
                                             </div>
                                         </div>
                                     )
-                                } else if (item.release_date.slice(0, 10) <= today){
+                                })}
+                            </div>
+
+                            <div className="d-flex">
+                                {movieDataNow && movieDataNow.map((item) => {
                                     return (
-                                        <div className="movie-list" id="tabs-1">
+                                        <div className={`movie-list ${activeTabs === 1 ? 'd-block' : 'd-none'}`} id="tabs-1">
                                             <div className="row">
-                                                {/* <p>{item.release_date.slice(0, 10)}</p><br /> */}
+                                                {/* <p>{item.start_date.slice(0, 10)}</p><br /> */}
                                                 <div className="col-md-3 col-sm-12 movie-card">
                                                     <div className="movie-img">
                                                         <img src={`http://localhost:5000${item.poster}`} alt="poster" />
                                                     </div>
                                                     <h5>{item.title}</h5>
                                                     <p>{item.category}</p>
-                                                    <button className="btn details">Details</button>
+                                                    <button className="btn details" onClick={() => history.push(`/movie-detail/${(item.title.split(' ').join('-')).toLowerCase()}/${item.id}`)}>Details</button>
                                                 </div>
                                             </div>
                                         </div>
                                     )
-                                } 
-                                // else if (item.release_date.slice(0, 10) != today) {
-                                //     return (
-                                //         <div className="movie-list" id="tabs-1">
-                                //             <div className="row">
-                                //                 <p>Data is empty</p><br />
-                                //             </div>
-                                //         </div>
-                                //     )
-                                // }
-                            })}
+                                })}
+                            </div>
 
                         </div>
                     </div>
                 </div>
             </div>
-          <Footer/>
+            <Footer />
         </div>
     )
 }

@@ -4,9 +4,9 @@ import { Footer, Navbar } from '../../components';
 
 export const TicketResult = () => {
 
-    return (
+    return (<>
+        <Navbar />
         <div className="container-fluid bg-purple">
-            <Navbar />
             <div class="container ticket-result">
                 <center className="row main ticket">
                     <div className="ticket-proof">
@@ -208,6 +208,6 @@ export const TicketResult = () => {
             </div>
             <Footer />
         </div>
-    )
+    </>)
 }
 
