@@ -8,13 +8,15 @@ import { Login, Register, VerifyRegister, UserForgotPassword, UserVerifyForgotPa
 import Dashboard from './pages/Dashboard'
 import { Profile } from './pages/Profile'
 import { MovieDetail } from './pages/MovieDetail'
-import { MovieList } from './pages/MovieList'
+import { MovieList } from './pages/MovieList' 
+import { Admin } from './pages/Admin'
 import NotFound from './pages/NotFound'
 import { PrivateRoute, PublicRoute } from "./components";
 import { Provider } from 'react-redux'
 import configureStore from './Redux/store'
 import { PersistGate } from "redux-persist/integration/react";
-import Order from './pages/Order';
+// import Order from './pages/Order';
+
 
 const { store, persistor } = configureStore()
 function AppRouter() {
@@ -24,6 +26,7 @@ function AppRouter() {
         {/* Public Route */}
         <Route path="/" exact={true} component={() => <Dashboard />} />
         <PublicRoute path="/login" restricted={true} exact={true} component={() => <Login />} />
+        <PublicRoute path="/admin" restricted={true} exact={true} component={() => <Admin />} />
         <PublicRoute path="/register" restricted={true} exact={true} component={() => <Register />} />
         <PublicRoute path="/register/verify" restricted={true} exact={true} component={() => <VerifyRegister />} />
         <PublicRoute path="/forgot-password" restricted={true} exact={true} component={() => <UserForgotPassword />} />
@@ -32,7 +35,7 @@ function AppRouter() {
 
         {/* Private Route */}
         <PrivateRoute path="/profile" exact={true} component={() => <Profile />} />
-        <PrivateRoute path='/order' exact={true} component={() => <Order />} />
+        {/* <PrivateRoute path='/order' exact={true} component={() => <Order />} /> */}
         <PrivateRoute path="/movie" exact={true} component={() => <MovieList />} />
         <PrivateRoute path="/movie-detail" exact={true} component={() => <MovieDetail />} />
         <Route path="*" component={NotFound} />
