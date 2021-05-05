@@ -63,7 +63,7 @@ export const Profile = () => {
               <div className='w-100 d-flex justify-content-center mt-3 photo-profile'>
                 <label>
                     <input type="file" name="photo" accept="image" multiple onChange={(e) => SetPhoto(e.target.files)}/>
-                    <img width='130px' height='130px' className='rounded-circle' src={`${process.env.REACT_APP_API_IMG_URL}${user.photo}` ?? process.env.PUBLIC_URL + '/logo/no-photo.png'} alt='profile' />
+                    <img width='130px' height='130px' className='rounded-circle' src={(user.photo)?`${process.env.REACT_APP_API_IMG_URL}${user.photo}`:`${process.env.PUBLIC_URL}/logo/no-photo.png`} alt='profile' />
                 </label>
               </div>
               <div className='w-100 d-flex justify-content-center mt-2 name'>

@@ -1,11 +1,25 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom";
+import { Link,Redirect,useLocation } from "react-router-dom";
 import './styles/style.css';
 import { Footer, Navbar } from '../../components';
+import { GetMovieDetail } from "../../Redux/Actions/movie"
 
+function useQuery (){
+    return new URLSearchParams(useLocation().search)
+}
 export const MovieDetail = () => {
-
+    let query = useQuery()
+    const dispatch = useDispatch()
+    let id = query.get("id")
+    const { data: movieData } = useSelector((state) => state.GetMovieDetail)
+    useEffect(() => {
+        dispatch(GetMovieDetail(id))
+    }, [id]
+    )
+    if(query.get('id')==null){
+        <Redirect to = '/'/>
+    }else{
     return (
         <>
          <Navbar/>
@@ -259,4 +273,5 @@ export const MovieDetail = () => {
         <Footer/>
         </>
     )
+}
 }
