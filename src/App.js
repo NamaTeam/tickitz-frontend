@@ -5,19 +5,20 @@ import {
   Route,
 } from "react-router-dom";
 import { Login, Register, VerifyRegister, UserForgotPassword, UserVerifyForgotPassword, UserUpdatePassword } from './pages/Auth'
-import { DashboardAdmin} from './pages/Admin'
+import { DashboardAdmin, MoviesAdmin} from './pages/Admin'
 import Dashboard from './pages/Dashboard'
-import { Profile } from './pages/Profile'
-import { MovieDetail } from './pages/MovieDetail'
-import { MovieList } from './pages/MovieList' 
-import { Admin } from './pages/Admin'
+import {Profile} from './pages/Profile'
+import {MovieDetail} from './pages/MovieDetail'
+import {MovieList} from './pages/MovieList'
+import {Payment} from './pages/Payment'
+import {TicketResult} from './pages/TicketResult'
 import NotFound from './pages/NotFound'
 import { PrivateRoute, PublicRoute } from "./components";
 import { Provider } from 'react-redux'
 import configureStore from './Redux/store'
 import { PersistGate } from "redux-persist/integration/react";
-// import Order from './pages/Order';
-
+import Order from './pages/Order';
+import { useSelector } from 'react-redux'
 
 const { store, persistor } = configureStore()
 function AppRouter() {
@@ -67,6 +68,7 @@ function AppRouter() {
           <PrivateRoute path="/profile" exact={true} component={()=><Profile />} />       
           {/* Private Route Admin */}
           <PrivateRoute path="/admin" exact={false} component={()=><DashboardAdmin />} />
+          <PrivateRoute path="/movies-admin" exact={false} component={()=><MoviesAdmin />} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Router>

@@ -1,54 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap');
-body{
-    margin: 0 !important;
-    padding: 0 !important;
-    font-family: 'Mulish', sans-serif !important;
-    overflow-x: hidden !important;
-}
-.bg-grey{
-    background:#E5E5E5 !important;
-}
-.navbar-top{
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    background: #fff !important;
-    width: 100vw !important;
-    padding-left: 70px !important;
-    padding-right: 70px !important;
-    height: 70px !important;
-    color: #414141 !important;
-}
-.navbar-top-left{
-    display: flex !important;
-    align-items: center !important;
-}
-.navbar-top-left .brand img{
-    height: 51px !important;
-    width: 130px !important;
-}
-.navbar-top-left .nav{
-    margin-left: 60px !important;
-}
-.navbar-top-left .nav .link{
-    margin-right: 40px !important;
-    text-decoration: none !important;
-    color: #414141 !important;
-}
-.navbar-top-right .right{
-    margin-right: 40px !important;
-    color: #414141 !important;
-    text-decoration: none !important;
-}
-.navbar-top-right .navbar-search img{
-    width: 18px !important;
-    height: 18px !important;
-}
-.navbar-top-right .navbar-photo-profile img{
-    width: 40px !important;
-    height: 40px !important;
-    margin-right: -50px !important;
-}
 .top-details{
     background: #fff !important;
     padding: 60px 60px !important;
@@ -102,9 +52,6 @@ box-sizing: border-box !important;
 border-radius: 6px !important;
 }
 /* admin style  */
-.container-fluid{
-    background: #EFF0F6 !important;
-}
 .text-update{
     position: relative !important;
     font-size: medium !important;
@@ -116,11 +63,6 @@ border-radius: 6px !important;
     position: absolute !important;
     margin-bottom: 0 !important;
     margin-top: -82px !important;
-}
-.form-group{
-    position: relative !important;
-    margin-left: 37% !important;
-    top: -130% !important;
 }
 
 .form-update-middle{
@@ -157,13 +99,6 @@ border-radius: 6px !important;
     width: 100% !important;
     height: 70% !important;
     top: -200% !important;
-}
-.form-control{
-height: 80px !important;
-background: #EFF0F6 !important;
-border: 0.5px solid #DEDEDE !important;
-box-sizing: border-box !important;
-border-radius: 4px !important;
 }
 .form-date{
 position: relative !important;
@@ -372,75 +307,7 @@ input[type="date"]{
     background: transparent !important;
     padding: 0 20px !important;
    }
-footer{
-    position:absolute !important;
-    background: #FFFFFF !important;
-    margin-left: -10px !important;
-    /* margin-right: -10px; */
-    height: max-content !important;
-    width: 100vw !important;
-}
-footer .footer-info{
-    padding-top: 70px !important;
-    display: flex !important;
-    margin-left: 90px !important;
-}
-footer .footer-info .first-div{
-    margin-right: 40px !important;
-}
-footer .footer-info .second-div{
-    margin-right: -120px !important;
-}
-footer .footer-info .third-div{
-    margin-right: -60px !important;
-}
-footer .footer-info p{
-    margin-top: 17px !important;
-    font-size: 16px !important;
-    color: #6E7191 !important;
-    letter-spacing: 0.75px !important;
-}
-footer .footer-info h6{
-    font-weight: bold !important;
-}
-footer .footer-info ul{
-    margin-left: -32px !important;
-    margin-top: 20px !important;
-}
-footer .footer-info ul li{
-    list-style: none !important;
-    margin-bottom: 5px !important;
-}
-footer .footer-info .item .link{
-    text-decoration: none !important;
-    color:#6E7191 !important;
-    letter-spacing: 0.6px !important;
-    font-size: 15px !important;
-}
-footer .third-div img{
-    margin-bottom: 10px !important;
-}
-footer .fourth-div .item{
-    margin-bottom: 15px !important;
-}
-footer .fourth-div .link{
-    font-size: 14px !important;
-}
-footer .fourth-div img{
-    width: 22px !important;
-    height: 18px !important;
-    margin-right: 10px !important;
-}
-footer .copyright{
-    text-align: center !important;
-    margin-top: 38px !important;
-    padding-bottom: 30px !important;
-    color:#6E7191 !important;
-}
 @media only screen and (max-width: 767px) {
-    .navbar-top{
-        width: 100% !important;
-    }
     .top-details .description-box{
         font-size: 14px !important;
         width: max-content !important;
@@ -474,43 +341,8 @@ footer .copyright{
     .update-profile .btn{
         width: 100% !important;
     }
-    .navbar-top-left .nav{
-        display: none !important;
-    }
-    .main{
-        margin-bottom: 1100px !important;
-    }
-    footer .footer-info{
-        margin-left: 20px !important;
-    }
-    footer ul{
-        display: flex !important;
-        max-width: 100% !important;
-        flex-wrap: wrap !important;
-    }
-    footer ul li{
-        margin-right: 20px !important;
-    }
-    footer ul li .link img{
-        height: 20px !important;
-    }
-    .fourth-div .link{
-        display: none !important;
-    }
-    footer .copyright{
-        text-align: left !important;
-        padding-left: 30px !important;
-    }
 }
 @media only screen and (max-width: 425px) {
-    .navbar-top{
-        width: 100vw !important;
-    }
-    .navbar-top-left .brand img{
-        width: 86px !important;
-        height: 30px !important;
-        margin-left: -50px !important;
-    }
     .top-details .description-box{
         font-size: 14px !important;
         width: max-content !important;
@@ -545,14 +377,5 @@ footer .copyright{
         margin-right: -60px !important;
         width: 85vw !important;
         height: 170vh !important;
-    }
-    .navbar-top-right{
-        display: none !important;
-    }
-    footer{
-        width: 100vw !important;
-    }
-    footer .first-div p{
-        font-size: 15px !important;
     }
 }
