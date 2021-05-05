@@ -238,8 +238,8 @@ const Dashboard = () => {
                     </div>
                 </div>
             </section>
-            <Footer/>
         </div>
+        <Footer/>
         </>
     )
 }

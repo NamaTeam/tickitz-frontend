@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 // import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux"
-import { FetchUser } from "../../Redux/Actions/user"
 import { FetchMovie } from "../../Redux/Actions/movie"
 import { Link } from "react-router-dom";
 import './styles/style.css'
@@ -12,11 +11,9 @@ export const MovieList = () => {
     const dispatch = useDispatch()
 
     const { data: userData } = useSelector((state) => state.UserLogin)
-    const { data } = useSelector((state) => state.FetchUser)
     const { data: movieData } = useSelector((state) => state.FetchMovie)
 
     useEffect(() => {
-        dispatch(FetchUser(userData.data))
         dispatch(FetchMovie())
     }, [dispatch, userData])
 
@@ -42,10 +39,11 @@ export const MovieList = () => {
     }
 
     return (
+        <>
+         <Navbar/>
         <div className="container-fluid bg-grey">
-           <Navbar/>
             <div class="container movies">
-                <div className="row main">
+                <div className="row">
                     <div className="col-md-12">
                         <div className="movie-box">
                             <div className="box-top">
@@ -102,7 +100,8 @@ export const MovieList = () => {
                     </div>
                 </div>
             </div>
-          <Footer/>
         </div>
+        <Footer/>
+        </>
     )
 }
