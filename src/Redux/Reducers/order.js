@@ -29,3 +29,30 @@ export const AddOrder = (state = initialState, action = {}) => {
       return state
   }
 }
+
+export const GetOrderById = (state = initialState, action = {}) => {
+  switch (action.type) {
+    case 'ORDER_BYID_REQ':
+      return {
+        ...state,
+        loading: true,
+        err: null
+      }
+    case 'ORDER_BYID_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+        err: null
+      }
+    case 'ORDER_BYID_ERROR':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        data: []
+      }
+    default:
+      return state
+  }
+}
