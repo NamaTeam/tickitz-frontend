@@ -12,8 +12,10 @@ const Navbar = () =>{
     const { data: user } = useSelector((state) => state.FetchUser)
 
     useEffect(() => {
-        dispatch(FetchUser(data.data))
-      }, [data])
+        if(isLogin === true){
+            dispatch(FetchUser(data.data))
+        }
+      }, [])
 
     return(
         <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
