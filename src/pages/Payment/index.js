@@ -1,14 +1,15 @@
 import React from 'react';
 import './styles/style.css'
 import { Footer, Navbar } from '../../components';
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getOrderById } from '../../Redux/Actions/order';
+import { getOrderById, updateOrder } from '../../Redux/Actions/order';
 import moment from 'moment';
 
 export const Payment = () => {
 	const { id } = useParams()
+	const history = useHistory()
 	const dispatch = useDispatch()
 	const { data: order } = useSelector(state => state.GetOrderById)
 
@@ -16,6 +17,14 @@ export const Payment = () => {
 		const orderId = `TICKITZ-${id}`
 		dispatch(getOrderById(orderId))
 	}, [])
+
+	const paid = () => {
+		const orderId = `TICKITZ-${id}`
+		dispatch(updateOrder({
+			id: orderId,
+			status: 'paid'
+		}, history))
+	}
 
 	// const pieces = [...new Set(order.seat.map(item => item))]
 	// console.log(pieces, 'ini pieces')
@@ -131,7 +140,7 @@ export const Payment = () => {
 									<button className="prev">Previous step</button>
 								</div>
 								<div classNam="pay-order-btn">
-									<button className="pay">Pay your order</button>
+									<button className="pay" onClick={() => paid()}>Pay your order</button>
 								</div>
 							</div>
 						</div>
