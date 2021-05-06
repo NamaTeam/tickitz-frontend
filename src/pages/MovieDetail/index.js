@@ -10,6 +10,7 @@ import { Footer, Navbar } from '../../components';
 
 export const MovieDetail = () => {
     const dispatch = useDispatch()
+    let history = useHistory();
 
     const { data: userData } = useSelector((state) => state.UserLogin)
     const { data: movieData } = useSelector((state) => state.FetchMovieById)
@@ -42,7 +43,7 @@ export const MovieDetail = () => {
             <div class="container-fluid bg-grey">
                 <section className="row top-details">
                     <div className="col-md-3 col-sm-6 movie-poster">
-                        <img src={`http://localhost:5000${movieData.poster}`} alt="poster" />
+                        <img src={`${process.env.REACT_APP_API_IMG_URL}${movieData.poster}`} alt="poster" />
                     </div>
                     <div className="col-md-9 col-sm-6 description-box">
                         <h4 className="title">{movieData.title}</h4>
@@ -100,7 +101,7 @@ export const MovieDetail = () => {
                             <div className="col-md-4 col-sm-12 cart">
                                 <div className="top-cart">
                                     <div className="cinema-logo">
-                                        <img src={`http://localhost:5000${item.logo}`} alt=" " />
+                                        <img src={`${process.env.REACT_APP_API_IMG_URL}${item.logo}`} alt=" " />
                                     </div>
                                     <div className="cinema-logo">
                                         <h5>{item.name}</h5>
@@ -118,7 +119,7 @@ export const MovieDetail = () => {
                                         <h6 className="each-seat">{item.price}/seat</h6>
                                     </div>
                                     <div className="booking-movie">
-                                        <button type="submit" className="btn book-now">Book now</button>
+                                        <button type="submit" className="btn book-now" onClick={() => history.push(`/order/${item.schedule_id}`)}>Book now</button>
                                         <Link to="#" className="add-cart">Add to cart</Link>
                                     </div>
                                 </div>

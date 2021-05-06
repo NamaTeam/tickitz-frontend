@@ -46,11 +46,11 @@ export const MovieList = () => {
                                                 {/* <p>{item.start_date.slice(0, 10)}</p><br /> */}
                                                 <div className="col-md-3 col-sm-12 movie-card">
                                                     <div className="movie-img">
-                                                        <img src={`http://localhost:5000${item.poster}`} alt="poster" />
+                                                        <img src={`${process.env.REACT_APP_API_IMG_URL}${item.poster}`} alt="poster" />
                                                     </div>
                                                     <h5>{item.title}</h5>
                                                     <p>{item.category}</p>
-                                                    <button className="btn details" onClick={() => history.push(`/movie-detail/${(item.title.split(' ').join('-')).toLowerCase()}/${item.id}`)}>Details</button>
+                                                    <button className="btn details" onClick={() => history.push(`/movie-detail/${item.id}`)}>Details</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -66,11 +66,11 @@ export const MovieList = () => {
                                                 {/* <p>{item.start_date.slice(0, 10)}</p><br /> */}
                                                 <div className="col-md-3 col-sm-12 movie-card">
                                                     <div className="movie-img">
-                                                        <img src={`http://localhost:5000${item.poster}`} alt="poster" />
+                                                        <img src={`${process.env.REACT_APP_API_IMG_URL}${item.poster}`} alt="poster" />
                                                     </div>
                                                     <h5>{item.title}</h5>
                                                     <p>{item.category}</p>
-                                                    <button className="btn details" onClick={() => history.push(`/movie-detail/${(item.title.split(' ').join('-')).toLowerCase()}/${item.id}`)}>Details</button>
+                                                    <button className="btn details" onClick={() => history.push(`/movie-detail/${item.id}`)}>Details</button>
                                                 </div>
                                             </div>
                                         </div>

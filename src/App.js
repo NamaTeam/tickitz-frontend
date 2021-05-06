@@ -31,7 +31,7 @@ function AppRouter() {
           {/* Public Route */}
           <Route path="/movie" exact={true} component={() => <MovieList />} />
           <Route path="/" exact={true} component={()=><Dashboard />} />
-          <Route path="/movie-detail/:title/:id" exact={true} component={()=><MovieDetail />} />
+          <Route path="/movie-detail/:id" exact={true} component={()=><MovieDetail />} />
           <PublicRoute path="/login" restricted ={true} exact={true} component={()=><Login />} />
           <PublicRoute path="/register" restricted ={true} exact={true} component={()=><Register />} />
           <PublicRoute path="/register/verify" restricted = {true} exact={true} component={()=><VerifyRegister/>} />
@@ -43,7 +43,7 @@ function AppRouter() {
           <PrivateRoute path="/profile" exact={true} component={() => <Profile />} />
           <PrivateRoute path="/payment" exact={true} component={() => <Payment />} />
           <PrivateRoute path="/ticket-result" exact={true} component={() => <TicketResult />} />
-          <PrivateRoute path='/order' exact={true} component={() => <Order />} />
+          <PrivateRoute path='/order/:id' exact={true} component={() => <Order />} />
 
           <Route path="*" component={NotFound} />
         </Switch>
@@ -56,7 +56,7 @@ function AppRouter() {
           {/* Public Route */}
           <Route path="/" exact={true} component={()=><Dashboard />} />
           <Route path="/movie" exact={true} component={() => <MovieList />} />
-          <Route path="/movie-detail/:title/:id" exact={true} component={()=><MovieDetail />} />
+          <Route path="/movie-detail/:id" exact={true} component={()=><MovieDetail />} />
           <PublicRoute path="/login" restricted ={true} exact={true} component={()=><Login />} />
           <PublicRoute path="/register" restricted ={true} exact={true} component={()=><Register />} />
           <PublicRoute path="/register/verify" restricted = {true} exact={true} component={()=><VerifyRegister/>} />
