@@ -280,7 +280,7 @@ const Seat = ({ schedule }) => {
 					<div className="card border-0 mt-5 px-4 order-info">
 						<img
 							className="logo mx-auto mb-1"
-							src={process.env.REACT_APP_IMG_URL + `${schedule.logo}`}
+							src={`${process.env.REACT_APP_IMG_URL}${schedule.logo}`}
 							alt=""
 						></img>
 						<h2 className="mx-auto mb-4">{schedule.name}</h2>

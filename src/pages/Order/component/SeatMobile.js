@@ -6,7 +6,7 @@ const SeatMobile = () => {
   const dispatch = useDispatch();
   const { data: seat } = useSelector(state => state.Seat)
   const [seatSelected, setSeatSelected] = useState([]);
-  let sold = ['A1'];
+  let sold = [];
 
   const addSelectedSeat = e => setSeatSelected([...seatSelected, e.target.id]);
 
@@ -233,7 +233,7 @@ const SeatMobile = () => {
         </div>
         <div className='card-seat-choosen mx-2'>
           <div className='row py-2 d-flex justify-content-around'>
-            <select class="form-select w-25">
+            <select className="form-select w-25">
               <option value="A">A</option>
               <option value="B">B</option>
               <option value="C">C</option>
@@ -242,7 +242,7 @@ const SeatMobile = () => {
               <option value="F">F</option>
               <option value="G">G</option>
             </select>
-            <select class="form-select w-25">
+            <select className="form-select w-25">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
