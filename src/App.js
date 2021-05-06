@@ -5,11 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import { Login, Register, VerifyRegister, UserForgotPassword, UserVerifyForgotPassword, UserUpdatePassword } from './pages/Auth'
-<<<<<<< HEAD
 import { DashboardAdmin} from './pages/Admin'
-=======
-import { DashboardAdmin } from './pages/Admin'
->>>>>>> 832f082a7843bc658baccbe52ec1e9d9be72436a
 import Dashboard from './pages/Dashboard'
 import { Profile } from './pages/Profile'
 import { MovieDetail } from './pages/MovieDetail'
