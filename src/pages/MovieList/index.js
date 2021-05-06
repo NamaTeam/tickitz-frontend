@@ -46,7 +46,7 @@ export const MovieList = () => {
                                                 {/* <p>{item.start_date.slice(0, 10)}</p><br /> */}
                                                 <div className="col-md-3 col-sm-12 movie-card">
                                                     <div className="movie-img">
-                                                        <img src={`${process.env.REACT_APP_API_IMG_URL}${movieDataUpcoming.poster}`} alt="poster" />
+                                                        <img src={`${process.env.REACT_APP_API_IMG_URL}${item.poster}`} alt="poster" />
                                                     </div>
                                                     <h5>{item.title}</h5>
                                                     <p>{item.category}</p>
@@ -66,7 +66,7 @@ export const MovieList = () => {
                                                 {/* <p>{item.start_date.slice(0, 10)}</p><br /> */}
                                                 <div className="col-md-3 col-sm-12 movie-card">
                                                     <div className="movie-img">
-                                                        <img src={`${process.env.REACT_APP_API_IMG_URL}${movieDataUpcoming.poster}`} alt="poster" />
+                                                        <img src={`${process.env.REACT_APP_API_IMG_URL}${item.poster}`} alt="poster" />
                                                     </div>
                                                     <h5>{item.title}</h5>
                                                     <p>{item.category}</p>
