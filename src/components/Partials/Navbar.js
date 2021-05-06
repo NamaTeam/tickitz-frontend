@@ -1,13 +1,19 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import { UserLogin, UserLogout} from "../../Redux/Actions/auth"
+import { FetchUser} from "../../Redux/Actions/user"
 import "./styles/style.css";
 
 const Navbar = () =>{
     const history = useHistory()
     const dispatch = useDispatch()
     const { isLogin,data } = useSelector((state) => state.UserLogin)
+    const { data: user } = useSelector((state) => state.FetchUser)
+
+    useEffect(() => {
+        dispatch(FetchUser(data.data))
+      }, [data])
 
     return(
         <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
@@ -85,9 +91,9 @@ const Navbar = () =>{
                                     </>
                                 ):
                                 <li className="nav-item dropdown navbar-photo-profile right">
-                                    {data.data.photo == undefined || data.data.photo === null ?
+                                    {user.photo == undefined || user.photo == null ?
                                         <img src={process.env.PUBLIC_URL + '/logo/no-photo.png'} alt="profile" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false"/> :
-                                        <img src={`http://localhost:5000${data.photo}`} alt="profile" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false"/>
+                                        <img src={`${process.env.REACT_APP_API_IMG_URL}${user.photo}`} alt="profile" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false"/>
                                     } 
                                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown3">
                                         <Link className='no-style' to='/profile'>
