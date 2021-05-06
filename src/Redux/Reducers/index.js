@@ -5,9 +5,10 @@ import { FetchMovie, FetchMovieNow, FetchUpcomingMovie, FetchMovieById } from '.
 import { Seat } from './seat'
 import { ScheduleById } from './schedule'
 import { AddOrder } from './order'
+import { FetchCinema, FetchCinemaByLocation } from './cinema'
 
 const reducers = combineReducers({
-    UserLogin, UserRegister, UserVerify, UserForgotPassword, UserForgotPasswordVerify, UserUpdatePassword, FetchUser, UpdateUser, FetchMovie, Seat, ScheduleById, AddOrder, FetchMovieNow, FetchUpcomingMovie, FetchMovieById
+    UserLogin, UserRegister, UserVerify, UserForgotPassword, UserForgotPasswordVerify, UserUpdatePassword, FetchUser, UpdateUser, FetchMovie, Seat, ScheduleById, AddOrder, FetchMovieNow, FetchUpcomingMovie, FetchMovieById, FetchCinema, FetchCinemaByLocation
 })
 
 export default reducers

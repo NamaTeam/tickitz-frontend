@@ -60,6 +60,8 @@ body{
     padding-left: 25px;
     padding-right: 25px;
     margin-left: 0px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 .movie-list .movie-card {
     background: #fff;
