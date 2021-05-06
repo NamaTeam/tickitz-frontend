@@ -44,7 +44,7 @@ const Seat = ({ schedule }) => {
 	}
 
 	useEffect(() => {
-		dispatch(getSeat(1))
+		dispatch(getSeat(6))
 	}, [])
 
 	useEffect(() => {

@@ -11,7 +11,7 @@ const Order = () => {
 	const { data: sch } = useSelector(state => state.ScheduleById)
 
 	useEffect(() => {
-		dispatch(getSchById(1))
+		dispatch(getSchById(6))
 	}, [])
 
 	return (

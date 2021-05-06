@@ -34,3 +34,37 @@ export const addOrder = (data, cb) => {
     })
   }
 }
+
+const getOrderByIdReq = () => {
+  return {
+    type: 'ORDER_BYID_REQ'
+  }
+}
+
+const getOrderByIdSuccess = (data) => {
+  return {
+    type: 'ORDER_BYID_SUCCESS',
+    payload: data
+  }
+}
+
+const getOrderByIdError = (err) => {
+  return {
+    type: 'ORDER_BYID_ERROR',
+    payload: err
+  }
+}
+
+export const getOrderById = (id) => {
+  return (dispatch) => {
+    dispatch(getOrderByIdReq())
+    return axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_API_URL}/orders/${id}`
+    }).then(res => {
+      dispatch(getOrderByIdSuccess(res.data.data))
+    }).catch(err => {
+      dispatch(getOrderByIdError(err.response))
+    })
+  }
+}
