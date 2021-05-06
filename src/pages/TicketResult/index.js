@@ -213,10 +213,10 @@ export const TicketResult = () => {
                                             <h6>{userTicket?.seat?.length} pcs</h6>
                                         </div>
                                         <div className="info">
-                                            <p>Seats</p>
+                                            <p className="seat-sm">Seats</p>
                                             {userTicket?.seat?.map((item) => {
                                                 return (
-                                                    <span>{item}, </span>
+                                                    <span>{item},</span>
                                                 )
                                             })}
                                         </div>

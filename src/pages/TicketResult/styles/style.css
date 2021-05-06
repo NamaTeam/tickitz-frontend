@@ -230,4 +230,7 @@
         margin-top: 20px;
         margin-left: 0px;
     }
+    .bottom-ticket .info-ticket .info p.seat-sm{
+        margin-bottom: 0px;
+    }
 }
