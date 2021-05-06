@@ -50,7 +50,7 @@ export const MovieList = () => {
                                                     </div>
                                                     <h5>{item.title}</h5>
                                                     <p>{item.category}</p>
-                                                    <button className="btn details" onClick={() => history.push(`/movie-detail/${(item.title.split(' ').join('-')).toLowerCase()}/${item.id}`)}>Details</button>
+                                                    <button className="btn details" onClick={() => history.push(`/movie-detail/${item.id}`)}>Details</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -70,7 +70,7 @@ export const MovieList = () => {
                                                     </div>
                                                     <h5>{item.title}</h5>
                                                     <p>{item.category}</p>
-                                                    <button className="btn details" onClick={() => history.push(`/movie-detail/${(item.title.split(' ').join('-')).toLowerCase()}/${item.id}`)}>Details</button>
+                                                    <button className="btn details" onClick={() => history.push(`/movie-detail/${item.id}`)}>Details</button>
                                                 </div>
                                             </div>
                                         </div>
