@@ -10,6 +10,7 @@ import { Footer, Navbar } from '../../components';
 
 export const MovieDetail = () => {
     const dispatch = useDispatch()
+    let history = useHistory();
 
     const { data: userData } = useSelector((state) => state.UserLogin)
     const { data: movieData } = useSelector((state) => state.FetchMovieById)
@@ -118,7 +119,7 @@ export const MovieDetail = () => {
                                         <h6 className="each-seat">{item.price}/seat</h6>
                                     </div>
                                     <div className="booking-movie">
-                                        <button type="submit" className="btn book-now">Book now</button>
+                                        <button type="submit" className="btn book-now" onClick={() => history.push(`/order/${item.schedule_id}`)}>Book now</button>
                                         <Link to="#" className="add-cart">Add to cart</Link>
                                     </div>
                                 </div>

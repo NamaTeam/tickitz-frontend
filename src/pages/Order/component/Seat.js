@@ -5,7 +5,7 @@ import { useHistory } from 'react-router';
 import { getSeat } from '../../../Redux/Actions/seat';
 import { addOrder } from '../../../Redux/Actions/order';
 
-const Seat = ({ schedule }) => {
+const Seat = ({ schedule, id }) => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const { data: seat } = useSelector(state => state.Seat)
@@ -44,7 +44,7 @@ const Seat = ({ schedule }) => {
 	}
 
 	useEffect(() => {
-		dispatch(getSeat(6))
+		dispatch(getSeat(id))
 	}, [])
 
 	useEffect(() => {
@@ -68,6 +68,8 @@ const Seat = ({ schedule }) => {
 			seat.classList.add("sold");
 		})
 	}, [seat])
+
+	console.log(seat, 'seat')
 
 	return (
 		<>
@@ -280,7 +282,7 @@ const Seat = ({ schedule }) => {
 					<div className="card border-0 mt-5 px-4 order-info">
 						<img
 							className="logo mx-auto mb-1"
-							src={process.env.REACT_APP_IMG_URL + `${schedule.logo}`}
+							src={`${process.env.REACT_APP_IMG_URL}${schedule.logo}`}
 							alt=""
 						></img>
 						<h2 className="mx-auto mb-4">{schedule.name}</h2>
