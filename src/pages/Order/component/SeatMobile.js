@@ -1,50 +1,82 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import { addOrder } from '../../../Redux/Actions/order';
 import { getSeat } from '../../../Redux/Actions/seat';
 
-const SeatMobile = () => {
+const SeatMobile = ({ schedule, id }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { data: seat } = useSelector(state => state.Seat)
-  const [seatSelected, setSeatSelected] = useState([]);
-  let sold = [];
+  const { data: auth } = useSelector(state => state.UserLogin)
+  const [soldSeat, setSoldSeat] = useState([])
+  // const [seatSelected, setSeatSelected] = useState([])
+  const [row, setRow] = useState('A')
+  const [col, setCol] = useState('1')
+  const [dataOrder, setDataOrder] = useState({
+    id: `TICKITZ-${new Date().getTime()}${Math.floor(Math.random() * 100)}`,
+    user_id: auth.data.id,
+    schedule_id: schedule.id,
+    total: '',
+    seat: [],
+    status: 'checkout',
+  })
 
-  const addSelectedSeat = e => setSeatSelected([...seatSelected, e.target.id]);
+  const addSelectedSeat = () => {
+    if (soldSeat.indexOf(`${row}${col}`) === -1) {
+      console.log(`${row}${col}`)
+      setDataOrder({ ...dataOrder, schedule_id: schedule.id, seat: [...dataOrder.seat, `${row}${col}`] })
+    } else {
+      alert('Seat sold out')
+    }
+  }
+
+  const addOrderhandler = () => {
+    if (dataOrder.seat.length !== 0) {
+      dispatch(addOrder(dataOrder, history))
+    } else {
+      alert('Please choose seats')
+    }
+  }
 
   const reset = () => {
-    seatSelected.map(e => {
-      let seat = document.getElementById(e);
+    dataOrder.seat.map(e => {
+      let id = `${e}-mobile`
+      let seat = document.getElementById(id);
       seat.removeAttribute("disabled");
       seat.classList.remove("selected");
     })
-    setSeatSelected([])
+    setDataOrder({ ...dataOrder, seat: [], total: 0 })
   }
 
   useEffect(() => {
-    dispatch(getSeat(1))
+    dispatch(getSeat(id))
   }, [])
 
   useEffect(() => {
-    seatSelected.map(e => {
+    dataOrder.seat.map(e => {
       let id = `${e}-mobile`
       let seat = document.getElementById(id);
-      seat.classList.add("selected");
+      if (seat) {
+        seat.classList.add("selected");
+      }
     })
-  }, [seatSelected])
+    setDataOrder({ ...dataOrder, total: `${dataOrder.seat.length * schedule.price}` })
+  }, [dataOrder.seat])
 
   useEffect(() => {
     seat.map(e => {
-      e.seat.map(g => {
-        sold.push(g)
-      })
+      setSoldSeat([...soldSeat, ...e.seat])
     })
 
-    sold.map(e => {
+    soldSeat.map(e => {
       let id = `${e}-mobile`
       let seat = document.getElementById(id);
       seat.classList.add("sold");
     })
 
   }, [seat])
+
   return (
     <>
       <div className='d-block d-md-none mt-5 mx-3'>
@@ -229,11 +261,11 @@ const SeatMobile = () => {
         </div>
         <div className='d-flex justify-content-between px-3 pt-3 my-2 card-seat-choosen'>
           <p>Seats Choosen</p>
-          <p>C1, C2, C3</p>
+          <p>{`${dataOrder.seat}` || 'Not Selected'}</p>
         </div>
         <div className='card-seat-choosen mx-2'>
           <div className='row py-2 d-flex justify-content-around'>
-            <select className="form-select w-25">
+            <select className="form-select w-25" onChange={(e) => { setRow(e.target.value) }}>
               <option value="A">A</option>
               <option value="B">B</option>
               <option value="C">C</option>
@@ -242,7 +274,7 @@ const SeatMobile = () => {
               <option value="F">F</option>
               <option value="G">G</option>
             </select>
-            <select className="form-select w-25">
+            <select className="form-select w-25" onChange={(e) => { setCol(e.target.value) }}>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -259,8 +291,9 @@ const SeatMobile = () => {
             </select>
           </div>
         </div>
-        <button className='col-12 mt-3 btn btn-rounded bg-white btn-change-movie'>Add Seat</button>
-        <button className='col-12 mt-3 btn btn-rounded btn-checkout'>Checkout Now</button>
+        <button className='col-12 mt-3 btn btn-rounded bg-white btn-change-movie' onClick={() => addSelectedSeat()}>Add Seat</button>
+        <p className='col-12 text-center text-danger fw-light mt-3' onClick={() => reset()}>Reset</p>
+        <button className='col-12 btn btn-rounded btn-checkout' onClick={() => addOrderhandler()}>Checkout Now</button>
       </div>
     </>
   )
