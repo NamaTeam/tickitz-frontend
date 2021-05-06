@@ -99,10 +99,35 @@ const FetchMovieById = (state = initialState, action = {}) => {
             return state
     }
 }
+const FetchMoviesByMonth = (state = initialState, action = {})=>{
+    switch (action.type){
+        case 'FETCH_MOVIE_BY_MONTH_REQUEST':
+            return{
+                ...state,
+                loading:true
+            }
+        case 'FETCH_MOVIE_BY_MONTH_SUCCESS':
+            return{
+                ...state,
+                loading : false,
+                data : action.payload
+            }
+        case 'FETCH_MOVIE_BY_MONTH_FAILED':
+            return{
+                ...state,
+                loading: false,
+                error : action.payload,
+                data :[]
+            }
+        default:
+            return state
+    }
+}
 
 export{
     FetchMovie,
     FetchMovieNow,
     FetchUpcomingMovie,
-    FetchMovieById
+    FetchMovieById,
+    FetchMoviesByMonth
 }

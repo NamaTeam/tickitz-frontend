@@ -4,17 +4,32 @@ import { Link } from "react-router-dom";
 import { Footer, Navbar } from '../../components/Partials'
 import './style/style.css'
 import { useDispatch, useSelector } from "react-redux"
-import { FetchMovieNow } from "../../Redux/Actions/movie"
+import { FetchMovieNow, FetchMoviesByMonth } from "../../Redux/Actions/movie"
 
 const Dashboard = () => {
     const dispatch = useDispatch();
+    const [month, SetMonth] = useState(0)
     const { data: moviesNow } = useSelector((state) => state.FetchMovieNow)
+    const { data: moviesMonth } = useSelector((state)=> state.FetchMoviesByMonth)
     useEffect(() => {
         let dateTimezone = moment.tz("Asia/Jakarta")
         let dateNow = dateTimezone.format('YYYY-MM-DD')
-        console.log('tanggal sekarang',dateNow)
+        
         dispatch(FetchMovieNow(dateNow))
-    }, [dispatch])
+    }, [])
+
+    useEffect(()=>{
+        let monthformat = 0;
+        if(month == 0){
+            let dateTimezone = moment.tz("Asia/Jakarta")
+            monthformat = dateTimezone.format('MM')
+        }else if(month > 0 && month < 10){
+            monthformat = '0'+month
+        }else{
+            monthformat = month
+        }
+        dispatch(FetchMoviesByMonth(monthformat))
+    },[month])
     return (
         <>
         <Navbar/>
@@ -83,91 +98,37 @@ const Dashboard = () => {
             </main>
             <section className='banner'>
                 <div class="d-flex justify-content-start horizontal-list py-5 px-3">
-                    <button className='mx-3 btn btn-month btn-purple'>January</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>Februariy</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>March</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>April</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>May</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>June</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>July</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>August</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>September</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>October</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>November</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary'>December</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(1)}>January</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(2)}>Februariy</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(3)}>March</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(4)}>April</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(5)}>May</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(6)}>June</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(7)}>July</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(8)}>August</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(9)}>September</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(10)}>October</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(111)}>November</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(12)}>December</button>
                 </div>
                 <div class="d-flex justify-content-start horizontal-list py-5 px-3 mb-5">
                     <div class="d-flex flex-row mb-3">
-                        <div className='photo-layout ms-3'>
-                            <div class="card bg-white p-3">
-                                <img src={process.env.PUBLIC_URL + '/movie2.png'} className='m-auto'/>
-                                <div className='d-flex flex-column justify-content-center mt-1'>
-                                    <p className='fw-bold'>Black Widow</p>
-                                    <small className='text-muted'>Action, Adventure, Sci-Fi</small>
-                                    <button className='btn btn-outline-primary my-2'>Details</button>
-                                </div> 
-                            </div>   
-                        </div>
-                        <div className='photo-layout ms-3'>
-                            <div class="card bg-white p-3">
-                                <img src={process.env.PUBLIC_URL + '/movie2.png'} className='m-auto'/>
-                                <div className='d-flex flex-column justify-content-center mt-1'>
-                                    <p className='fw-bold'>Black Widow</p>
-                                    <small className='text-muted'>Action, Adventure, Sci-Fi</small>
-                                    <button className='btn btn-outline-primary my-2'>Details</button>
-                                </div> 
-                            </div>   
-                        </div>
-                        <div className='photo-layout ms-3'>
-                            <div class="card bg-white p-3">
-                                <img src={process.env.PUBLIC_URL + '/movie2.png'} className='m-auto'/>
-                                <div className='d-flex flex-column justify-content-center mt-1'>
-                                    <p className='fw-bold'>Black Widow</p>
-                                    <small className='text-muted'>Action, Adventure, Sci-Fi</small>
-                                    <button className='btn btn-outline-primary my-2'>Details</button>
-                                </div> 
-                            </div>   
-                        </div>
-                        <div className='photo-layout ms-3'>
-                            <div class="card bg-white p-3">
-                                <img src={process.env.PUBLIC_URL + '/movie2.png'} className='m-auto'/>
-                                <div className='d-flex flex-column justify-content-center mt-1'>
-                                    <p className='fw-bold'>Black Widow</p>
-                                    <small className='text-muted'>Action, Adventure, Sci-Fi</small>
-                                    <button className='btn btn-outline-primary my-2'>Details</button>
-                                </div> 
-                            </div>   
-                        </div>
-                        <div className='photo-layout ms-3'>
-                            <div class="card bg-white p-3">
-                                <img src={process.env.PUBLIC_URL + '/movie2.png'} className='m-auto'/>
-                                <div className='d-flex flex-column justify-content-center mt-1'>
-                                    <p className='fw-bold'>Black Widow</p>
-                                    <small className='text-muted'>Action, Adventure, Sci-Fi</small>
-                                    <button className='btn btn-outline-primary my-2'>Details</button>
-                                </div> 
-                            </div>   
-                        </div>
-                        <div className='photo-layout ms-3'>
-                            <div class="card bg-white p-3">
-                                <img src={process.env.PUBLIC_URL + '/movie2.png'} className='m-auto'/>
-                                <div className='d-flex flex-column justify-content-center mt-1'>
-                                    <p className='fw-bold'>Black Widow</p>
-                                    <small className='text-muted'>Action, Adventure, Sci-Fi</small>
-                                    <button className='btn btn-outline-primary my-2'>Details</button>
-                                </div> 
-                            </div>   
-                        </div>
-                        <div className='photo-layout ms-3'>
-                            <div class="card bg-white p-3">
-                                <img src={process.env.PUBLIC_URL + '/movie2.png'} className='m-auto'/>
-                                <div className='d-flex flex-column justify-content-center mt-1'>
-                                    <p className='fw-bold'>Black Widow</p>
-                                    <small className='text-muted'>Action, Adventure, Sci-Fi</small>
-                                    <button className='btn btn-outline-primary my-2'>Details</button>
-                                </div> 
-                            </div>   
-                        </div>
+                        {moviesMonth&&
+                            moviesMonth.map((item)=>{
+                                return(
+                                <div className='photo-layout ms-3'>
+                                    <div class="card bg-white p-3">
+                                        <img src={process.env.REACT_APP_API_IMG_URL + `${item.poster}`} className='m-auto'/>
+                                        <div className='d-flex flex-column justify-content-center mt-1'>
+                                            <p className='fw-bold'>{item.title}</p>
+                                            <small className='text-muted'>{item.category}</small>
+                                            <button className='btn btn-outline-primary my-2'>Details</button>
+                                        </div> 
+                                    </div>   
+                                </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </section>

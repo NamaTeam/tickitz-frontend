@@ -74,3 +74,21 @@ export const FetchMovieById = (id) => {
         })
     }
 }
+
+const FetchMoviesByMonthRequest = () => {return {type : 'FETCH_MOVIE_BY_MONTH_REQUEST'}}
+const FetchMoviesByMonthSuccess = (data) => {return {type : 'FETCH_MOVIE_BY_MONTH_SUCCESS', payload: data}}
+const FetchMoviesByMonthFailed = (err) => {return {type : 'FETCH_MOVIE_BY_MONTH_FAILED', payload: err}}
+
+export const FetchMoviesByMonth = (month) => {
+    return (dispatch) =>{
+        dispatch(FetchMoviesByMonthRequest())
+        return axios({
+            url:`${process.env.REACT_APP_API_URL}/movies/month?month=${month}`,
+            method : 'GET'
+        }).then((res)=>{
+            dispatch(FetchMoviesByMonthSuccess(res.data.data))
+        }).catch((err)=>{
+            dispatch(FetchMoviesByMonthFailed(err))
+        })
+    }
+}
