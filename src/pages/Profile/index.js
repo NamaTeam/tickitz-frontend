@@ -2,23 +2,31 @@ import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux"
 import { FetchUser, UpdateUser } from "../../Redux/Actions/user"
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import './styles/style2.css'
 import { Footer, Navbar } from '../../components';
+import { orderHis } from '../../Redux/Actions/order'
 import { useForm } from 'react-hook-form';
+import  moment  from 'moment'
 
 
 export const Profile = () => {
+  const history = useHistory()
   const dispatch = useDispatch()
   const formData = new FormData()
   const [activeTabs, setActiveTabs] = useState(1);
   const [photo, SetPhoto] = useState([])
   const { data: userData } = useSelector((state) => state.UserLogin)
   const { data: user } = useSelector((state) => state.FetchUser)
+  const { data: order } = useSelector((state)=>state.GetOrderHis)
   const { error } = useSelector((state) => state.UpdateUser)
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
+  const formatdate = (date)=>{
+    let dateNow = moment(date,'YYYYMMDD').format('dddd, Do MMMM YYYY')
+    return dateNow
+  }
   useEffect(() => {
     dispatch(FetchUser(userData.data))
   }, [dispatch, userData, photo])
@@ -30,7 +38,9 @@ export const Profile = () => {
     console.log(formData)
     
   }, [photo])
-
+  useEffect(()=>{
+    dispatch(orderHis(userData.data.id));
+  },[])
   const onSubmit = (data) => {
     if (data.password !== '') {
       if (data.password !== data.confirm) {
@@ -139,29 +149,32 @@ export const Profile = () => {
             </div>
 
             <div className={`${activeTabs === 2 ? 'd-block' : 'd-none'}`} >
+            {order.map((item)=>{
+                      return(
               <div className='mt-3 py-3 card card-rounded order-history'>
                 <div className='d-flex justify-content-between px-5 order-head'>
                   <div className=''>
-                    <small>Tuesday, 07 July 2020 - 04:30pm</small>
-                    <h5 className='mt-2'>Spider-Man: Homecoming</h5>
+                    <small>{formatdate(`${item.order_date}`)}</small>
+                    <h5 className='mt-2'>{item.movie_title}</h5>
                   </div>
-                  <img className='logo-cinema' src={process.env.PUBLIC_URL + '/svg/cineone.svg'} alt='cinema' />
+                  <img className='logo-cinema' src={`${process.env.REACT_APP_API_IMG_URL}${item.logo}`} alt='cinema' />
                 </div>
                 <hr className='mx-5 mt-4' />
 
-                <div id="collapseOne" className="mx-5 accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div id={`collapseOne${item.id}`} className="mx-5 accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                   <div className="accordion-body">
-                    <img src={process.env.PUBLIC_URL + '/svg/logo.svg'} alt="logo tickitz" />
+                     
+                      <img src={process.env.PUBLIC_URL + '/svg/logo.svg'} alt="logo tickitz" />
                       <div className='row'>
                         <div className='col-12 cols-sm-12 col-md-6'>
                           <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                               <h5 className='fw-bold'>Title : </h5>
-                              <small>Spider-Man: Homecoming</small>
+                              <small>{item.movie_title}</small>
                             </li>
                             <li class="list-group-item">
                               <h5 className='fw-bold'>Date : </h5>
-                              <small>Tuesday, 07 July 2020 - 04:30pm</small>
+                              <small>{moment(`${item.start_date}`,'YYYYMMDD').format('dddd, Do MMMM YYYY - hh:mma')}</small>
                             </li>
                           </ul>
                         </div>
@@ -169,11 +182,11 @@ export const Profile = () => {
                           <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                               <h5 className='fw-bold'>Seat : </h5>
-                              <small>3 Pieces</small>
+                              <small>{item.seat.length} Pieces</small>
                             </li>
                             <li class="list-group-item">
                               <h5 className='fw-bold'>Number Seat : </h5>
-                              <small>A1, A2, A3</small>
+                              <small>{`${item.seat}`}</small>
                             </li>
                           </ul>
                         </div>
@@ -182,25 +195,36 @@ export const Profile = () => {
                           <li class='list-group-item'>
                           <div className="d-flex justify-content-between">
                             <h5 className='fw-bold'>Total :</h5>
-                            <h5>10.000</h5>
+                            <h5>Rp. {item.total_payment}</h5>
                           </div>
                           </li>
                         </ul>
                         </div>
                       </div>
+
+                   
                   </div>  
                 </div>
 
                 <div className='mx-5 my-3 d-flex justify-content-between align-items-center'>
-                  <div className='py-2 px-2 px-md-5 text-center status-chekout'>
-                    Chekout
+                  {(item.status === 'checkout') ?(
+                  <div className='py-2 px-2 px-md-5 text-center status-checkout' onClick={()=>history.push(`/payment/${item.id.split('-')[1]}`)}>
+                    Checkout
                   </div>
-                  <p className='text-muted d-flex accor-toggle' data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  ):(
+                    <div className='py-2 px-2 px-md-5 text-center status-active' onClick={()=>history.push(`/ticket-result/${item.id.split('-')[1]}`)}>
+                    Active
+                  </div>
+                  )
+                  }
+                  <p className='text-muted d-flex accor-toggle' data-bs-toggle="collapse" data-bs-target={`#collapseOne${item.id}`} aria-expanded="true" aria-controls={`collapseOne${item.id}`}>
                     Show Details
                     <img className='d-none d-sm-block mx-3' src={process.env.PUBLIC_URL + '/svg/arrow-down.svg'} alt='arrow' />
                   </p>
                 </div>
               </div>
+              )
+                    })}
             </div>
           </div>
         </div>

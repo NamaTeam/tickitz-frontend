@@ -129,7 +129,7 @@ export const orderHis = (data) => {
   return (dispatch) => {
     dispatch(orderHisReq());
     return axios({
-      method: 'PATCH',
+      method: 'GET',
       url: `${process.env.REACT_APP_API_URL}/orders/history/${data}`,
       data: data
     }).then(res => {
