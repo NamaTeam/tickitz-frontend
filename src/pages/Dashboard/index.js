@@ -1,10 +1,20 @@
-import React from 'react';
+import moment from 'moment-timezone';
+import React,{useState,useEffect} from 'react';
 import { Link } from "react-router-dom";
 import { Footer, Navbar } from '../../components/Partials'
 import './style/style.css'
+import { useDispatch, useSelector } from "react-redux"
+import { FetchMovieNow } from "../../Redux/Actions/movie"
 
 const Dashboard = () => {
-
+    const dispatch = useDispatch();
+    const { data: moviesNow } = useSelector((state) => state.FetchMovieNow)
+    useEffect(() => {
+        let dateTimezone = moment.tz("Asia/Jakarta")
+        let dateNow = dateTimezone.format('YYYY-MM-DD')
+        console.log('tanggal sekarang',dateNow)
+        dispatch(FetchMovieNow(dateNow))
+    }, [dispatch])
     return (
         <>
         <Navbar/>
@@ -38,90 +48,37 @@ const Dashboard = () => {
                     <p className="p-5 text-purple">view all</p>
                 </div>
                 <div className="d-flex justify-content-start flex-row bd-highlight mt-3 mb-5">
-                    <div className='photo-layout ms-3'>
-                        <div className="accordion" id="accordionFlushExample1">
-                            <div className="accordion-item bg-transparent">
-                                <div class="card bg-white py-3 align-items-center">
-                                    <div id='1'>
-                                        <img src={process.env.PUBLIC_URL + '/Rectangle 119.png'} className='m-auto' data-bs-toggle="collapse" data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1"/>
-                                    </div>
-                                    <div id="flush-collapse1" className="accordion-collapse collapse" aria-labelledby="1" data-bs-parent="#accordionFlushExample1">
-                                        <div className="accordion-body">
-                                            <div className='d-flex flex-column justify-content-center mt-1'>
-                                                <p className='fw-bold'>Spider-Man: Homecoming</p>
-                                                <small className='text-muted'>Action, Adventure, Sci-Fi</small>
-                                                <button className='btn btn-outline-primary my-2'>Details</button>
-                                                <button className='btn btn-purple my-2'>Book Now</button>
-                                            </div> 
+                {moviesNow&&
+                    moviesNow.map((items)=>{
+                    return(
+                        <div className='photo-layout ms-3'>
+                            <div className="accordion" id={`accordionFlushExample${items.id}`}>
+                                <div className="accordion-item bg-transparent">
+                                    <div class="card bg-white py-3 align-items-center">
+                                        <div id={`${items.id}`}>
+                                            <img src={process.env.REACT_APP_API_IMG_URL + `${items.poster}`} className='m-auto' data-bs-toggle="collapse" data-bs-target={`#flush-collapse${items.id}`} aria-expanded="false" aria-controls={`flush-collapse${items.id}`}/>
+                                        </div>
+                                        <div id={`flush-collapse${items.id}`} className="accordion-collapse collapse" aria-labelledby="1" data-bs-parent={`#accordionFlushExample${items.id}`}>
+                                            <div className="accordion-body">
+                                                <div className='d-flex flex-column justify-content-center mt-1'>
+                                                    <p className='fw-bold'>{items.title}</p>
+                                                    <small className='text-muted'>{items.category}</small>
+                                                    <Link to={`/movie-detail/${items.id}`} className='my-2 text-center'>
+                                                        <button className='btn btn-outline-primary'>Details</button>
+                                                    </Link>
+                                                    <Link to={`/movie-detail/${items.id}`}>
+                                                        <button className='btn btn-purple my-2'>Book Now</button>
+                                                    </Link>
+                                                </div> 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>   
-                    </div>
-                    <div className='photo-layout ms-3'>
-                        <div className="accordion" id="accordionFlushExample2">
-                            <div className="accordion-item bg-transparent">
-                                <div class="card bg-white py-3 align-items-center">
-                                    <div id='2'>
-                                        <img src={process.env.PUBLIC_URL + '/Rectangle 119.png'} className='m-auto' data-bs-toggle="collapse" data-bs-target="#flush-collapse2" aria-expanded="false" aria-controls="flush-collapse2"/>
-                                    </div>
-                                    <div id="flush-collapse2" className="accordion-collapse collapse" aria-labelledby="2" data-bs-parent="#accordionFlushExample2">
-                                        <div className="accordion-body">
-                                            <div className='d-flex flex-column justify-content-center mt-1'>
-                                                <p className='fw-bold'>Spider-Man: Homecoming</p>
-                                                <small className='text-muted'>Action, Adventure, Sci-Fi</small>
-                                                <button className='btn btn-outline-primary my-2'>Details</button>
-                                                <button className='btn btn-purple my-2'>Book Now</button>
-                                            </div> 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>   
-                    </div>
-                    <div className='photo-layout ms-3'>
-                        <div className="accordion" id="accordionFlushExample3">
-                            <div className="accordion-item bg-transparent">
-                                <div class="card bg-white py-3 align-items-center">
-                                    <div id='3'>
-                                        <img src={process.env.PUBLIC_URL + '/Rectangle 119.png'} className='m-auto' data-bs-toggle="collapse" data-bs-target="#flush-collapse3" aria-expanded="false" aria-controls="flush-collapse3"/>
-                                    </div>
-                                    <div id="flush-collapse3" className="accordion-collapse collapse" aria-labelledby="3" data-bs-parent="#accordionFlushExample3">
-                                        <div className="accordion-body">
-                                            <div className='d-flex flex-column justify-content-center mt-1'>
-                                                <p className='fw-bold'>Spider-Man: Homecoming</p>
-                                                <small className='text-muted'>Action, Adventure, Sci-Fi</small>
-                                                <button className='btn btn-outline-primary my-2'>Details</button>
-                                                <button className='btn btn-purple my-2'>Book Now</button>
-                                            </div> 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>   
-                    </div>
-                    <div className='photo-layout ms-3'>
-                        <div className="accordion" id="accordionFlushExample4">
-                            <div className="accordion-item bg-transparent">
-                                <div class="card bg-white py-3 align-items-center">
-                                    <div id='4'>
-                                        <img src={process.env.PUBLIC_URL + '/Rectangle 119.png'} className='m-auto' data-bs-toggle="collapse" data-bs-target="#flush-collapse4" aria-expanded="false" aria-controls="flush-collapse4"/>
-                                    </div>
-                                    <div id="flush-collapse4" className="accordion-collapse collapse" aria-labelledby="4" data-bs-parent="#accordionFlushExample4">
-                                        <div className="accordion-body">
-                                            <div className='d-flex flex-column justify-content-center mt-1'>
-                                                <p className='fw-bold'>Spider-Man: Homecoming</p>
-                                                <small className='text-muted'>Action, Adventure, Sci-Fi</small>
-                                                <button className='btn btn-outline-primary my-2'>Details</button>
-                                                <button className='btn btn-purple my-2'>Book Now</button>
-                                            </div> 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>   
-                    </div>
+                            </div>   
+                        </div>
+                    )
+                    })
+                    }
                 </div>
             </main>
             <section className='banner'>

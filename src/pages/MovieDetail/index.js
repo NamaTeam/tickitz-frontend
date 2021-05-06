@@ -25,7 +25,7 @@ export const MovieDetail = () => {
         dispatch(FetchMovieById(id))
     }, [dispatch, id, userData])
 
-    const unique = [...new Set(cinemaData.map(item => item.city))]
+    const unique = [...new Set(cinemaData?.map(item => item.city))]
     console.log(scheduleData)
 
     const location = () => {
@@ -42,7 +42,7 @@ export const MovieDetail = () => {
             <div class="container-fluid bg-grey">
                 <section className="row top-details">
                     <div className="col-md-3 col-sm-6 movie-poster">
-                        <img src={`http://localhost:5000${movieData.poster}`} alt="poster" />
+                        <img src={`${process.env.REACT_APP_API_IMG_URL}${movieData.poster}`} alt="poster" />
                     </div>
                     <div className="col-md-9 col-sm-6 description-box">
                         <h4 className="title">{movieData.title}</h4>
