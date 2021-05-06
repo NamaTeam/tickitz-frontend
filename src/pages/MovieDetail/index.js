@@ -127,8 +127,8 @@ export const MovieDetail = () => {
                     })}
                     <h4><span>view more</span></h4>
                 </section>
-                <Footer />
             </div>
+            <Footer />
         </>
     )
 }
