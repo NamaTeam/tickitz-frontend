@@ -100,7 +100,7 @@ export const MovieDetail = () => {
                             <div className="col-md-4 col-sm-12 cart">
                                 <div className="top-cart">
                                     <div className="cinema-logo">
-                                        <img src={`http://localhost:5000${item.logo}`} alt=" " />
+                                        <img src={`${process.env.REACT_APP_API_IMG_URL}${item.logo}`} alt=" " />
                                     </div>
                                     <div className="cinema-logo">
                                         <h5>{item.name}</h5>
