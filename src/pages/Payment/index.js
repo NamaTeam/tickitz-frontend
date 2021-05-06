@@ -24,6 +24,7 @@ export const Payment = () => {
 			id: orderId,
 			status: 'paid'
 		}, history))
+		history.push(`/ticket-result/${orderId}`)
 	}
 
 	// const pieces = [...new Set(order.seat.map(item => item))]
