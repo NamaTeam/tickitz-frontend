@@ -50,22 +50,33 @@ body{
     margin-right: -50px !important;
     border-radius: 50% !important;
 }
+.main{
+    margin-left: 40px !important;
+    margin-top: 30px !important;
+}
 .movie-box{
     background: #fff;
     border-radius: 10px;
     padding-left: 25px;
     padding-right: 25px;
-    margin-left: -50px;
+    margin-left: 0px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 .movie-list .movie-card {
     background: #fff;
     text-align: center;
     margin-top: 30px;
+    margin-left: 40px;
+    width: max-content;
 }
 .movie-list .movie-card img{
     width: 15vw;
-    height: 300px;
+    height: 260px;
     margin-bottom: 10px;
+    margin-right: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 .movie-list .movie-card h5{
     font-weight: 600;
@@ -78,6 +89,14 @@ body{
     background: #5F2EEA;
     margin-bottom: 20px;
     color: #fff;
+}
+.movie-list .movie-card button:hover{
+    background: #fff;
+    color: #5F2EEA;
+    border: 1px solid #5F2EEA;
+}
+.movie-list .movie-list .row{
+    display: flex;
 }
 .profile-card {
     width: 20vw !important;

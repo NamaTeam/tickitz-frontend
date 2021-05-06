@@ -4,16 +4,17 @@ import { Link } from "react-router-dom";
 import { Footer, Navbar } from '../../components/Partials'
 import './style/style.css'
 import { useDispatch, useSelector } from "react-redux"
-import { FetchMoviesByDate } from "../../Redux/Actions/movie"
+import { FetchMovieNow } from "../../Redux/Actions/movie"
+
 const Dashboard = () => {
     const dispatch = useDispatch();
-    const { data: moviesNow } = useSelector((state) => state.FetchMoviesByDate)
+    const { data: moviesNow } = useSelector((state) => state.FetchMovieNow)
     useEffect(() => {
         let dateTimezone = moment.tz("Asia/Jakarta")
         let dateNow = dateTimezone.format('YYYY-MM-DD')
-        dispatch(FetchMoviesByDate(dateNow))
+        console.log('tanggal sekarang',dateNow)
+        dispatch(FetchMovieNow(dateNow))
     }, [dispatch])
-    console.log(moviesNow)
     return (
         <>
         <Navbar/>
@@ -55,17 +56,17 @@ const Dashboard = () => {
                                 <div className="accordion-item bg-transparent">
                                     <div class="card bg-white py-3 align-items-center">
                                         <div id={`${items.id}`}>
-                                            <img src={process.env.PUBLIC_URL + '/Rectangle 119.png'} className='m-auto' data-bs-toggle="collapse" data-bs-target={`#flush-collapse${items.id}`} aria-expanded="false" aria-controls={`flush-collapse${items.id}`}/>
+                                            <img src={process.env.REACT_APP_API_IMG_URL + `${items.poster}`} className='m-auto' data-bs-toggle="collapse" data-bs-target={`#flush-collapse${items.id}`} aria-expanded="false" aria-controls={`flush-collapse${items.id}`}/>
                                         </div>
                                         <div id={`flush-collapse${items.id}`} className="accordion-collapse collapse" aria-labelledby="1" data-bs-parent={`#accordionFlushExample${items.id}`}>
                                             <div className="accordion-body">
                                                 <div className='d-flex flex-column justify-content-center mt-1'>
                                                     <p className='fw-bold'>{items.title}</p>
                                                     <small className='text-muted'>{items.category}</small>
-                                                    <Link to={`/movie-detail?id=${items.id}`} className='my-2 text-center'>
+                                                    <Link to={`/movie-detail/${items.id}`} className='my-2 text-center'>
                                                         <button className='btn btn-outline-primary'>Details</button>
                                                     </Link>
-                                                    <Link to={`/movie-detail?id=${items.id}`}>
+                                                    <Link to={`/movie-detail/${items.id}`}>
                                                         <button className='btn btn-purple my-2'>Book Now</button>
                                                     </Link>
                                                 </div> 
@@ -194,8 +195,8 @@ const Dashboard = () => {
                     </div>
                 </div>
             </section>
+            <Footer/>
         </div>
-        <Footer/>
         </>
     )
 }

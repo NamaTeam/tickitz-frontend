@@ -3,7 +3,7 @@ const initialState = {
     loading: false
 }
 
-export const FetchMovie = (state = initialState, action = {}) => {
+const FetchMovie = (state = initialState, action = {}) => {
     switch (action.type) {
         case 'FETCH_MOVIE_REQUEST':
             return {
@@ -27,53 +27,82 @@ export const FetchMovie = (state = initialState, action = {}) => {
             return state
     }
 }
-
-export const FetchMoviesByDate = (state = initialState, action = {})=>{
-    switch (action.type){
-        case 'FETCH_MOVIES_BY_DATE_REQUEST':
-            return{
+const FetchMovieNow = (state = initialState, action = {}) => {
+    switch (action.type) {
+        case 'FETCH_MOVIE_NOW_REQUEST':
+            return {
                 ...state,
-                loading: false
-            }
-        case 'FETCH_MOVIES_BY_DATE_SUCCESS':
-            return{
+                loading: true
+            }    
+        case 'FETCH_MOVIE_NOW_SUCCESS':
+            return {
                 ...state,
-                loading : false,
-                data : action.payload
-            }
-        case 'FETCH_MOVIES_BY_DATE_FAILED':
-            return{
+                loading: false,
+                data: action.payload
+            }    
+        case 'FETCH_MOVIE_NOW_ERROR':
+            return {
                 ...state,
-                loading : false,
-                error : action.payload,
-                data : []
-            }
+                loading: false,
+                error: action.payload,
+                data: []
+            }    
+        default:
+            return state
+    }
+}
+const FetchUpcomingMovie = (state = initialState, action = {}) => {
+    switch (action.type) {
+        case 'FETCH_UPCOMING_MOVIE_REQUEST':
+            return {
+                ...state,
+                loading: true
+            }    
+        case 'FETCH_UPCOMING_MOVIE_SUCCESS':
+            return {
+                ...state,
+                loading: false,
+                data: action.payload
+            }    
+        case 'FETCH_UPCOMING_MOVIE_ERROR':
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+                data: []
+            }    
+        default:
+            return state
+    }
+}
+const FetchMovieById = (state = initialState, action = {}) => {
+    switch (action.type) {
+        case 'FETCH_MOVIE_BY_ID_REQUEST':
+            return {
+                ...state,
+                loading: true
+            }    
+        case 'FETCH_MOVIE_BY_ID_SUCCESS':
+            return {
+                ...state,
+                loading: false,
+                data: action.payload
+            }    
+        case 'FETCH_MOVIE_BY_ID_ERROR':
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+                data: []
+            }    
         default:
             return state
     }
 }
 
-export const GetMovieDetail = (state = initialState, action = {})=>{
-    switch (action.type){
-        case 'GET_MOVIES_DETAIL_REQUEST':
-            return{
-                ...state,
-                loading : false
-            }
-        case 'GET_MOVIES_DETAIL_SUCCESS':
-            return{
-                ...state,
-                loading : false,
-                data : action.payload
-            }
-        case 'GET_MOVIES_DETAIL_FAILED':
-            return{
-                ...state,
-                loading : false,
-                error : action.payload,
-                data : []
-            }
-        default:
-            return state
-    }
+export{
+    FetchMovie,
+    FetchMovieNow,
+    FetchUpcomingMovie,
+    FetchMovieById
 }

@@ -18,41 +18,59 @@ export const FetchMovie = (userData) => {
     }
 }
 
-const FetchMoviesByDateRequest = () => {return{type: 'FETCH_MOVIES_BY_DATE_REQUEST'}}
-const FetchMoviesByDateSuccess = (data) => {return {type : 'FETCH_MOVIES_BY_DATE_SUCCESS', payload : data}}
-const FetchMoviesByDateFailed = (err) => {return {type : 'FETCH_MOVIES_BY_DATE_FAILED', payload : err}}
+const FetchMovieNowRequest = () => {return {type: 'FETCH_MOVIE_NOW_REQUEST'}}
+const FetchMovieNowSuccess = (data) => {return {type: 'FETCH_MOVIE_NOW_SUCCESS',payload: data}}
+const FetchMovieNowError = (err) => {return {type: 'FETCH_MOVIE_NOW_ERROR',payload: err}}
 
-export const FetchMoviesByDate = (date) => {
-    return (dispatch)=>{
-        dispatch(FetchMoviesByDateRequest())
+export const FetchMovieNow = (today) => {
+    console.log(today)
+    return (dispatch) => {
+        dispatch(FetchMovieNowRequest())
         return axios({
-            url : `${process.env.REACT_APP_API_URL}/movies/date?start=${date}`,
-            method : 'GET'
-        }).then((res) =>{
-            dispatch(FetchMoviesByDateSuccess(res.data.data))
-        }).catch((err)=>{
-            dispatch(FetchMoviesByDateFailed(err))
+            url: `${process.env.REACT_APP_API_URL}/movies/date?start=${today}`,
+            method: 'GET'
+        }).then((res) => {
+            console.log(res.data.data)
+            dispatch(FetchMovieNowSuccess(res.data.data))
+        }).catch((err) => {
+            dispatch(FetchMovieNowError(err))
         })
     }
 }
 
-const GetMoviesDetailRequest = () => {return{type: 'GET_MOVIES_DETAIL_REQUEST'}}
-const GetMoviesDetailSuccess = () => {return{type: 'GET_MOVIES_DETAIL_SUCCESS'}}
-const GetMoviesDetailFailed = () => {return{type : 'GET_MOVIES_DETAIL_FAILED'}}
+const FetchUpcomingMovieRequest = () => {return {type: 'FETCH_UPCOMING_MOVIE_REQUEST'}}
+const FetchUpcomingMovieSuccess = (data) => {return {type: 'FETCH_UPCOMING_MOVIE_SUCCESS',payload: data}}
+const FetchUpcomingMovieError = (err) => {return {type: 'FETCH_UPCOMING_MOVIE_ERROR',payload: err}}
 
-export const GetMovieDetail = (id) =>{
-    return (dispatch)=>{
-        dispatch(GetMoviesDetailRequest())
+export const FetchUpcomingMovie = () => {
+    return (dispatch) => {
+        dispatch(FetchUpcomingMovieRequest())
         return axios({
-            url : `${process.env.REACT_APP_API_URL}/movies/:id=${id}`,
-            method : 'GET'
-        }).then((res)=>{
-            dispatch(GetMoviesDetailSuccess(res.data.data))
-        }).catch((err)=>{
-            alert('ini errornya',err.message)
-            dispatch(GetMoviesDetailFailed(err))
+            url: `${process.env.REACT_APP_API_URL}/movies/upcoming`,
+            method: 'GET'
+        }).then((res) => {
+            console.log(res.data.data)
+            dispatch(FetchUpcomingMovieSuccess(res.data.data))
+        }).catch((err) => {
+            dispatch(FetchUpcomingMovieError(err))
         })
     }
 }
 
+const FetchMovieByIdRequest = () => {return {type: 'FETCH_MOVIE_BY_ID_REQUEST'}}
+const FetchMovieByIdSuccess = (data) => {return {type: 'FETCH_MOVIE_BY_ID_SUCCESS',payload: data}}
+const FetchMovieByIdError = (err) => {return {type: 'FETCH_MOVIE_BY_ID_ERROR',payload: err}}
 
+export const FetchMovieById = (id) => {
+    return (dispatch) => {
+        dispatch(FetchMovieByIdRequest())
+        return axios({
+            url: `${process.env.REACT_APP_API_URL}/movies/${id}`,
+            method: 'GET'
+        }).then((res) => {
+            dispatch(FetchMovieByIdSuccess(res.data.data))
+        }).catch((err) => {
+            dispatch(FetchMovieByIdError(err))
+        })
+    }
+}
