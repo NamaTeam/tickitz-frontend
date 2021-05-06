@@ -57,6 +57,11 @@ input[type="file"] {
   border-radius: 10px;
 }
 
+.status-chekout {
+  background-color:#db3535;
+  color: #fff;
+  border-radius: 10px;
+}
 .accor-toggle {
   cursor: pointer;
 }

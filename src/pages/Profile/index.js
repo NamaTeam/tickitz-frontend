@@ -151,13 +151,49 @@ export const Profile = () => {
 
                 <div id="collapseOne" className="mx-5 accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                   <div className="accordion-body">
-                    Accordion active
-                  </div>
+                    <img src={process.env.PUBLIC_URL + '/svg/logo.svg'} alt="logo tickitz" />
+                      <div className='row'>
+                        <div className='col-12 cols-sm-12 col-md-6'>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <h5 className='fw-bold'>Title : </h5>
+                              <small>Spider-Man: Homecoming</small>
+                            </li>
+                            <li class="list-group-item">
+                              <h5 className='fw-bold'>Date : </h5>
+                              <small>Tuesday, 07 July 2020 - 04:30pm</small>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className='col-12 col-sm-12 col-md-6'>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <h5 className='fw-bold'>Seat : </h5>
+                              <small>3 Pieces</small>
+                            </li>
+                            <li class="list-group-item">
+                              <h5 className='fw-bold'>Number Seat : </h5>
+                              <small>A1, A2, A3</small>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className='col-12 card-body'>
+                        <ul class="list-group list-group-flush">
+                          <li class='list-group-item'>
+                          <div className="d-flex justify-content-between">
+                            <h5 className='fw-bold'>Total :</h5>
+                            <h5>10.000</h5>
+                          </div>
+                          </li>
+                        </ul>
+                        </div>
+                      </div>
+                  </div>  
                 </div>
 
                 <div className='mx-5 my-3 d-flex justify-content-between align-items-center'>
-                  <div className='py-2 px-2 px-md-5 text-center status-active'>
-                    Ticket is active
+                  <div className='py-2 px-2 px-md-5 text-center status-chekout'>
+                    Chekout
                   </div>
                   <p className='text-muted d-flex accor-toggle' data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                     Show Details
