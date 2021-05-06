@@ -86,6 +86,7 @@ export const MovieDetail = () => {
                     <form>
                         <input id="the-date" type="date" />
                         <select name="location" id="location" onChange={() => location()}>
+                            <option id="city" value='default'>Choose Location</option>
                             {unique.map((item) => {
                                 return (
                                     <option id="city" value={item}>{item}</option>
