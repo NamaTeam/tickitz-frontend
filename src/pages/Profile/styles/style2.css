@@ -7,11 +7,18 @@
 .name-text {
   font-size: 20px;
 }
+
 input[type="file"] {
   display: none;
 }
+
 .tab {
   cursor: pointer;
+}
+
+.btn-edit {
+  background-color: #fff !important;
+  color: #5f2eea !important;
 }
 
 .nav-tab {
@@ -58,7 +65,7 @@ input[type="file"] {
 }
 
 .status-checkout {
-  background-color:#db3535;
+  background-color: #db3535;
   color: #fff;
   border-radius: 10px;
 }
