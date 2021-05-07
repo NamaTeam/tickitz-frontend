@@ -1,3 +1,3 @@
-import DashboardAdmin from './Dashboard'
+import { DashboardAdmin } from './Dashboard'
 
-export {DashboardAdmin}
+export { DashboardAdmin }

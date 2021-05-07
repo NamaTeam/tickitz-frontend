@@ -54,9 +54,9 @@ function AppRouter() {
       <Router>
         <Switch>
           {/* Public Route */}
-          <Route path="/" exact={true} component={() => <Dashboard />} />
+          {/* <Route path="/" exact={true} component={() => <Dashboard />} />
           <Route path="/movie" exact={true} component={() => <MovieList />} />
-          <Route path="/movie-detail/:id" exact={true} component={() => <MovieDetail />} />
+          <Route path="/movie-detail/:id" exact={true} component={() => <MovieDetail />} /> */}
           <PublicRoute path="/login" restricted={true} exact={true} component={() => <Login />} />
           <PublicRoute path="/register" restricted={true} exact={true} component={() => <Register />} />
           <PublicRoute path="/register/verify" restricted={true} exact={true} component={() => <VerifyRegister />} />
