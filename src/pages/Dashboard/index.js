@@ -17,16 +17,26 @@ const Dashboard = () => {
         
         dispatch(FetchMovieNow(dateNow))
     }, [])
-
+    const reset = ()=>{
+        for(let i=1; i<=12; i++){
+            document.getElementById(i).classList.remove('active')
+        }
+    }
     useEffect(()=>{
         let monthformat = 0;
         if(month == 0){
             let dateTimezone = moment.tz("Asia/Jakarta")
             monthformat = dateTimezone.format('MM')
+            let id = parseInt(monthformat)
+            document.getElementById(id).classList.add('active')
         }else if(month > 0 && month < 10){
+            reset()
             monthformat = '0'+month
+            document.getElementById(month).classList.add('active')
         }else{
+            reset()
             monthformat = month
+            document.getElementById(month).classList.add('active')
         }
         dispatch(FetchMoviesByMonth(monthformat))
     },[month])
@@ -60,7 +70,9 @@ const Dashboard = () => {
             <main className='row bg-grey horizontal-list'>
                 <div className="d-flex justify-content-between">
                     <p className="p-5 text-purple fw-bold">Now Showing</p>
-                    <p className="p-5 text-purple">view all</p>
+                    <Link to='/movies'>
+                        <p className="p-5 text-purple">view all</p>
+                    </Link>
                 </div>
                 <div className="d-flex justify-content-start flex-row bd-highlight mt-3 mb-5">
                 {moviesNow&&
@@ -98,18 +110,18 @@ const Dashboard = () => {
             </main>
             <section className='banner'>
                 <div class="d-flex justify-content-start horizontal-list py-5 px-3">
-                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(1)}>January</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(2)}>Februariy</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(3)}>March</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(4)}>April</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(5)}>May</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(6)}>June</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(7)}>July</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(8)}>August</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(9)}>September</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(10)}>October</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(111)}>November</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' onClick={(e)=>SetMonth(12)}>December</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' id='1' onClick={(e)=>SetMonth(1)}>January</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' id='2' onClick={(e)=>SetMonth(2)}>Februariy</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' id='3' onClick={(e)=>SetMonth(3)}>March</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' id='4' onClick={(e)=>SetMonth(4)}>April</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' id='5' onClick={(e)=>SetMonth(5)}>May</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' id='6' onClick={(e)=>SetMonth(6)}>June</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' id='7' onClick={(e)=>SetMonth(7)}>July</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' id='8' onClick={(e)=>SetMonth(8)}>August</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' id='9' onClick={(e)=>SetMonth(9)}>September</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' id='10' onClick={(e)=>SetMonth(10)}>October</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' id='11' onClick={(e)=>SetMonth(111)}>November</button>
+                    <button className='mx-3 btn btn-month btn-outline-primary' id='12' onClick={(e)=>SetMonth(12)}>December</button>
                 </div>
                 <div class="d-flex justify-content-start horizontal-list py-5 px-3 mb-5">
                     <div class="d-flex flex-row mb-3">
@@ -122,7 +134,9 @@ const Dashboard = () => {
                                         <div className='d-flex flex-column justify-content-center mt-1'>
                                             <p className='fw-bold'>{item.title}</p>
                                             <small className='text-muted'>{item.category}</small>
-                                            <button className='btn btn-outline-primary my-2'>Details</button>
+                                            <Link to={`/movie-detail/${item.id}`}>
+                                                <button className='btn btn-outline-primary my-2'>Details</button>
+                                            </Link>
                                         </div> 
                                     </div>   
                                 </div>

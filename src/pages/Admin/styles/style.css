@@ -1,0 +1,15 @@
+.select-rounded{
+    border-radius: 10px !important;
+    width: 50%;
+    border: none !important;
+    padding: 0.5em;
+}
+.date-rounded{
+    border-radius: 15px !important;
+    border-color: silver !important;
+    border-style: solid !important;
+    border-width: thin !important;
+}
+.input-sm{
+    max-width: 15em !important;
+}
