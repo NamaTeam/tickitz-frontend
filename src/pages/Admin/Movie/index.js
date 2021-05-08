@@ -10,7 +10,7 @@ const PageMoviesAdmin = () =>{
                     <div className='row'>
                         <div className='col-12 col-md-7 my-5 px-5'>
                             <h3 className='fw-bold'>Movie Description</h3>
-                            <div className='movie-box card-body row'>
+                            <div className='movie-box card-body row shadow-sm'>
                                 <div className="col-12 col-md-5 d-flex justify-content-center my-5">
                                     <div className='movie-poster mx-auto'>
                                         <img src={`${process.env.PUBLIC_URL}movie2.png`} alt="poster"/>
@@ -47,7 +47,7 @@ const PageMoviesAdmin = () =>{
                         </div>
                         <div className='col-12 col-md-5 mt-5 px-5'>
                             <h3 className='fw-bold'>Premiere Location</h3>
-                            <section className='movie-box card-body row py-3'>
+                            <section className='movie-box card-body row py-3 shadow-sm'>
                                 <form>
                                     <select name="location" id="location" className='select-rounded bg-grey'>
                                     
@@ -84,7 +84,7 @@ const PageMoviesAdmin = () =>{
                                 </form>
                             </section>
                             <h3 className='fw-bold'>Showtimes</h3>
-                            <section className='movie-box card-body row'>
+                            <section className='movie-box card-body row shadow-sm'>
                                 <form>
                                     <input type="date" className={`form-control py-2 px-4 date-rounded input-sm`} />
                                     <div className='row mt-3'>

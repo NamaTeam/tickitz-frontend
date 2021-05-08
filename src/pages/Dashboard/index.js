@@ -110,18 +110,18 @@ const Dashboard = () => {
             </main>
             <section className='banner'>
                 <div class="d-flex justify-content-start horizontal-list py-5 px-3">
-                    <button className='mx-3 btn btn-month btn-outline-primary' id='1' onClick={(e)=>SetMonth(1)}>January</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' id='2' onClick={(e)=>SetMonth(2)}>Februariy</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' id='3' onClick={(e)=>SetMonth(3)}>March</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' id='4' onClick={(e)=>SetMonth(4)}>April</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' id='5' onClick={(e)=>SetMonth(5)}>May</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' id='6' onClick={(e)=>SetMonth(6)}>June</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' id='7' onClick={(e)=>SetMonth(7)}>July</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' id='8' onClick={(e)=>SetMonth(8)}>August</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' id='9' onClick={(e)=>SetMonth(9)}>September</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' id='10' onClick={(e)=>SetMonth(10)}>October</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' id='11' onClick={(e)=>SetMonth(111)}>November</button>
-                    <button className='mx-3 btn btn-month btn-outline-primary' id='12' onClick={(e)=>SetMonth(12)}>December</button>
+                    <button className='mx-3 btn btn-month btn-outline-purple' id='1' onClick={(e)=>SetMonth(1)}>January</button>
+                    <button className='mx-3 btn btn-month btn-outline-purple' id='2' onClick={(e)=>SetMonth(2)}>February</button>
+                    <button className='mx-3 btn btn-month btn-outline-purple' id='3' onClick={(e)=>SetMonth(3)}>March</button>
+                    <button className='mx-3 btn btn-month btn-outline-purple' id='4' onClick={(e)=>SetMonth(4)}>April</button>
+                    <button className='mx-3 btn btn-month btn-outline-purple' id='5' onClick={(e)=>SetMonth(5)}>May</button>
+                    <button className='mx-3 btn btn-month btn-outline-purple' id='6' onClick={(e)=>SetMonth(6)}>June</button>
+                    <button className='mx-3 btn btn-month btn-outline-purple' id='7' onClick={(e)=>SetMonth(7)}>July</button>
+                    <button className='mx-3 btn btn-month btn-outline-purple' id='8' onClick={(e)=>SetMonth(8)}>August</button>
+                    <button className='mx-3 btn btn-month btn-outline-purple' id='9' onClick={(e)=>SetMonth(9)}>September</button>
+                    <button className='mx-3 btn btn-month btn-outline-purple' id='10' onClick={(e)=>SetMonth(10)}>October</button>
+                    <button className='mx-3 btn btn-month btn-outline-purple' id='11' onClick={(e)=>SetMonth(111)}>November</button>
+                    <button className='mx-3 btn btn-month btn-outline-purple' id='12' onClick={(e)=>SetMonth(12)}>December</button>
                 </div>
                 <div class="d-flex justify-content-start horizontal-list py-5 px-3 mb-5">
                     <div class="d-flex flex-row mb-3">

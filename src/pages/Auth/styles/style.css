@@ -23,7 +23,7 @@
   background-color: var(--purple) !important;
 }
 .content {
-    background-color: rgb(255,255,255) !important; /* Fallback color */
+    background-color: rgb(230, 66, 208) !important; /* Fallback color */
     background-color: rgba(43, 21, 107, 0.8) !important;/* Black w/opacity/see-through */
     margin: 0 !important;
     padding: 0 !important;
@@ -86,9 +86,13 @@
   color: var(--purple) !important;
   border-color: var(--purple) !important;
 }
+.btn-outline-purple.active{
+  background-color: var(--purple) !important;
+  color: #fff !important;
+}
 .btn-outline-purple:hover {
   color: #fff !important;
-  background-color: seashell !important;
+  background-color:#973fc0 !important;
   border-color: var(--purple) !important;
 }
 .btn-check:focus + .btn-outline-purple, .btn-outline-purple:focus {
