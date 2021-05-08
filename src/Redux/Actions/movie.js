@@ -30,7 +30,6 @@ export const FetchMovieNow = (today) => {
             url: `${process.env.REACT_APP_API_URL}/movies/date?start=${today}`,
             method: 'GET'
         }).then((res) => {
-            console.log(res.data.data)
             dispatch(FetchMovieNowSuccess(res.data.data))
         }).catch((err) => {
             dispatch(FetchMovieNowError(err))
@@ -49,7 +48,6 @@ export const FetchUpcomingMovie = () => {
             url: `${process.env.REACT_APP_API_URL}/movies/upcoming`,
             method: 'GET'
         }).then((res) => {
-            console.log(res.data.data)
             dispatch(FetchUpcomingMovieSuccess(res.data.data))
         }).catch((err) => {
             dispatch(FetchUpcomingMovieError(err))
@@ -89,6 +87,25 @@ export const FetchMoviesByMonth = (month) => {
             dispatch(FetchMoviesByMonthSuccess(res.data.data))
         }).catch((err)=>{
             dispatch(FetchMoviesByMonthFailed(err))
+        })
+    }
+}
+
+const FetchMovieResultRequest = () => {return {type: 'FETCH_MOVIE_RESULT_REQUEST'}}
+const FetchMovieResultSuccess = (data) => {return {type: 'FETCH_MOVIE_RESULT_SUCCESS',payload: data}}
+const FetchMovieResultError = (err) => {return {type: 'FETCH_MOVIE_RESULT_ERROR',payload: err}}
+
+export const FetchMovieResult = (value) => {
+    console.log(value)
+    return (dispatch) => {
+        dispatch(FetchMovieResultRequest())
+        return axios({
+            url: `${process.env.REACT_APP_API_URL}/movies/search?title=${value}`,
+            method: 'GET'
+        }).then((res) => {
+            dispatch(FetchMovieResultSuccess(res.data.data))
+        }).catch((err) => {
+            dispatch(FetchMovieResultError(err?.response?.data?.message ?? null))
         })
     }
 }

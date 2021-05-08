@@ -70,7 +70,7 @@ const Dashboard = () => {
             <main className='row bg-grey horizontal-list'>
                 <div className="d-flex justify-content-between">
                     <p className="p-5 text-purple fw-bold">Now Showing</p>
-                    <Link to='/movies'>
+                    <Link to='/movie'>
                         <p className="p-5 text-purple">view all</p>
                     </Link>
                 </div>

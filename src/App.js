@@ -30,6 +30,7 @@ function AppRouter() {
         <Switch>
           {/* Public Route */}
           <Route path="/movie" exact={true} component={() => <MovieList />} />
+          <Route path="/movie/search" exact={true} component={() => <MovieList />} />
           <Route path="/" exact={true} component={() => <Dashboard />} />
           <Route path="/movie-detail/:id" exact={true} component={() => <MovieDetail />} />
           <PublicRoute path="/login" restricted={true} exact={true} component={() => <Login />} />
@@ -79,6 +80,7 @@ function AppRouter() {
           {/* Public Route */}
           <Route path="/" exact={true} component={() => <Dashboard />} />
           <Route path="/movie" exact={true} component={() => <MovieList />} />
+          <Route path="/movie/search" exact={true} component={() => <MovieList />} />
           <Route path="/movie-detail/:id" exact={true} component={() => <MovieDetail />} />
           <PublicRoute path="/login" restricted={true} exact={true} component={() => <Login />} />
           <PublicRoute path="/register" restricted={true} exact={true} component={() => <Register />} />

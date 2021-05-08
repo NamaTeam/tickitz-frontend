@@ -26,9 +26,6 @@ export const MovieDetail = () => {
         dispatch(FetchMovieById(id))
     }, [dispatch, id, userData])
 
-    const unique = [...new Set(cinemaData?.map(item => item.city))]
-    console.log(scheduleData)
-
     const location = () => {
         let city = document.getElementById("location").value
         let myData = {
@@ -36,6 +33,9 @@ export const MovieDetail = () => {
         }
         dispatch(FetchCinemaByLocation(myData, id))
     }
+
+    const unique = [...new Set(cinemaData?.map(item => item.city))]
+    console.log(scheduleData)
 
     return (
         <>
