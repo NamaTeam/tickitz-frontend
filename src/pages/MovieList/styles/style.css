@@ -63,6 +63,10 @@ body{
     margin-top: 30px;
     margin-bottom: 30px;
 }
+.movie-box .box-column{
+    display: flex;
+    flex-wrap: wrap;
+}
 .movie-list .movie-card {
     background: #fff;
     text-align: center;
@@ -95,8 +99,13 @@ body{
     color: #5F2EEA;
     border: 1px solid #5F2EEA;
 }
-.movie-list .movie-list .row{
+.movie-list .row{
     display: flex;
+}
+.movie-list .row .search-error{
+    margin: 30px 0px 30px 40px;
+    font-style: italic;
+    font-weight: 600;
 }
 .profile-card {
     width: 20vw !important;
@@ -300,7 +309,8 @@ footer .copyright{
         margin-bottom: 30px !important;
     }
     .movie-list .movie-card img{
-        width: 200px ;
+        width: 25vw ;
+        height: 140px;
     }
     .movie-box .box-top{
         display: flex;
@@ -343,41 +353,24 @@ footer .copyright{
     }
 }
 @media only screen and (max-width: 425px) {
-    .navbar-top{
-        width: 100vw !important;
-    }
-    .navbar-top-left .brand img{
-        width: 86px !important;
-        height: 30px !important;
-        margin-left: -50px !important;
-    }
-    .movies{
-        margin-bottom: -1000px;
-    }
-    .movie-box .box-top button{
+    .movie-box .box-top .tab{
         margin-left: -20px;
     }
-    .main .profile-card{
-        margin-left: -30px !important;
-        width: 85vw !important;
-        margin-bottom: 30px !important;
+    .movie-box{
+        width: 84vw;
     }
-    .profile-box .box-top{
-        display: none !important;
+    .movie-box .box-column{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: -30px;
     }
-    .profile-box{
-        margin-left: -40px !important;
-        margin-right: -60px !important;
-        width: 85vw !important;
-        height: 170vh !important;
+    .movie-box .box-column .movie-img{
+        padding-left: 30px;
+        margin-left: -10px;
     }
-    .navbar-top-right{
-        display: none !important;
-    }
-    footer{
-        width: 100vw !important;
-    }
-    footer .first-div p{
-        font-size: 15px !important;
+    .bottom-sm{
+        margin-top: 160vh;
     }
 }

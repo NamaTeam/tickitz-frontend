@@ -30,6 +30,7 @@ function AppRouter() {
         <Switch>
           {/* Public Route */}
           <Route path="/movie" exact={true} component={() => <MovieList />} />
+          <Route path="/movie/search" exact={true} component={() => <MovieList />} />
           <Route path="/" exact={true} component={() => <Dashboard />} />
           <Route path="/movie-detail/:id" exact={true} component={() => <MovieDetail />} />
           <PublicRoute path="/login" restricted={true} exact={true} component={() => <Login />} />
@@ -54,8 +55,9 @@ function AppRouter() {
       <Router>
         <Switch>
           {/* Public Route */}
-          <Route path="/" exact={true} component={() => <Dashboard />} />
-          <Route path="/movie-detail/:id" exact={true} component={() => <MovieDetail />} />
+          {/* <Route path="/" exact={true} component={() => <Dashboard />} />
+          <Route path="/movie" exact={true} component={() => <MovieList />} />
+          <Route path="/movie-detail/:id" exact={true} component={() => <MovieDetail />} /> */}
           <PublicRoute path="/login" restricted={true} exact={true} component={() => <Login />} />
           <PublicRoute path="/register" restricted={true} exact={true} component={() => <Register />} />
           <PublicRoute path="/register/verify" restricted={true} exact={true} component={() => <VerifyRegister />} />
@@ -65,7 +67,7 @@ function AppRouter() {
 
           {/* Private Route User */}
           <PrivateRoute path="/profile" exact={true} component={() => <Profile />} />
-          <PrivateRoute path="/movies" exact={true} component={() => <PageMoviesAdmin/>} />
+          <PrivateRoute path="/movies" exact={true} component={() => <PageMoviesAdmin />} />
           <PrivateRoute path="/admin" exact={true} component={() => <DashboardAdmin />} />
           <Route path="*" component={NotFound} />
         </Switch>
@@ -78,6 +80,7 @@ function AppRouter() {
           {/* Public Route */}
           <Route path="/" exact={true} component={() => <Dashboard />} />
           <Route path="/movie" exact={true} component={() => <MovieList />} />
+          <Route path="/movie/search" exact={true} component={() => <MovieList />} />
           <Route path="/movie-detail/:id" exact={true} component={() => <MovieDetail />} />
           <PublicRoute path="/login" restricted={true} exact={true} component={() => <Login />} />
           <PublicRoute path="/register" restricted={true} exact={true} component={() => <Register />} />
