@@ -78,8 +78,34 @@ const AllCinema = (state = initialState, action = {}) => {
     }
 }
 
+const AddCinema = (state = initialState, action = {})=>{
+    switch(action.type){
+        case 'ADD_CINEMA_REQUEST':
+            return{
+                ...state,
+                loading:true
+            }
+        case 'ADD_CINEMA_SUCCESS':
+            return{
+                ...state,
+                loading:false,
+                error : null,
+                data : action.payload
+            }
+        case 'ADD_CINEMA_FAILED':
+            return{
+                ...state,
+                loading : false,
+                error : action.payload,
+                data : []
+            }
+        default:
+            return state
+    }
+}
 export {
     FetchCinema,
     FetchCinemaByLocation,
-    AllCinema
+    AllCinema,
+    AddCinema
 }

@@ -53,3 +53,22 @@ export const AllCinema = (data) => {
         })
     }
 }
+
+const AddCinemaRequest = () => {return {type : 'ADD_CINEMA_REQUEST'}}
+const AddCinemaSuccess = (data) => {return {type: 'ADD_CINEMA_SUCCESS', payload : data}}
+const AddCinemaFailed = (err) => {return {type: 'ADD_CINEMA_FAILED', payload : err}}
+
+export const AddCinema = (formData) => {
+    return (dispatch)=>{
+        dispatch(AddCinemaRequest)
+        return axios({
+            url : `${process.env.REACT_APP_API_URL}/cinemas`,
+            method : 'POST',
+            data : formData
+        }).then((res)=>{
+            dispatch(AddCinemaSuccess(res))
+        }).catch((err)=>{
+            dispatch(AddCinemaFailed(err))
+        })
+    }
+}
