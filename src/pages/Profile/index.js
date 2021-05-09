@@ -5,7 +5,7 @@ import { FetchUser, UpdateUser } from "../../Redux/Actions/user"
 import { Link, useHistory } from "react-router-dom";
 import './styles/style2.css'
 import { Footer, Navbar } from '../../components';
-import { orderHis } from '../../Redux/Actions/order'
+import { orderHis, orderHisLimit } from '../../Redux/Actions/order'
 import { useForm } from 'react-hook-form';
 import moment from 'moment'
 
@@ -15,11 +15,13 @@ export const Profile = () => {
   const dispatch = useDispatch()
   const formData = new FormData()
   const [activeTabs, setActiveTabs] = useState(1);
+  const [activeTabs1, setActiveTabs1] = useState(0);
   const [photo, SetPhoto] = useState([])
   const [readOnly, setReadOnly] = useState(true)
   const { data: userData } = useSelector((state) => state.UserLogin)
   const { data: user } = useSelector((state) => state.FetchUser)
   const { data: order } = useSelector((state) => state.GetOrderHis)
+  const { data: orderLimit } = useSelector((state) => state.GetOrderHisLimit)
   const { error } = useSelector((state) => state.UpdateUser)
 
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -40,9 +42,24 @@ export const Profile = () => {
 
   }, [photo])
 
+  const [formPagination, setFormPagination] = useState({
+    limit: 3,
+    page: 1
+  })
+  let totalPage = Math.ceil(order?.length / formPagination.limit)
+  let pages = [];
+  if (totalPage > 0) {
+    for (let x = 0; x < totalPage; x++) {
+      let total = x + 1
+      pages.push(total)
+    }
+  }
+
   useEffect(() => {
     dispatch(orderHis(userData.data.id));
+    dispatch(orderHisLimit(userData.data.id, formPagination.limit, formPagination.page));
   }, [])
+
 
   const onSubmit = (data) => {
     if (data.password !== '') {
@@ -57,6 +74,13 @@ export const Profile = () => {
       dispatch(FetchUser(userData.data))
     }
     setReadOnly(true)
+  }
+
+  const onClick = (e, index) => {
+    let pageNow = index + 1;
+    console.log(formPagination.limit)
+    console.log(pageNow, 'page sekarang')
+    dispatch(orderHisLimit(userData.data.id, formPagination.limit, pageNow));
   }
 
   return (
@@ -152,77 +176,95 @@ export const Profile = () => {
             </div>
 
             <div className={`${activeTabs === 2 ? 'd-block' : 'd-none'}`} >
-              {order.map((item) => {
-                return (
-                  <div className='mt-3 py-3 card card-rounded order-history'>
-                    <div className='d-flex justify-content-between px-5 order-head'>
-                      <div className=''>
-                        <small>{formatdate(`${item.order_date}`)}</small>
-                        <h5 className='mt-2'>{item.movie_title}</h5>
-                      </div>
-                      <img className='logo-cinema' src={`${process.env.REACT_APP_API_IMG_URL}${item.logo}`} alt='cinema' />
-                    </div>
-                    <hr className='mx-5 mt-4' />
-                    <div id={`collapseOne${item.id}`} className="mx-5 accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                      <div className="accordion-body">
-                        <img src={process.env.PUBLIC_URL + '/svg/logo.svg'} alt="logo tickitz" />
-                        <div className='row'>
-                          <div className='col-12 cols-sm-12 col-md-6'>
-                            <ul class="list-group list-group-flush">
-                              <li class="list-group-item">
-                                <h5 className='fw-bold'>Title : </h5>
-                                <small>{item.movie_title}</small>
-                              </li>
-                              <li class="list-group-item">
-                                <h5 className='fw-bold'>Date : </h5>
-                                <small>{moment(`${item.start_date}`, 'YYYYMMDD').format('dddd, Do MMMM YYYY - hh:mma')}</small>
-                              </li>
-                            </ul>
+              {order?.length > 0 ?
+                <div>
+                  {orderLimit.map((item) => {
+                    return (
+                      <div className='mt-3 py-3 card card-rounded order-history'>
+                        <div className='d-flex justify-content-between px-5 order-head'>
+                          <div className=''>
+                            <small>{formatdate(`${item.order_date}`)}</small>
+                            <h5 className='mt-2'>{item.movie_title}</h5>
                           </div>
-                          <div className='col-12 col-sm-12 col-md-6'>
-                            <ul class="list-group list-group-flush">
-                              <li class="list-group-item">
-                                <h5 className='fw-bold'>Seat : </h5>
-                                <small>{item.seat.length} Pieces</small>
-                              </li>
-                              <li class="list-group-item">
-                                <h5 className='fw-bold'>Number Seat : </h5>
-                                <small>{`${item.seat}`}</small>
-                              </li>
-                            </ul>
+                          <img className='logo-cinema' src={`${process.env.REACT_APP_API_IMG_URL}${item.logo}`} alt='cinema' />
+                        </div>
+                        <hr className='mx-5 mt-4' />
+                        <div id={`collapseOne${item.id}`} className="mx-5 accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                          <div className="accordion-body">
+                            <img src={process.env.PUBLIC_URL + '/svg/logo.svg'} alt="logo tickitz" />
+                            <div className='row'>
+                              <div className='col-12 cols-sm-12 col-md-6'>
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item">
+                                    <h5 className='fw-bold'>Title : </h5>
+                                    <small>{item.movie_title}</small>
+                                  </li>
+                                  <li class="list-group-item">
+                                    <h5 className='fw-bold'>Date : </h5>
+                                    <small>{moment(`${item.start_date}`, 'YYYYMMDD').format('dddd, Do MMMM YYYY - hh:mma')}</small>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div className='col-12 col-sm-12 col-md-6'>
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item">
+                                    <h5 className='fw-bold'>Seat : </h5>
+                                    <small>{item.seat.length} Pieces</small>
+                                  </li>
+                                  <li class="list-group-item">
+                                    <h5 className='fw-bold'>Number Seat : </h5>
+                                    <small>{`${item.seat}`}</small>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div className='col-12 card-body'>
+                                <ul class="list-group list-group-flush">
+                                  <li class='list-group-item'>
+                                    <div className="d-flex justify-content-between">
+                                      <h5 className='fw-bold'>Total :</h5>
+                                      <h5>Rp. {item.total_payment}</h5>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
                           </div>
-                          <div className='col-12 card-body'>
-                            <ul class="list-group list-group-flush">
-                              <li class='list-group-item'>
-                                <div className="d-flex justify-content-between">
-                                  <h5 className='fw-bold'>Total :</h5>
-                                  <h5>Rp. {item.total_payment}</h5>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
+                        </div>
+                        <div className='mx-5 my-3 d-flex justify-content-between align-items-center'>
+                          {(item.status === 'checkout') ? (
+                            <div className='py-2 px-2 px-md-5 text-center status-checkout' onClick={() => history.push(`/payment/${item.id.split('-')[1]}`)}>
+                              Checkout
+                            </div>
+                          ) : (
+                            <div className='py-2 px-2 px-md-5 text-center status-active' onClick={() => history.push(`/ticket-result/${item.id.split('-')[1]}`)}>
+                              Active
+                            </div>
+                          )
+                          }
+                          <p className='text-muted d-flex accor-toggle' data-bs-toggle="collapse" data-bs-target={`#collapseOne${item.id}`} aria-expanded="true" aria-controls={`collapseOne${item.id}`}>
+                            Show Details
+                            <img className='d-none d-sm-block mx-3' src={process.env.PUBLIC_URL + '/svg/arrow-down.svg'} alt='arrow' />
+                          </p>
                         </div>
                       </div>
-                    </div>
-                    <div className='mx-5 my-3 d-flex justify-content-between align-items-center'>
-                      {(item.status === 'checkout') ? (
-                        <div className='py-2 px-2 px-md-5 text-center status-checkout' onClick={() => history.push(`/payment/${item.id.split('-')[1]}`)}>
-                          Checkout
-                        </div>
-                      ) : (
-                        <div className='py-2 px-2 px-md-5 text-center status-active' onClick={() => history.push(`/ticket-result/${item.id.split('-')[1]}`)}>
-                          Active
-                        </div>
-                      )
-                      }
-                      <p className='text-muted d-flex accor-toggle' data-bs-toggle="collapse" data-bs-target={`#collapseOne${item.id}`} aria-expanded="true" aria-controls={`collapseOne${item.id}`}>
-                        Show Details
-                    <img className='d-none d-sm-block mx-3' src={process.env.PUBLIC_URL + '/svg/arrow-down.svg'} alt='arrow' />
-                      </p>
-                    </div>
+                    )
+                  })}
+                  <div className="select-page">
+                    <ul className="pagination page-box justify-content-end">
+                      {pages.map((item, index) => {
+                        return (
+                          <li className="page-item list-item">
+                            <Link to='#' className="page" onClick={(e) => onClick(e, index)}>{item}</Link>
+                          </li>
+                        )
+                      })}
+                    </ul>
                   </div>
-                )
-              })}
+                </div>
+                : <div className="no-data">
+                    <h6 className="empty">No Data</h6>
+                  </div>
+              }
             </div>
           </div>
         </div>
