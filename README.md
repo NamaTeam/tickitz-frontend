@@ -61,3 +61,6 @@ To get the React app running locally:
 
 ![dashboard](https://i.ibb.co/8DKGBP3/dashboard-3.png)  ![dashboard-sm](https://i.ibb.co/PgXqMkK/dasboard-mobile-3.png) 
 
+![movie-page](https://i.ibb.co/WcZnLyf/movie-page-2.png)  ![movie-page-sm](https://i.ibb.co/z5LpR6x/movie-page-sm-3.png) 
+
+
