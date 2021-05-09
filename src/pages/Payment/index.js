@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles/style.css'
 import { Footer, Navbar } from '../../components';
 import { Link, useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getOrderById, updateOrder } from '../../Redux/Actions/order';
+// import { gopayCharge } from '../../Redux/Actions/payment';
 import moment from 'moment';
 
 export const Payment = () => {
 	const { id } = useParams()
 	const history = useHistory()
 	const dispatch = useDispatch()
+	// const [method, setMethod] = useState(null)
 	const { data: order } = useSelector(state => state.GetOrderById)
 
 	useEffect(() => {
@@ -18,24 +20,25 @@ export const Payment = () => {
 		dispatch(getOrderById(orderId))
 	}, [])
 
+	console.log(order, 'order')
+
+	// const paid = () => {
+	// 	if (method === 'gopay') {
+	// 		dispatch(gopayCharge({
+	// 			order_id: order.id,
+	// 			total_payment: order.total_payment
+	// 		}))
+	// 	}
+	// }
+
 	const paid = () => {
 		const orderId = `TICKITZ-${id}`
 		dispatch(updateOrder({
 			id: orderId,
 			status: 'paid'
 		}, history))
-		history.push(`/ticket-result/${orderId}`)
+		history.push(`/ticket-result/${orderId.split('-')[1]}`)
 	}
-
-	// const pieces = [...new Set(order.seat.map(item => item))]
-	// console.log(pieces, 'ini pieces')
-
-	// useEffect(() => {
-	// 	console.log([...order.seat])
-	// 	order?.seat?.map(e => {
-	// 		pieces += 1
-	// 	})
-	// }, [order])
 
 	return (
 		<>
@@ -103,28 +106,28 @@ export const Payment = () => {
 							<div className="col-md-8 payment-method">
 								<div className="row">
 									<div className="col-md-3 col-sm-6 method-list">
-										<img src={process.env.PUBLIC_URL + '/svg/google-pay.svg'} alt="g-pay icon" />
+										<img id='gpay' src={process.env.PUBLIC_URL + '/svg/google-pay.svg'} alt="g-pay icon" />
 									</div>
 									<div className="col-md-3 col-sm-6 method-list">
-										<img src={process.env.PUBLIC_URL + '/svg/visa.svg'} alt="visa icon" />
+										<img id='visa' src={process.env.PUBLIC_URL + '/svg/visa.svg'} alt="visa icon" />
 									</div>
 									<div className="col-md-3 col-sm-6 method-list">
-										<img src={process.env.PUBLIC_URL + '/svg/gopay.svg'} alt="gopay icon" />
+										<img id='gopay' src={process.env.PUBLIC_URL + '/svg/gopay.svg'} alt="gopay icon" />
 									</div>
 									<div className="col-md-3 col-sm-6 method-list">
-										<img src={process.env.PUBLIC_URL + '/svg/paypal.svg'} alt="paypal icon" />
+										<img id='paypal' src={process.env.PUBLIC_URL + '/svg/paypal.svg'} alt="paypal icon" />
 									</div>
 									<div className="col-md-3 col-sm-6 method-list">
-										<img src={process.env.PUBLIC_URL + '/svg/dana.svg'} alt="dana icon" />
+										<img id='dana' src={process.env.PUBLIC_URL + '/svg/dana.svg'} alt="dana icon" />
 									</div>
 									<div className="col-md-3 col-sm-6 method-list">
-										<img src={process.env.PUBLIC_URL + '/svg/bca.svg'} alt="bca icon" />
+										<img id='bca' src={process.env.PUBLIC_URL + '/svg/bca.svg'} alt="bca icon" />
 									</div>
 									<div className="col-md-3 col-sm-6 method-list">
-										<img src={process.env.PUBLIC_URL + '/svg/bank-bri.svg'} alt="bank bri icon" />
+										<img id='bri' src={process.env.PUBLIC_URL + '/svg/bank-bri.svg'} alt="bank bri icon" />
 									</div>
 									<div className="col-md-3 col-sm-6 method-list">
-										<img src={process.env.PUBLIC_URL + '/svg/ovo.svg'} alt="ovo icon" />
+										<img id='ovo' src={process.env.PUBLIC_URL + '/svg/ovo.svg'} alt="ovo icon" />
 									</div>
 									<div className="col-md-12">
 										<h4><span>or</span></h4>
@@ -141,7 +144,7 @@ export const Payment = () => {
 									<button className="prev">Previous step</button>
 								</div>
 								<div classNam="pay-order-btn">
-									<button className="pay" onClick={() => paid()}>Pay your order</button>
+									<button className="pay" onClick={() => paid()} >Pay your order</button>
 								</div>
 							</div>
 						</div>
