@@ -59,5 +59,5 @@ To get the React app running locally:
     
 ## Screenshot
 
-![dashboard](https://i.ibb.co/4YRyz9b/dashboard-2.png)  ![dashboard-sm](https://i.ibb.co/zPmrvtT/dasboard-mobile-2.png) 
+![dashboard](https://i.ibb.co/8DKGBP3/dashboard-3.png)  ![dashboard-sm](https://i.ibb.co/PgXqMkK/dasboard-mobile-3.png) 
 
