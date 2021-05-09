@@ -67,8 +67,8 @@ function AppRouter() {
 
           {/* Private Route User */}
           <PrivateRoute path="/profile" exact={true} component={() => <Profile />} />
-          <PrivateRoute path="/movies" exact={true} component={() => <PageMoviesAdmin />} />
-          <PrivateRoute path="/admin" exact={true} component={() => <DashboardAdmin />} />
+          <PrivateRoute path="/movie" exact={true} component={() => <PageMoviesAdmin />} />
+          <PrivateRoute path="/" exact={true} component={() => <DashboardAdmin />} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Router>

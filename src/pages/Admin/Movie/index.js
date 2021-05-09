@@ -1,8 +1,17 @@
 import { Navbar, Footer} from '../../../components'
-import React from 'react'
+import React,{useEffect} from 'react'
+import { useDispatch, useSelector } from "react-redux"
+import { FetchCinema} from "../../../Redux/Actions/cinema"
 import '../styles/style.css'
 
 const PageMoviesAdmin = () =>{
+    const dispatch = useDispatch()
+    const { data: cinemaData } = useSelector((state) => state.FetchCinema)
+
+    useEffect(() => {
+        dispatch(FetchCinema())
+    }, [dispatch])
+
     return(
         <>
             <Navbar/>
@@ -53,33 +62,14 @@ const PageMoviesAdmin = () =>{
                                     
                                     </select>
                                     <div className='row'>
-                                        <div className='col-4 my-3'>
-                                            <img src={`${process.env.PUBLIC_URL}/logo/ebv.jpg`} alt="logo"/>
-                                        </div>
-                                        <div className='col-4 my-3'>
-                                            <img src={`${process.env.PUBLIC_URL}/logo/ebv.jpg`} alt="logo"/>
-                                        </div>
-                                        <div className='col-4 my-3'>
-                                            <img src={`${process.env.PUBLIC_URL}/logo/ebv.jpg`} alt="logo"/>
-                                        </div>
-                                        <div className='col-4 my-3'>
-                                            <img src={`${process.env.PUBLIC_URL}/logo/ebv.jpg`} alt="logo"/>
-                                        </div>
-                                        <div className='col-4 my-3'>
-                                            <img src={`${process.env.PUBLIC_URL}/logo/ebv.jpg`} alt="logo"/>
-                                        </div>
-                                        <div className='col-4 my-3'>
-                                            <img src={`${process.env.PUBLIC_URL}/logo/ebv.jpg`} alt="logo"/>
-                                        </div>
-                                        <div className='col-4 my-3'>
-                                            <img src={`${process.env.PUBLIC_URL}/logo/ebv.jpg`} alt="logo"/>
-                                        </div>
-                                        <div className='col-4 my-3'>
-                                            <img src={`${process.env.PUBLIC_URL}/logo/ebv.jpg`} alt="logo"/>
-                                        </div>
-                                        <div className='col-4 my-3'>
-                                            <img src={`${process.env.PUBLIC_URL}/logo/ebv.jpg`} alt="logo"/>
-                                        </div>
+                                        {cinemaData&&
+                                        cinemaData.map((element)=>{
+                                            return(
+                                                <div className='col-4 my-3'>
+                                                <img src={`${process.env.PUBLIC_URL}/logo/ebv.jpg`} alt="logo"/>
+                                                </div>
+                                            )
+                                        })}
                                     </div>
                                 </form>
                             </section>

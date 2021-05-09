@@ -67,7 +67,7 @@ const Navbar = () => {
                             <Link to={`/movie`} className="nav-link text-black">Movies</Link>
                         </li>
                         <li className="mx-3 nav-item text-center">
-                            <Link to='#' className="nav-link text-black">Cinemas</Link>
+                            <Link to='/cinema' className="nav-link text-black">Cinemas</Link>
                         </li>
                         <li className="mx-3 nav-item text-center">
                             <Link to='/payment' className="nav-link text-black">Buy Ticket</Link>
