@@ -139,3 +139,41 @@ export const orderHis = (data) => {
     })
   }
 }
+
+const orderHisLimitReq = () => {
+  return {
+    type: 'ORDER_HIS_LIMIT_REQ',
+  }
+}
+
+const orderHisLimitSuccess = (data) => {
+  return {
+    type: 'ORDER_HIS_LIMIT_SUCCESS',
+    payload: data,
+  }
+}
+
+const orderHisLimitError = (err) => {
+  return {
+    type: 'ORDER_HIS_LIMIT_ERROR',
+    payload: err
+  }
+}
+
+export const orderHisLimit = (data, limit, pageNow) => {
+  console.log(limit)
+  console.log(pageNow)
+  // console.log(dataNow1.limit1)
+  return (dispatch) => {
+    dispatch(orderHisLimitReq());
+    return axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_API_URL}/orders/history/${data}?limit=${limit}&page=${pageNow}`,
+      data: data
+    }).then(res => {
+      dispatch(orderHisLimitSuccess(res.data.data));
+    }).catch(err => {
+      dispatch(orderHisLimitError(err.response))
+    })
+  }
+}

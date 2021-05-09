@@ -109,3 +109,30 @@ export const GetOrderHis = (state = initialState, action = {}) => {
       return state
   }
 }
+
+export const GetOrderHisLimit = (state = initialState, action = {}) => {
+  switch (action.type) {
+    case 'ORDER_HIS_LIMIT_REQ':
+      return {
+        ...state,
+        loading: true,
+        err: null
+      }
+    case 'ORDER_HIS_LIMIT_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+        err: null
+      }
+    case 'ORDER_HIS_LIMIT_ERROR':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        data: []
+      }
+    default:
+      return state
+  }
+}
