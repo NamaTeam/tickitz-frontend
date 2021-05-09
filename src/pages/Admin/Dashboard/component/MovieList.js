@@ -1,10 +1,12 @@
 import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { AllMovies } from '../../../../Redux/Actions/movie'
-
+import { AllMovies,DeleteMovie } from '../../../../Redux/Actions/movie'
+import {Link, useHistory} from 'react-router-dom'
 const MovieList = () => {
+  const history = useHistory()
   const dispatch = useDispatch()
+  const [update, setUpdate] = useState(false)
   const { data: movies } = useSelector(s => s.AllMovies)
   const [data, setData] = useState({
     from: `${moment().subtract(30, 'days').format('YYYY-MM-DD')}`,
@@ -15,6 +17,9 @@ const MovieList = () => {
     dispatch(AllMovies(data))
   }, [data])
 
+  const editmovie=(e)=>{
+    history.push(`/edit-movie/${e}`);
+  }
 
   return (
     <>
@@ -27,7 +32,7 @@ const MovieList = () => {
               </div>
               <div className='col-12 col-md-8'>
                 <div className='row g-0'>
-                  <div className='col-12 col-lg-6 d-flex justify-content-center'>
+                  <div className='col-12 col-lg-5 d-flex justify-content-center'>
                     <p className='mx-1 text-muted pt-2'>From</p>
                     <input type='date' defaultValue={moment().subtract(30, 'days').format('YYYY-MM-DD')} onChange={(e) => {
                       setData({
@@ -35,13 +40,18 @@ const MovieList = () => {
                       })
                     }} />
                   </div>
-                  <div className='col-12 col-lg-6 d-flex justify-content-center'>
+                  <div className='col-12 col-lg-5 d-flex justify-content-center'>
                     <p className='mx-1 text-muted pt-2'>To</p>
                     <input type='date' defaultValue={moment().format('YYYY-MM-DD')} onChange={(e) => {
                       setData({
                         ...data, to: `${e.target.value}`
                       })
                     }} />
+                  </div>
+                  <div className='col-12 col-lg-2 d-flex justify-content-center'>
+                    <Link to='/add-movie' className='no-style'>
+                      <button className='btn btn-outline-purple d-block'>Tambah</button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -72,10 +82,10 @@ const MovieList = () => {
                         </div>
                         <div id={`movie${e.id}`} class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                           <div className='row pt-2 g-0 justify-content-center border border-top border-bottom-0'>
-                            <div className='col-6 text-center text-success fw-bold border-end'>
+                            <div className='col-6 text-center text-success fw-bold border-end' onClick={()=>editmovie(e.id)}>
                               Edit
                             </div>
-                            <div className='col-6 text-center text-danger fw-bold'>
+                            <div className='col-6 text-center text-danger fw-bold' onClick={() => { if (window.confirm('Are you sure? '))dispatch(DeleteMovie(e.id)); history.replace('/') }}>
                               Delete
                             </div>
                           </div>

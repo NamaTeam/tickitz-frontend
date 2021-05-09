@@ -1,4 +1,4 @@
 import { DashboardAdmin } from './Dashboard'
-import PageMoviesAdmin from './Movie'
+import { AddMovieAdmin, EditMovieAdmin} from './Movie'
 
-export { DashboardAdmin, PageMoviesAdmin }
+export { DashboardAdmin, AddMovieAdmin, EditMovieAdmin }

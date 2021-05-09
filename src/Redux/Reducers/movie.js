@@ -147,12 +147,87 @@ const FetchMovieResult = (state = initialState, action = {}) => {
             return state
     }
 }
+const AddMovie = (state = initialState, action={})=>{
+    switch (action.type) {
+        case 'ADD_MOVIE_REQUEST':
+            return {
+                ...state,
+                loading: true
+            }    
+        case 'ADD_MOVIE_SUCCESS':
+            return {
+                ...state,
+                loading: false,
+                data: action.payload
+            }    
+        case 'ADD_MOVIE_FAILED':
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+                data: []
+            }    
+        default:
+            return state
+    }
+}
+const DeleteMovie = (state = initialState, action={})=>{
+    switch (action.type) {
+        case 'DELETE_MOVIE_REQUEST':
+            return {
+                ...state,
+                loading: true
+            }    
+        case 'DELETE_MOVIE_SUCCESS':
+            return {
+                ...state,
+                loading: false,
+                data: action.payload
+            }    
+        case 'DELETE_MOVIE_FAILED':
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+                data: []
+            }    
+        default:
+            return state
+    }
+}
 
+const UpdateMovie = (state = initialState, action={})=>{
+    switch (action.type){
+        case 'UPDATE_MOVIE_REQUEST':
+            return{
+                ...state,
+                loading : true
+            }
+        case 'UPDATE_MOVIE_SUCCESS':
+            return{
+                ...state,
+                loading : false,
+                data : action.payload
+            }
+        case 'UPDATE_MOVIE_FAILED':
+            return{
+                ...state,
+                loading:false,
+                error:action.payload,
+                data:[]
+            }
+        default:
+            return state
+    }
+}
 export {
     AllMovies,
     FetchMovieNow,
     FetchUpcomingMovie,
     FetchMovieById,
     FetchMoviesByMonth,
-    FetchMovieResult
+    FetchMovieResult,
+    AddMovie,
+    DeleteMovie,
+    UpdateMovie
 }

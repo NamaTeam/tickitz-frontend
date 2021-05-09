@@ -129,3 +129,59 @@ export const AllMovies = (data) => {
     }
 }
 
+const AddMovieRequest = () => {return {type: 'ADD_MOVIE_REQUEST'}}
+const AddMovieSuccess = (data) => {return{type: 'ADD_MOVIE_SUCCESS', payload:data}}
+const AddMovieFailed = (err) => {return{type: 'ADD_MOVIE_FAILED', payload:err}}
+
+export const AddMovie = (formData)=>{
+    return (dispatch)=>{
+        dispatch(AddMovieRequest())
+        return axios({
+            method : 'POST',
+            url : `${process.env.REACT_APP_API_URL}/movies/`,
+            data : formData
+        }).then((res)=>{
+            dispatch(AddMovieSuccess(res.data))
+        }).catch((err)=>{
+            alert(err)
+            dispatch(AddMovieFailed(err))
+        })
+    }
+}
+
+const DeleteMovieRequest = () => {return {type:'DELETE_MOVIE_REQUEST'}}
+const DeleteMovieSuccess =(data)=>{return {type:'DELETE_MOVIE_SUCCESS', payload:data}}
+const DeleteMovieFailed = (err) =>{return{type:'DELETE_MOVIE_FAILED', payload:err}}
+
+export const DeleteMovie = (id, cb)=>{
+    return (dispatch)=>{
+        dispatch(DeleteMovieRequest())
+        return axios({
+            method : 'DELETE',
+            url : `${process.env.REACT_APP_API_URL}/movies/${id}`,
+        }).then((res)=>{
+            dispatch(DeleteMovieSuccess(res.data))
+        }).catch((err)=>{
+            dispatch(DeleteMovieFailed(err))
+        })
+    }
+}
+
+const UpdateMovieRequest = () => {return {type :'UPDATE_MOVIE_REQUEST'}}
+const UpdateMovieSuccess = (data) => {return {type:'UPDATE_MOVIE_SUCCESS', payload:data}}
+const UpdateMovieFailed = (err) => {return {type:'UPDATE_MOVIE_FAILED', payload : err}}
+
+export const UpdateMovie = (id, formData, cb)=>{
+    return(dispatch)=>{
+        dispatch(UpdateMovieRequest())
+        return axios({
+            method : 'PATCH',
+            url : `${process.env.REACT_APP_API_URL}/movies/${id}`,
+            data : formData
+        }).then((res)=>{
+            dispatch(UpdateMovieSuccess(res.data))
+        }).catch((err)=>{
+            dispatch(UpdateMovieFailed(err))
+        })
+    }
+}
