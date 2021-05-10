@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from "react-redux"
 import { useForm } from 'react-hook-form';
 import '../styles/style.css'
 import { AddMovie } from '../../../Redux/Actions/movie';
+import { useHistory } from 'react-router';
 
 const AddMovieAdmin = () =>{
+    const history = useHistory()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [poster, SetPoster] = useState([])
     const dispatch = useDispatch()
@@ -21,7 +23,7 @@ const AddMovieAdmin = () =>{
         formData.append('release_date', data.release_date)
         formData.append('actors', data.actors)
         formData.append('synopsis', data.synopsis)
-        dispatch(AddMovie(formData))
+        dispatch(AddMovie(formData,history))
         console.log(formData)
     }
 
@@ -37,7 +39,7 @@ const AddMovieAdmin = () =>{
                                 <div className="col-12 col-md-5 d-flex justify-content-center my-5">
                                     <div className='movie-poster mx-auto'>
                                     <label>
-                                        <input type="file" name="photo" accept="image/*" multiple onChange={(e) => SetPoster(e.target.files)}/>
+                                        <input type="file" name="photo" accept="image/*" onChange={(e) => SetPoster(e.target.files)}/>
                                         <img src={`${process.env.PUBLIC_URL}/logo/no-photo.png`} alt="poster" className='img-fluid'/>
                                     </label>
                                     </div>
