@@ -54,21 +54,76 @@ export const AllCinema = (data) => {
     }
 }
 
-const AddCinemaRequest = () => {return {type : 'ADD_CINEMA_REQUEST'}}
-const AddCinemaSuccess = (data) => {return {type: 'ADD_CINEMA_SUCCESS', payload : data}}
-const AddCinemaFailed = (err) => {return {type: 'ADD_CINEMA_FAILED', payload : err}}
+const AddCinemaRequest = () => { return { type: 'ADD_CINEMA_REQUEST' } }
+const AddCinemaSuccess = (data) => { return { type: 'ADD_CINEMA_SUCCESS', payload: data } }
+const AddCinemaFailed = (err) => { return { type: 'ADD_CINEMA_FAILED', payload: err } }
 
 export const AddCinema = (formData) => {
-    return (dispatch)=>{
+    return (dispatch) => {
         dispatch(AddCinemaRequest)
         return axios({
-            url : `${process.env.REACT_APP_API_URL}/cinemas`,
-            method : 'POST',
-            data : formData
-        }).then((res)=>{
+            url: `${process.env.REACT_APP_API_URL}/cinemas`,
+            method: 'POST',
+            data: formData
+        }).then((res) => {
             dispatch(AddCinemaSuccess(res))
-        }).catch((err)=>{
+        }).catch((err) => {
             dispatch(AddCinemaFailed(err))
+        })
+    }
+}
+
+const DeleteCinemaRequest = () => { return { type: 'DELETE_CINEMA_REQUEST' } }
+const DeleteCinemaSuccess = () => { return { type: 'DELETE_CINEMA_SUCCESS' } }
+const DeleteCinemaFailed = (err) => { return { type: 'DELETE_CINEMA_FAILED', payload: err } }
+
+export const DeleteCinema = (id, cb) => {
+    return (dispatch) => {
+        dispatch(DeleteCinemaRequest())
+        return axios({
+            method: 'DELETE',
+            url: `${process.env.REACT_APP_API_URL}/cinemas/${id}`,
+        }).then((res) => {
+            dispatch(DeleteCinemaSuccess(res.data))
+        }).catch((err) => {
+            dispatch(DeleteCinemaFailed(err))
+        })
+    }
+}
+
+const FetchCinemaByIdRequest = () => { return { type: 'FETCH_CINEMAS_BY_ID_REQUEST' } }
+const FetchCinemaByIdSuccess = (data) => { return { type: 'FETCH_CINEMAS_BY_ID_SUCCESS', payload: data } }
+const FetchCinemaByIdError = (err) => { return { type: 'FETCH_CINEMAS_BY_ID_ERROR', payload: err } }
+
+export const FetchCinemaById = (id) => {
+    return (dispatch) => {
+        dispatch(FetchCinemaByIdRequest())
+        return axios({
+            url: `${process.env.REACT_APP_API_URL}/cinemas/${id}`,
+            method: 'GET'
+        }).then((res) => {
+            dispatch(FetchCinemaByIdSuccess(res.data.data))
+        }).catch((err) => {
+            dispatch(FetchCinemaByIdError(err))
+        })
+    }
+}
+
+const UpdateCinemaRequest = () => { return { type: 'UPDATE_CINEMA_REQUEST' } }
+const UpdateCinemaSuccess = () => { return { type: 'UPDATE_CINEMA_SUCCESS' } }
+const UpdateCinemaFailed = (err) => { return { type: 'UPDATE_CINEMA_FAILED', payload: err } }
+
+export const UpdateCinema = (id, formData, cb) => {
+    return (dispatch) => {
+        dispatch(UpdateCinemaRequest())
+        return axios({
+            method: 'PATCH',
+            url: `${process.env.REACT_APP_API_URL}/cinemas/${id}`,
+            data: formData
+        }).then((res) => {
+            dispatch(UpdateCinemaSuccess(res.data))
+        }).catch((err) => {
+            dispatch(UpdateCinemaFailed(err))
         })
     }
 }

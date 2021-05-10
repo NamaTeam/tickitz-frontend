@@ -5,7 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import { Login, Register, VerifyRegister, UserForgotPassword, UserVerifyForgotPassword, UserUpdatePassword } from './pages/Auth'
-import { DashboardAdmin, AddMovieAdmin, EditMovieAdmin } from './pages/Admin'
+import { DashboardAdmin, AddMovieAdmin, EditMovieAdmin, AddCinemaAdmin, EditCinemaAdmin } from './pages/Admin'
 import Dashboard from './pages/Dashboard'
 import { Profile } from './pages/Profile'
 import { MovieDetail } from './pages/MovieDetail'
@@ -69,6 +69,8 @@ function AppRouter() {
           <PrivateRoute path="/profile" exact={true} component={() => <Profile />} />
           <PrivateRoute path="/edit-movie/:id" exact={true} component={() => <EditMovieAdmin />} />
           <PrivateRoute path="/add-movie" exact={true} component={() => <AddMovieAdmin />} />
+          <PrivateRoute path="/add-cinema" exact={true} component={() => <AddCinemaAdmin />} />
+          <PrivateRoute path="/edit-cinema/:id" exact={true} component={() => <EditCinemaAdmin />} />
           <PrivateRoute path="/" exact={true} component={() => <DashboardAdmin />} />
           <Route path="*" component={NotFound} />
         </Switch>

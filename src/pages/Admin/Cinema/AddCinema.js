@@ -4,29 +4,26 @@ import { useDispatch, useSelector } from "react-redux";
 /* import { FetchCinema} from "../../../Redux/Actions/cinema" */
 import { useForm } from "react-hook-form";
 import "../styles/style.css";
-import { AddMovie } from "../../../Redux/Actions/movie";
+import { AddCinema } from '../../../Redux/Actions/cinema'
 
-const AddMovieAdmin = () => {
+const AddCinemaAdmin = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [poster, SetPoster] = useState([]);
+  const [logo, SetLogo] = useState([]);
   const dispatch = useDispatch();
   const formData = new FormData();
 
   const addData = (data) => {
-    const duration = `${data.hours} hour ${data.min} min`;
-    formData.append("poster", poster[0]);
-    formData.append("duration", duration);
-    formData.append("title", data.title);
-    formData.append("category", data.category);
-    formData.append("release_date", data.release_date);
-    formData.append("actors", data.actors);
-    formData.append("synopsis", data.synopsis);
-    dispatch(AddMovie(formData));
-    console.log(formData);
+    formData.append("logo", logo[0]);
+    formData.append("name", data.name);
+    formData.append("city", data.city);
+    formData.append("street", data.street);
+    formData.append("street_number", data.street_number);
+    dispatch(AddCinema(formData));
+    // console.log(formData);
   };
 
   return (
@@ -49,7 +46,8 @@ const AddMovieAdmin = () => {
                         name="photo"
                         accept="image/*"
                         multiple
-                        onChange={(e) => SetPoster(e.target.files)}
+                        onChange={(e) => SetLogo(e.target.files)}
+                        required
                       />
                       <img
                         src={`${process.env.PUBLIC_URL}/logo/no-photo.png`}
@@ -69,9 +67,8 @@ const AddMovieAdmin = () => {
                         required: "name can't be empty",
                       })}
                       type="text"
-                      className={`name form-control bg-light ${
-                        errors.name ? "is-invalid" : ""
-                      }`}
+                      className={`name form-control bg-light ${errors.name ? "is-invalid" : ""
+                        }`}
                       id="name"
                     />
                     <small className="text-danger ms-3 fw-bold">
@@ -87,9 +84,8 @@ const AddMovieAdmin = () => {
                         required: "city can't be empty",
                       })}
                       type="text"
-                      className={`city form-control bg-light ${
-                        errors.city ? "is-invalid" : ""
-                      }`}
+                      className={`city form-control bg-light ${errors.city ? "is-invalid" : ""
+                        }`}
                       id="city"
                     />
                     <small className="text-danger ms-3 fw-bold">
@@ -105,9 +101,8 @@ const AddMovieAdmin = () => {
                         required: "Street can't be empty",
                       })}
                       type="text"
-                      className={`category form-control bg-light ${
-                        errors.street ? "is-invalid" : ""
-                      }`}
+                      className={`category form-control bg-light ${errors.street ? "is-invalid" : ""
+                        }`}
                       id="street"
                     />
                     <small className="text-danger ms-3 fw-bold">
@@ -123,9 +118,8 @@ const AddMovieAdmin = () => {
                         required: "Street Number can't be empty",
                       })}
                       type="number"
-                      className={`category form-control bg-light ${
-                        errors.street_number ? "is-invalid" : ""
-                      }`}
+                      className={`category form-control bg-light ${errors.street_number ? "is-invalid" : ""
+                        }`}
                       id="street_number"
                     />
                     <small className="text-danger ms-3 fw-bold">
@@ -138,7 +132,7 @@ const AddMovieAdmin = () => {
                         className="btn btn-outline-purple btn-lg"
                         onClick={handleSubmit(addData)}
                       >
-                        Tambah
+                        Add Cinema
                       </button>
                     </div>
                   </div>
@@ -153,4 +147,4 @@ const AddMovieAdmin = () => {
   );
 };
 
-export default AddMovieAdmin;
+export default AddCinemaAdmin;
