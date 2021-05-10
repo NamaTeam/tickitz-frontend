@@ -31,7 +31,7 @@ const EditMovieAdmin = () => {
   useEffect(() => {
     dispatch(FetchCinema());
     dispatch(FetchMovieById(id));
-  }, [id]);
+  }, []);
 
   const confirmedit = (e) => {
     e.preventDefault();
@@ -64,7 +64,9 @@ const EditMovieAdmin = () => {
   return (
     <>
       <Navbar />
-      <section className="container-fluid bg-grey">
+      {movieData &&
+        (
+          <section className="container-fluid bg-grey">
         <div className="row">
           <div className="col-12 col-md-8 my-5 px-5">
             <form onSubmit={(e) => confirmedit(e)}>
@@ -281,6 +283,9 @@ const EditMovieAdmin = () => {
           </div>
           </div>
           </section>
+        )
+      }
+      
       <Footer />
     </>
   );
