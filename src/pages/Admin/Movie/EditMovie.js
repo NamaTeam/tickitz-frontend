@@ -130,7 +130,7 @@ const EditMovieAdmin = () => {
                         }
                         disabled={!editable}
                       ></textarea>
-                      <label for="floatingTextarea2">Synopsi</label>
+                      <label for="floatingTextarea2">Synopsis</label>
                     </div>
                     <div className="mt-4 col-12 col-md-12 mb-4">
                       <label htmlFor="inputLastName" className="mb-3">
