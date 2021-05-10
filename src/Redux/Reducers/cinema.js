@@ -78,34 +78,111 @@ const AllCinema = (state = initialState, action = {}) => {
     }
 }
 
-const AddCinema = (state = initialState, action = {})=>{
-    switch(action.type){
+const AddCinema = (state = initialState, action = {}) => {
+    switch (action.type) {
         case 'ADD_CINEMA_REQUEST':
-            return{
+            return {
                 ...state,
-                loading:true
+                loading: true
             }
         case 'ADD_CINEMA_SUCCESS':
-            return{
+            return {
                 ...state,
-                loading:false,
-                error : null,
-                data : action.payload
+                loading: false,
+                error: null,
+                data: action.payload
             }
         case 'ADD_CINEMA_FAILED':
-            return{
+            return {
                 ...state,
-                loading : false,
-                error : action.payload,
-                data : []
+                loading: false,
+                error: action.payload,
+                data: []
             }
         default:
             return state
     }
 }
+
+const DeleteCinema = (state = initialState, action = {}) => {
+    switch (action.type) {
+        case 'DELETE_CINEMA_REQUEST':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'DELETE_CINEMA_SUCCESS':
+            return {
+                ...state,
+                loading: false,
+            }
+        case 'DELETE_CINEMA_FAILED':
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+                data: []
+            }
+        default:
+            return state
+    }
+}
+
+const FetchCinemaById = (state = initialState, action = {}) => {
+    switch (action.type) {
+        case 'FETCH_CINEMAS_BY_ID_REQUEST':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'FETCH_CINEMAS_BY_ID_SUCCESS':
+            return {
+                ...state,
+                loading: false,
+                data: action.payload
+            }
+        case 'FETCH_CINEMAS_BY_ID_ERROR':
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+                data: []
+            }
+        default:
+            return state
+    }
+}
+
+const UpdateCinema = (state = initialState, action = {}) => {
+    switch (action.type) {
+        case 'UPDATE_CINEMA_REQUEST':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'UPDATE_CINEMA_SUCCESS':
+            return {
+                ...state,
+                loading: false
+            }
+        case 'UPDATE_CINEMA_FAILED':
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+                data: []
+            }
+        default:
+            return state
+    }
+}
+
 export {
     FetchCinema,
     FetchCinemaByLocation,
+    FetchCinemaById,
     AllCinema,
-    AddCinema
+    AddCinema,
+    UpdateCinema,
+    DeleteCinema
 }

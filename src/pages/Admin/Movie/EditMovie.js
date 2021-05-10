@@ -31,7 +31,7 @@ const EditMovieAdmin = () => {
   useEffect(() => {
     dispatch(FetchCinema());
     dispatch(FetchMovieById(id));
-  }, [useParams]);
+  }, [id]);
 
   const confirmedit = (e) => {
     e.preventDefault();
@@ -41,21 +41,21 @@ const EditMovieAdmin = () => {
         "duration",
         `${editData.hour} hours ${editData.min} mins`
       );
-      formData.append("title", editData.title??movieData.title);
-      formData.append("category", editData.category??movieData.category);
-      formData.append("release_date", editData.release_date??movieData.release_date);
-      formData.append("actors", editData.actors??movieData.actors);
-      formData.append("synopsis", editData.synopsis??movieData.synopsis);
+      formData.append("title", editData.title ?? movieData.title);
+      formData.append("category", editData.category ?? movieData.category);
+      formData.append("release_date", editData.release_date ?? movieData.release_date);
+      formData.append("actors", editData.actors ?? movieData.actors);
+      formData.append("synopsis", editData.synopsis ?? movieData.synopsis);
     } else {
       formData.append(
         "duration",
         `${editData.hour} hours ${editData.min} mins`
       );
-      formData.append("title",  editData.title??movieData.title);
-      formData.append("category", editData.category??movieData.category);
-      formData.append("release_date", editData.release_date??movieData.release_date);
-      formData.append("actors", editData.actors??movieData.actors);
-      formData.append("synopsis", editData.synopsis??movieData.synopsis);
+      formData.append("title", editData.title ?? movieData.title);
+      formData.append("category", editData.category ?? movieData.category);
+      formData.append("release_date", editData.release_date ?? movieData.release_date);
+      formData.append("actors", editData.actors ?? movieData.actors);
+      formData.append("synopsis", editData.synopsis ?? movieData.synopsis);
     }
     /* console.log(editData.release_date); */
     dispatch(UpdateMovie(id, formData, history));
@@ -90,14 +90,14 @@ const EditMovieAdmin = () => {
                 <div className="col-12 col-md-7">
                   <div className="mt-3 mb-5 row form-user py-3">
                     <div className="col-12 col-md-12 mb-3">
-                      <label htmlFor="inputFirstName" className="my-4">
+                      <label htmlFor="inputName" className="my-4">
                         Movie Name
                       </label>
                       <input
                         type="text"
                         className={`form-control py-3 px-4 form-input`}
                         defaultValue={movieData.title}
-                        id="inputFirstName"
+                        id="inputName"
                         onChange={(e) =>
                           setEditData({ ...editData, title: e.target.value })
                         }
@@ -173,7 +173,7 @@ const EditMovieAdmin = () => {
                             type="number"
                             className="form-control py-3 px-4 form-input"
                             defaultValue={
-                              parseInt(movieData?.duration?.split(" ")[0]??0)
+                              parseInt(movieData?.duration?.split(" ")[0] ?? 0)
                             }
                             aria-label="First name"
                             onChange={(e) =>
@@ -187,7 +187,7 @@ const EditMovieAdmin = () => {
                             type="number"
                             className="form-control py-3 px-4 form-input"
                             defaultValue={
-                              parseInt(movieData?.duration?.split(" ")[2]??0)
+                              parseInt(movieData?.duration?.split(" ")[2] ?? 0)
                             }
                             placeholder="Minute"
                             aria-label="Last name"
@@ -198,88 +198,89 @@ const EditMovieAdmin = () => {
                           />
                         </div>
                       </div>
-                    </div>
-                    {!editable ? (
-                      <div
-                        className="btn btn-rounded px-5 py-2 mt-3 btn-edit"
-                        onClick={() => SetEditable(true)}
-                      >
-                        Edit Movie
-                      </div>
-                    ) : (
-                      <button
-                        className="btn btn-rounded px-5 py-2 mt-3 btn-edit"
-                        onClick={(e) => confirmedit(e)}
-                      >
-                        Confirm
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div className="col-12 col-md-4 mt-5 px-5">
-            <h3 className="fw-bold">Premiere Location</h3>
-            <section className="movie-box card-body row py-3 shadow-sm">
-              <form>
-                <select
-                  name="location"
-                  id="location"
-                  className="select-rounded bg-grey"
-                ></select>
-                <div className="row">
-                  {cinemaData &&
-                    cinemaData.map((element) => {
-                      return (
-                        <div className="col-4 my-3">
-                          <img
-                            src={`${process.env.PUBLIC_URL}/logo/ebv.jpg`}
-                            alt="logo"
-                          />
+                      {!editable ? (
+                        <div
+                          className="btn btn-rounded px-5 py-2 mt-3 btn-edit w-100"
+                          onClick={() => SetEditable(true)}
+                        >
+                          Edit Movie
                         </div>
-                      );
-                    })}
-                </div>
-              </form>
-            </section>
-            <h3 className="fw-bold">Showtimes</h3>
-            <section className="movie-box card-body row shadow-sm">
-              <form>
-                <input
-                  type="date"
-                  className={`form-control py-2 px-4 date-rounded input-sm`}
-                />
-                <div className="row mt-3">
-                  <div className="col-3 mt-3 px-1">
-                    <button className="btn btn-outline-purple btn-sm w-100">
-                      <img src={`${process.env.PUBLIC_URL}/svg/plus.svg`} />
-                    </button>
-                  </div>
-                  <div className="col-3 mt-3">
-                    <small>08:30am</small>
-                  </div>
-                  <div className="col-3 mt-3">
-                    <small>08:30am</small>
-                  </div>
-                  <div className="col-3 mt-3">
-                    <small>08:30am</small>
-                  </div>
-                  <div className="col-3 mt-3">
-                    <small>08:30am</small>
-                  </div>
-                  <div className="col-3 mt-3">
-                    <small>08:30am</small>
-                  </div>
-                  <div className="col-3 mt-3">
-                    <small>08:30am</small>
+                      ) : (
+                        <button
+                          className="btn btn-rounded px-5 py-2 mt-3 btn-edit"
+                          onClick={(e) => confirmedit(e)}
+                        >
+                          Confirm
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
+                </div>
               </form>
-            </section>
+            
+            <div className="col-12 col-md-4 mt-5 px-5">
+              <h3 className="fw-bold">Premiere Location</h3>
+              <section className="movie-box card-body row py-3 shadow-sm">
+                <form>
+                  <select
+                    name="location"
+                    id="location"
+                    className="select-rounded bg-grey"
+                  ></select>
+                  <div className="row">
+                    {cinemaData &&
+                      cinemaData.map((element) => {
+                        return (
+                          <div className="col-4 my-3">
+                            <img
+                              src={`${process.env.PUBLIC_URL}/logo/ebv.jpg`}
+                              alt="logo"
+                            />
+                          </div>
+                        );
+                      })}
+                  </div>
+                </form>
+              </section>
+              <h3 className="fw-bold">Showtimes</h3>
+              <section className="movie-box card-body row shadow-sm">
+                <form>
+                  <input
+                    type="date"
+                    className={`form-control py-2 px-4 date-rounded input-sm`}
+                  />
+                  <div className="row mt-3">
+                    <div className="col-3 mt-3 px-1">
+                      <button className="btn btn-outline-purple btn-sm w-100">
+                        <img src={`${process.env.PUBLIC_URL}/svg/plus.svg`} />
+                      </button>
+                    </div>
+                    <div className="col-3 mt-3">
+                      <small>08:30am</small>
+                    </div>
+                    <div className="col-3 mt-3">
+                      <small>08:30am</small>
+                    </div>
+                    <div className="col-3 mt-3">
+                      <small>08:30am</small>
+                    </div>
+                    <div className="col-3 mt-3">
+                      <small>08:30am</small>
+                    </div>
+                    <div className="col-3 mt-3">
+                      <small>08:30am</small>
+                    </div>
+                    <div className="col-3 mt-3">
+                      <small>08:30am</small>
+                    </div>
+                  </div>
+                </form>
+              </section>
+            </div>
           </div>
-        </div>
-      </section>
+          </div>
+          </section>
       <Footer />
     </>
   );

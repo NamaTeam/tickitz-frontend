@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { AllCinema } from '../../../../Redux/Actions/cinema';
+import { Link, useHistory } from 'react-router-dom';
+import { AllCinema, DeleteCinema } from '../../../../Redux/Actions/cinema';
 
 const CinemaList = () => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const { data: cinema } = useSelector(state => state.AllCinema)
   const [pages, setPages] = useState([])
   const [data, setData] = useState({
@@ -38,11 +40,11 @@ const CinemaList = () => {
               </div>
               <div className='col-12 col-md-6'>
                 <div className='row'>
-                  <div className='col-12 col-md-6 d-flex justify-content-center'>
+                  <div className='col-12 col-md-4 d-flex justify-content-center'>
                     <p className='mx-1 text-muted pt-2'>Location</p>
                     <input type='text' placeholder='Input a location' onChange={e => setData({ ...data, city: e.target.value })} />
                   </div>
-                  <div className='col-12 col-md-6 d-flex justify-content-center'>
+                  <div className='col-12 col-md-4 d-flex justify-content-center'>
                     <p className='mx-1 text-muted pt-2'>Page</p>
                     <select onChange={e => setData({ ...data, page: e.target.value })}>
                       {pages !== [] && pages?.map(e => {
@@ -51,6 +53,11 @@ const CinemaList = () => {
                         )
                       })}
                     </select>
+                  </div>
+                  <div className='col-12 col-md-4 d-flex justify-content-center'>
+                    <Link to='/add-cinema'>
+                      <button className='btn btn-outline-purple'> ADD </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -75,10 +82,10 @@ const CinemaList = () => {
                       </div>
                       <div id={`cinema${e.id}`} class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div className='row pt-2 g-0 justify-content-center border border-top border-bottom-0'>
-                          <div className='col-6 text-center text-success fw-bold border-end'>
+                          <div className='col-6 text-center text-success fw-bold border-end' onClick={() => history.push(`/edit-cinema/${e.id}`)}>
                             Edit
                             </div>
-                          <div className='col-6 text-center text-danger fw-bold'>
+                          <div className='col-6 text-center text-danger fw-bold' onClick={() => { if (window.confirm('Are you sure? ')) dispatch(DeleteCinema(e.id)) }}>
                             Delete
                             </div>
                         </div>
