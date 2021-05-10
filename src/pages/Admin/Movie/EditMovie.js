@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchCinema } from "../../../Redux/Actions/cinema";
 import "../styles/style.css";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { FetchMovieById, UpdateMovie } from "../../../Redux/Actions/movie";
 import moment from "moment";
 
 const EditMovieAdmin = () => {
+  const history = useHistory()
   const { id } = useParams();
   const formData = new FormData();
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const EditMovieAdmin = () => {
       formData.append("synopsis", editData.synopsis??movieData.synopsis);
     }
     /* console.log(editData.release_date); */
-    dispatch(UpdateMovie(id, formData));
+    dispatch(UpdateMovie(id, formData, history));
   };
   console.log(movieData);
   return (
@@ -75,8 +76,7 @@ const EditMovieAdmin = () => {
                       <input
                         type="file"
                         name="photo"
-                        accept="image/*"
-                        multiple
+                        accept="image"
                         onChange={(e) => setPoster(e.target.files)}
                         disabled={!editable}
                       />

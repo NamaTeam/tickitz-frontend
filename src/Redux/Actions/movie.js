@@ -182,7 +182,9 @@ export const UpdateMovie = (id, formData, cb)=>{
             data : formData
         }).then((res)=>{
             dispatch(UpdateMovieSuccess(res.data))
+            cb.push('/')
         }).catch((err)=>{
+            alert(err)
             dispatch(UpdateMovieFailed(err))
         })
     }
