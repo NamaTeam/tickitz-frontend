@@ -6,6 +6,7 @@ import { AllCinema, DeleteCinema } from '../../../../Redux/Actions/cinema';
 const CinemaList = () => {
   const dispatch = useDispatch();
   const history = useHistory()
+  const [update, setUpdate] = useState(false)
   const { data: cinema } = useSelector(state => state.AllCinema)
   const [pages, setPages] = useState([])
   const [data, setData] = useState({
@@ -16,7 +17,7 @@ const CinemaList = () => {
 
   useEffect(() => {
     dispatch(AllCinema(data))
-  }, [data])
+  }, [data,update])
 
   useEffect(() => {
     let total = []
@@ -26,7 +27,7 @@ const CinemaList = () => {
       }
     }
     setPages([...total])
-  }, [cinema])
+  }, [cinema,update])
 
 
   return (
@@ -42,7 +43,7 @@ const CinemaList = () => {
                 <div className='row'>
                   <div className='col-12 col-md-4 d-flex justify-content-center'>
                     <p className='mx-1 text-muted pt-2'>Location</p>
-                    <input type='text' placeholder='Input a location' onChange={e => setData({ ...data, city: e.target.value })} />
+                    <input type='text' placeholder='purwokerto' onChange={e => setData({ ...data, city: e.target.value })} />
                   </div>
                   <div className='col-12 col-md-4 d-flex justify-content-center'>
                     <p className='mx-1 text-muted pt-2'>Page</p>
@@ -85,7 +86,7 @@ const CinemaList = () => {
                           <div className='col-6 text-center text-success fw-bold border-end' onClick={() => history.push(`/edit-cinema/${e.id}`)}>
                             Edit
                             </div>
-                          <div className='col-6 text-center text-danger fw-bold' onClick={() => { if (window.confirm('Are you sure? ')) dispatch(DeleteCinema(e.id)) }}>
+                          <div className='col-6 text-center text-danger fw-bold' onClick={() => { if (window.confirm('Are you sure? ')) dispatch(DeleteCinema(e.id,setUpdate)) }}>
                             Delete
                             </div>
                         </div>

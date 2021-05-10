@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import "../styles/style.css";
 import { UpdateCinema, FetchCinemaById } from '../../../Redux/Actions/cinema'
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 
 const EditCinemaAdmin = () => {
+  const history = useHistory()
   const { id } = useParams()
   const { data: cinema } = useSelector(state => state.FetchCinemaById)
   const {
@@ -35,7 +36,7 @@ const EditCinemaAdmin = () => {
       formData.append('street_number', data.street_number || cinema.street_number)
       formData.append('city', formData.city || cinema.city)
     };
-    dispatch(UpdateCinema(id, formData))
+    dispatch(UpdateCinema(id, formData, history))
   }
 
   useEffect(() => {

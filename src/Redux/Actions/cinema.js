@@ -58,7 +58,7 @@ const AddCinemaRequest = () => { return { type: 'ADD_CINEMA_REQUEST' } }
 const AddCinemaSuccess = (data) => { return { type: 'ADD_CINEMA_SUCCESS', payload: data } }
 const AddCinemaFailed = (err) => { return { type: 'ADD_CINEMA_FAILED', payload: err } }
 
-export const AddCinema = (formData) => {
+export const AddCinema = (formData,cb) => {
     return (dispatch) => {
         dispatch(AddCinemaRequest)
         return axios({
@@ -67,7 +67,9 @@ export const AddCinema = (formData) => {
             data: formData
         }).then((res) => {
             dispatch(AddCinemaSuccess(res))
+            cb.push('/')
         }).catch((err) => {
+            alert(err)
             dispatch(AddCinemaFailed(err))
         })
     }
@@ -85,8 +87,10 @@ export const DeleteCinema = (id, cb) => {
             url: `${process.env.REACT_APP_API_URL}/cinemas/${id}`,
         }).then((res) => {
             dispatch(DeleteCinemaSuccess(res.data))
+            cb(true)
         }).catch((err) => {
             dispatch(DeleteCinemaFailed(err))
+            cb(false)
         })
     }
 }
@@ -122,7 +126,9 @@ export const UpdateCinema = (id, formData, cb) => {
             data: formData
         }).then((res) => {
             dispatch(UpdateCinemaSuccess(res.data))
+            cb.push('/')
         }).catch((err) => {
+            alert(err)
             dispatch(UpdateCinemaFailed(err))
         })
     }

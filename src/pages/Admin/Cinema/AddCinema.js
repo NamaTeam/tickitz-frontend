@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import "../styles/style.css";
 import { AddCinema } from '../../../Redux/Actions/cinema'
+import { useHistory } from "react-router";
 
 const AddCinemaAdmin = () => {
+  const history = useHistory()
   const {
     register,
     handleSubmit,
@@ -22,8 +24,7 @@ const AddCinemaAdmin = () => {
     formData.append("city", data.city);
     formData.append("street", data.street);
     formData.append("street_number", data.street_number);
-    dispatch(AddCinema(formData));
-    // console.log(formData);
+    dispatch(AddCinema(formData, history));
   };
 
   return (
