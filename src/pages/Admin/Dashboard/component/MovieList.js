@@ -15,12 +15,15 @@ const MovieList = () => {
 
   useEffect(() => {
     dispatch(AllMovies(data))
-  }, [data])
+  }, [update, data])
 
   const editmovie=(e)=>{
     history.push(`/edit-movie/${e}`);
   }
-
+ /*  const deletemovie = (e)=>{
+    e.preventDefault()
+    dispatch(DeleteMovie(e.id),update)
+  } */
   return (
     <>
       <div className='mx-2 mx-md-4 mt-5 movie-info'>
@@ -85,7 +88,7 @@ const MovieList = () => {
                             <div className='col-6 text-center text-success fw-bold border-end' onClick={()=>editmovie(e.id)}>
                               Edit
                             </div>
-                            <div className='col-6 text-center text-danger fw-bold' onClick={() => { if (window.confirm('Are you sure? '))dispatch(DeleteMovie(e.id)); history.replace('/') }}>
+                            <div className='col-6 text-center text-danger fw-bold' onClick={() => { if (window.confirm('Are you sure? '))dispatch(DeleteMovie(e.id),setUpdate(true)); }}>
                               Delete
                             </div>
                           </div>
