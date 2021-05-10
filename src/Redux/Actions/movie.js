@@ -133,7 +133,7 @@ const AddMovieRequest = () => {return {type: 'ADD_MOVIE_REQUEST'}}
 const AddMovieSuccess = (data) => {return{type: 'ADD_MOVIE_SUCCESS', payload:data}}
 const AddMovieFailed = (err) => {return{type: 'ADD_MOVIE_FAILED', payload:err}}
 
-export const AddMovie = (formData)=>{
+export const AddMovie = (formData,cb)=>{
     return (dispatch)=>{
         dispatch(AddMovieRequest())
         return axios({
@@ -142,6 +142,8 @@ export const AddMovie = (formData)=>{
             data : formData
         }).then((res)=>{
             dispatch(AddMovieSuccess(res.data))
+            cb.push('/')
+            alert('add movie success')
         }).catch((err)=>{
             alert(err)
             dispatch(AddMovieFailed(err))

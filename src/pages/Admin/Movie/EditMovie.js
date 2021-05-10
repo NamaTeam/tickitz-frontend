@@ -17,38 +17,44 @@ const EditMovieAdmin = () => {
   const { data: movieData } = useSelector((state) => state.FetchMovieById);
   const [poster, setPoster] = useState([]);
   const [editData, setEditData] = useState({
-    title: movieData.title,
-    category: movieData.category,
-    release_date: movieData.release_date,
-    hour: parseInt(movieData?.duration?.split(" ")[0]),
-    min: parseInt(movieData?.duration?.split(" ")[2]),
-    actors: movieData.actors,
-    synopsis: movieData.synopsis,
+    title: null,
+    category: null,
+    release_date: null,
+    hour: null,
+    min: null,
+    actors: null,
+    synopsis: null,
   });
   /* const times = movieData.duration.split(" ") */
   /* const { data:movie } */
   useEffect(() => {
     dispatch(FetchCinema());
     dispatch(FetchMovieById(id));
-  }, []);
+  }, [useParams]);
 
   const confirmedit = (e) => {
     e.preventDefault();
     if (poster.length > 0) {
       formData.append("poster", poster[0]);
-      formData.append("duration", `${editData.hour} hours ${editData.min} mins`);
-      formData.append("title", editData.title);
-      formData.append("category", editData.category);
-      formData.append("release_date", editData.release_date);
-      formData.append("actors", editData.actors);
-      formData.append("synopsis", editData.synopsis);
+      formData.append(
+        "duration",
+        `${editData.hour} hours ${editData.min} mins`
+      );
+      formData.append("title", editData.title ?? movieData.title);
+      formData.append("category", editData.category ?? movieData.category);
+      formData.append("release_date", editData.release_date ?? movieData.release_date);
+      formData.append("actors", editData.actors ?? movieData.actors);
+      formData.append("synopsis", editData.synopsis ?? movieData.synopsis);
     } else {
-      formData.append("duration", `${editData.hour} ${editData.min}`);
-      formData.append("title", editData.title);
-      formData.append("category", editData.category);
-      formData.append("release_date", editData.release_date);
-      formData.append("actors", editData.actors);
-      formData.append("synopsis", editData.synopsis);
+      formData.append(
+        "duration",
+        `${editData.hour} hours ${editData.min} mins`
+      );
+      formData.append("title", editData.title ?? movieData.title);
+      formData.append("category", editData.category ?? movieData.category);
+      formData.append("release_date", editData.release_date ?? movieData.release_date);
+      formData.append("actors", editData.actors ?? movieData.actors);
+      formData.append("synopsis", editData.synopsis ?? movieData.synopsis);
     }
     /* console.log(editData.release_date); */
     dispatch(UpdateMovie(id, formData))
@@ -80,91 +86,98 @@ const EditMovieAdmin = () => {
                         />
                       </label>
                     </div>
-                  </div>
-                  <div className="col-12 col-md-7">
-                    <div className="mt-3 mb-5 row form-user py-3">
-                      <div className="col-12 col-md-12 mb-3">
-                        <label htmlFor="inputFirstName" className="my-4">
-                          Movie Name
+                    <div className="mt-4 col-12 col-md-12 mb-4">
+                      <label htmlFor="inputCategory" className="mb-3">
+                        Category
                       </label>
-                        <input
-                          type="text"
-                          className={`form-control py-3 px-4 form-input`}
-                          defaultValue={movieData.title}
-                          id="inputFirstName"
-                          onChange={(e) =>
-                            setEditData({ ...editData, title: e.target.value })
-                          }
-                          disabled={!editable}
-                        />
-                      </div>
-                      <div className="mt-4 col-12 col-md-12 mb-4">
-                        <label htmlFor="inputLastName" className="mb-3">
-                          Category
+                      <input
+                        type="text"
+                        className={`form-control py-3 px-4 form-input`}
+                        defaultValue={movieData.category}
+                        id="inputCategory"
+                        onChange={(e) =>
+                          setEditData({ ...editData, category: e.target.value })
+                        }
+                        disabled={!editable}
+                      />
+                    </div>
+                    <div className="form-floating">
+                      <textarea
+                        className="form-control"
+                        placeholder="Leave a comment here"
+                        id="floatingTextarea2"
+                        defaultValue={movieData.synopsis}
+                        onChange={(e) =>
+                          setEditData({ ...editData, synopsis: e.target.value })
+                        }
+                        disabled={!editable}
+                      ></textarea>
+                      <label for="floatingTextarea2">Synopsis</label>
+                    </div>
+                    <div className="mt-4 col-12 col-md-12 mb-4">
+                      <label htmlFor="inputLastName" className="mb-3">
+                        Actors
                       </label>
-                        <input
-                          type="text"
-                          className={`form-control py-3 px-4 form-input`}
-                          defaultValue={movieData.category}
-                          id="inputLastName"
-                          onChange={(e) =>
-                            setEditData({ ...editData, category: e.target.value })
-                          }
-                          disabled={!editable}
-                        />
-                      </div>
-                      <div className="mt-4 col-12 col-md-6 mb-4">
-                        <label className="mb-3">Release date</label>
-                        <input
-                          type="date"
-                          className={`form-control py-3 px-4 date-rounded`}
-                          defaultValue={moment(
-                            `${movieData.release_date}`,
-                            "YYYYMMDD"
-                          ).format(`YYYY-MM-DD`)}
-                          id="inputEmail"
-                          onChange={(e) =>
-                            setEditData({ ...editData, release_date: e.target.value })
-                          }
-                          disabled={!editable}
-                        />
-                      </div>
-                      <div className="mt-4 col-12 col-md-6 mb-4">
-                        <label htmlFor="inputPhone" className="mb-3">
-                          Duration (hour / minute)
+                      <input
+                        className={`form-control py-3 px-4 form-input`}
+                        defaultValue={movieData.actors}
+                        type="text"
+                        id="inputLastName"
+                        onChange={(e) =>
+                          setEditData({ ...editData, actors: e.target.value })
+                        }
+                        disabled={!editable}
+                      />
+                    </div>
+                    <div className="mt-4 col-12 col-md-6 mb-4">
+                      <label className="mb-3">Release date</label>
+                      <input
+                        type="date"
+                        className={`form-control py-3 px-4 date-rounded`}
+                        defaultValue={movieData.release_date}
+                        id="inputEmail"
+                        onChange={(e) =>
+                          setEditData({
+                            ...editData,
+                            release_date: e.target.value,
+                          })
+                        }
+                        disabled={!editable}
+                      />
+                    </div>
+                    <div className="mt-4 col-12 col-md-6 mb-4">
+                      <label htmlFor="inputPhone" className="mb-3">
+                        Duration (hour / minute)
                       </label>
-                        <div className="row">
-                          <div className="col">
-                            <input
-                              type="number"
-                              className="form-control py-3 px-4 form-input"
-                              defaultValue={
-                                editData.hour ??
-                                parseInt(movieData.duration.split(" ")[0])
-                              }
-                              aria-label="First name"
-                              onChange={(e) =>
-                                setEditData({ ...editData, hour: e.target.value })
-                              }
-                              disabled={!editable}
-                            />
-                          </div>
-                          <div className="col">
-                            <input
-                              type="number"
-                              className="form-control py-3 px-4 form-input"
-                              defaultValue={
-                                editData.min ??
-                                parseInt(movieData.duration.split(" ")[2])
-                              }
-                              placeholder="Minute"
-                              aria-label="Last name"
-                              onChange={(e) =>
-                                setEditData({ ...editData, min: e.target.value })
-                              }
-                              disabled={!editable}
-                            />
-                          </div>
+                      <div className="row">
+                        <div className="col">
+                          <input
+                            type="number"
+                            className="form-control py-3 px-4 form-input"
+                            defaultValue={
+                              parseInt(movieData?.duration?.split(" ")[0] ?? 0)
+                            }
+                            aria-label="First name"
+                            onChange={(e) =>
+                              setEditData({ ...editData, hour: e.target.value })
+                            }
+                            disabled={!editable}
+                          />
+                        </div>
+                        <div className="col">
+                          <input
+                            type="number"
+                            className="form-control py-3 px-4 form-input"
+                            defaultValue={
+                              parseInt(movieData?.duration?.split(" ")[2] ?? 0)
+                            }
+                            placeholder="Minute"
+                            aria-label="Last name"
+                            onChange={(e) =>
+                              setEditData({ ...editData, min: e.target.value })
+                            }
+                            disabled={!editable}
+                          />
                         </div>
                       </div>
                       {!editable ? (
