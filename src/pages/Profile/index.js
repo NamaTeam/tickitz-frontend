@@ -262,8 +262,8 @@ export const Profile = () => {
                   </div>
                 </div>
                 : <div className="no-data">
-                    <h6 className="empty">No Data</h6>
-                  </div>
+                  <h6 className="empty">No Data</h6>
+                </div>
               }
             </div>
           </div>
